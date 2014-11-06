@@ -10,13 +10,12 @@ var http = require("http"), count = 1;
 var bl = require("bl");
 http.get(process.argv[2], function( response ){
 	response.pipe(bl(function(err, data){
-		console.log(count++);
 		if (err) {
 			return console.log( err );
 		}
 		data = data.toString();
-		//console.log(data.length);
-		//console.log(data);
+		console.log(data.length);
+		console.log(data);
 	}));
 });
 

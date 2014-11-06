@@ -1,6 +1,6 @@
 /**
  * create on 2014/11/06 nhn
- *   node fileFilterModuleTest.js "f:/projects/nodejs/baby.js"
+ *   node fileFilterModuleTest.js "f:/projects/nodejs/" "txt"
  *   :__require__: fileFilterListModule
  */
 var module = require("./fileFilterListModule.js");
