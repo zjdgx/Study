@@ -1,0 +1,2 @@
+2014/10/19:
+	visibility: collapse(用来隐藏表格的行或列)
