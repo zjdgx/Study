@@ -3,6 +3,7 @@
  *   node fileServer.js 8000 "F:/zjdgx/Study/nodejs/sa.txt"
  *    file server: response.writeHead(200,{"content-type":"text/plain"})
  *		the second parameter must be a native file, can't be url.
+ *		the file must encoded by utf8
  */
 var http = require("http"),
 	fs = require("fs");

@@ -1,4 +1,10 @@
-﻿var url = require("url"),
+﻿/**
+ * create on 2014/11/07 nhn
+ *   node timeServer.js 8000
+ *		url.parse(req.url, true)
+ *		JSON.stringify: translate JSON to json string
+ */
+var url = require("url"),
 	http = require("http");
 	
 var server = http.createServer(function (req, res) {

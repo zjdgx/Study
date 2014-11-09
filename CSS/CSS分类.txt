@@ -13,6 +13,11 @@
 颜色: color, opacity
 字体: 
 	font: [ [style || variant || weight] ? <font-size> [/ <line-height> ] ? <family> ]|caption|icon|menu|message-box|small-caption|status-bar
+文本:
+	text-transform(CSS3): 检索或设置对象中文本的大小写
+	white-space: 设置或检索对象内空格的处理方法
+	tab-size(CSS3): 设置或检索对象中制表符的长度
+	word-wrap(CSS3): 设置或检索当前内容超过指定容器的边界是否断行
 	
 
 
