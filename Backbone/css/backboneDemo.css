@@ -1,0 +1,61 @@
+html, body, ul, p, li, h1 {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #f8f8f8;
+}
+
+.main {
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px 0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 1px 1px #ddd;
+}
+
+.main h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+#todo {
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    padding: 0 5px;
+    font-size: 36px;
+    line-height: 40px;
+    font-style: italic;
+    border: 1px solid #ccc;
+    box-shadow: -1px -1px 10px 1px #ddd inset;
+}
+.main ul li {
+    height: 40px;
+    padding: 0 20px;
+    list-style: none;
+    line-height: 40px;
+}
+.main ul li .destroy {
+    width: 20px;
+    height: 20px;
+    float: right;
+    display: none;
+    margin: 10px 0;
+    overflow: hidden;
+    line-height: 20px;
+    text-align: center;
+    font-style: normal;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+}
+.main ul li:hover .destroy{
+    display: inline-block;
+}
+.main ul li .destroy:hover {
+    color: #fff;
+    cursor: pointer;
+    background: rgba(255,0,0,0.2);
+}
+.main ul li.done label {
+    text-decoration: line-through;
+}
