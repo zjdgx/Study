@@ -1,4 +1,5 @@
 ﻿/**
+ * learnyounode 9: juggling async
  * create on 2014/11/06 nhn
  *   node jugglingAsync.js "http://www.baidu.com" "http://zhidao.baidu.com" "http://www.google.com.hk/?gws_rd=ssl"
  */

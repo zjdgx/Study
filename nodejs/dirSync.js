@@ -1,4 +1,5 @@
 /**
+ * learnyounode 5: filtered js
  * create on 2014/11/06 nhn
  *   node file.js "f:/projects/nodejs/dirSync.js" "txt"
  */

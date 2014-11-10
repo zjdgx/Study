@@ -1,4 +1,5 @@
 ﻿/**
+ * learnyounode 11: file server
  * create on 2014/11/07 nhn
  *   node fileServer.js 8000 "F:/zjdgx/Study/nodejs/sa.txt"
  *    file server: response.writeHead(200,{"content-type":"text/plain"})

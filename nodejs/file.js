@@ -1,4 +1,5 @@
 /**
+ * learnyounode 3: my first IO
  * create on 2014/11/06 nhn
  *   node file.js "f:/projects/nodejs/baby.js"
  */

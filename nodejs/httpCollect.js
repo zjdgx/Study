@@ -1,4 +1,5 @@
 ﻿/**
+ * learnyounode 8: http collect
  * create on 2014/11/06 nhn
  *   node httpCollect.js "http://www.baidu.com"
  *    :__bl(Buffer List)__: npm install bl, response.pipe(bl(function(){...}));

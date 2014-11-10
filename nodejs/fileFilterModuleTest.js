@@ -1,4 +1,5 @@
 /**
+ * learnyounode 6: make it module
  * create on 2014/11/06 nhn
  *   node fileFilterModuleTest.js "f:/projects/nodejs/" "txt"
  *   :__require__: fileFilterListModule

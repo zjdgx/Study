@@ -1,23 +1,25 @@
-﻿/**
- * create on 2014/11/07 nhn
- *   node timeServer.js 8000
- *		url.parse(req.url, true)
- *		JSON.stringify: translate JSON to json string
+/**
+ * learnyounode 10: time Server
+ * create on 2014/11/06 nhn
+ *   node timeServer.js 3000
+ *    :__net__: net.createServer(function(socket){...}).listen(Number(process.argv[2])).
+ *		socket.end(data)
  */
-var url = require("url"),
-	http = require("http");
-	
-var server = http.createServer(function (req, res) {
-	var json = url.parse(req.url, true), time = {}, date = new Date(json.query.iso);
-	if (json.pathname === "/api/parsetime") {
-		time["hour"] = date.getHours();
-		time["minute"] = date.getMinutes();
-		time["second"] = date.getSeconds();
-		return res.end(JSON.stringify(time));
-	}
-	if (json.pathname === "/api/unixtime") {
-		res.end(JSON.stringify({"unixtime":date.getTime()}));
-	}
+var net = require("net");
+
+function formatNumber( num ) {
+	return (num > 9) ? ""+num : "0"+num;
+}
+
+var server = net.createServer(function (socket) {
+	var date = new Date(), str = "";
+	str += date.getFullYear()+"-";
+	str += formatNumber(date.getMonth()+1)+"-";
+	str += formatNumber(date.getDate());
+	str += " "+formatNumber(date.getHours());
+	str += ":"+formatNumber(date.getMinutes());
+	str += ":"+formatNumber(date.getSeconds());
+	socket.end( str+"\n" );
 });
 
 server.listen(Number(process.argv[2]));
