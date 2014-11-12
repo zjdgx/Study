@@ -1,7 +1,6 @@
 ﻿/**
- * expressworks 2: jade create on 2014/11/10 nhn node jade.js 8000 set view
- * template path(only path): app.set("views", path.join("./","")); set view
- * engine for node: app.set("view engine", "jade");
+ * expressworks 2: jade create on 2014/11/10 nhn
+ *  node form.js 8000
  */
 
 /*var express = require("express"), bodyParser = require("body-parser"), app = express();

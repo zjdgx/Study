@@ -7,7 +7,7 @@ var express = require("express"),
 	app = express();
 
 app.get("/",function(req, res){
-	res.end("Hello 333 world!\n");
+	res.end("Hello world!\n");
 });
 
 app.listen(Number(process.argv[2]));
