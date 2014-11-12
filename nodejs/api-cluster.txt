@@ -1,0 +1,28 @@
+cluster.settings
+	
+cluster.isMaster
+cluster.isWorker
+Event: "fork"
+Event: 'online'
+Event: 'listening'
+Event: 'disconnect'
+Event: 'exit'
+Event: 'setup'
+cluster.setupMaster([settings])
+cluster.fork([env])
+cluster.disconnect([callback])
+cluster.worker
+cluster.workers
+Class: Worker
+	worker.id
+	worker.process
+	worker.suicide
+	worker.send(message, [sendHandle])
+	worker.kill([signal='SIGTERM'])
+	worker.disconnect()
+	Event: 'message'
+	Event: 'online'
+	Event: 'listening'
+	Event: 'disconnect'
+	Event: 'exit'
+	Event: 'error'
