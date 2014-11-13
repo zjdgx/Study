@@ -1,0 +1,17 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "nhn study",
+  "main": "static.js",
+  "scripts": {
+    "zjdgx": "echo \"My test!\" && exit 1"
+  },
+  "author": "George",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.9.2",
+    "express": "^4.10.2",
+    "jade": "^1.7.0",
+    "stylus": "^0.49.3"
+  }
+}

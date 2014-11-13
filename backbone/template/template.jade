@@ -1,0 +1,7 @@
+!!!
+    div.description #{description}
+    ul
+    - each data in datas
+    li.item(id='item_'+data.index)
+        span= data.time
+        a.art(href=data.url)= data.title

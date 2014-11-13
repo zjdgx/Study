@@ -1,6 +1,7 @@
 ﻿/**
  * expressworks 2: jade create on 2014/11/10 nhn
  *  node form.js 8000
+ *   req.body.str: str is a parameter sent by ajax
  */
 
 /*var express = require("express"), bodyParser = require("body-parser"), app = express();

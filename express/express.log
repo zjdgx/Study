@@ -1,0 +1,61 @@
+expressworks:
+1. hello: hello.js
+2. jade: jade.js
+	设置模板路径: app.set("views", path.join("./",""));
+	设置模板引擎: app.set("view engine", "jade");
+	            //app.engine("jade", require("jade").__express);
+	            //TODO: Error: No default engine was specified and no extension was provided.
+3. good old form: form.js
+    var bodyparser = require("body-parser")
+    app.use(bodyparser.urlencoded({extended: false});
+    如果没有bodyparser就不能访问req.body
+4. static: static.js
+    设置项目静态文件目录
+    express.static(process.argv[3]||path.join("../static/",""))
+5. stylish css:
+    index.html中使用main.css对应于main.styl
+6. param pam pam:
+    //TODO: error
+7. what's in query?
+    url.parse(req.url, {encoded: "utf8"});
+8. Json me:
+
+
+1. var express = require("express"),
+       app = express();
+2. app.set(name, value)
+    app.set("title", "My Site");
+3. app.get(name)
+    app.get("title")// My Site || undefined
+4. app.enable(name)
+    app.enable("trust proxy");
+    app.get("trust proxy");// true
+5. app.disable(name)
+    app.disable("trust proxy");
+    app.get("trust proxy")// false
+6. app.enabled(name): check if setting _name_ is enabled
+    app.enabled("trust proxy")
+7. app.disabled(name): check if setting _name_ is disabled
+    app.disabled("trust proxy")
+8. app.use([path], function): Use the given middleware _function_, with optional mount _path_, defaulting to "/"
+    // Simple logger
+    app.use(function(req, res, next) {
+        console.log("%s %s",req.method, req.url);
+        next();//TODO: next
+    });
+    // respond
+    app.use(function(req, res, next) {
+        res.send("Hello World!");
+    });
+    app.listen(3000);
+9. app.engine("jade", require("jade").__express)
+    default is require engine based on the file extension.
+    To map a different extension to the template engine:
+        app.engine("html", require("ejs").renderFile):
+    consolidate.js: map all of node's popular template engines to follow the convention
+        var engines = require("consolidate");
+        app.engine("haml", engine.haml);
+        app.engine("html", engine.hogan);
+10. app.param([name], callback)
+    map logic to route parameters.
+
