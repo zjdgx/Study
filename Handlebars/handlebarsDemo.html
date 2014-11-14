@@ -41,9 +41,9 @@
 			var doc = document,
 				source = doc.getElementById("demo2").innerHTML,
 				template = Handlebars.compile(source),
-				context = {title: "All about <p> Tags", body: "<p>This is a post about &lt;<p>&gt; tags</p>"};
+				content = {title: "All about <p> Tags", body: "<p>This is a post about &lt;<p>&gt; tags</p>"};
 			var container = doc.createElement("div");
-			container.innerHTML = template(context);
+			container.innerHTML = template(content);
 			document.body.appendChild(container);
 		}
 	</script>
