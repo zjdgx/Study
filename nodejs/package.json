@@ -1,9 +1,12 @@
 {
-	"name": "chatrooms",
-	"version": "0.0.1",
-	"description": "Nodejs in Action Sample Code in: 2014/11/24 nhn-cd",
-	"dependencies": {
-		"socket.io": "~0.9.6",
-		"mime": "~1.2.7"
-	}
+  "name": "chatrooms",
+  "version": "0.0.1",
+  "description": "Nodejs in Action Sample Code in: 2014/11/24 nhn-cd",
+  "dependencies": {
+    "cheerio": "0.18.0",
+    "express": "^4.10.4",
+    "mime": "~1.2.7",
+    "socket.io": "~0.9.6",
+    "superagent": "0.21.0"
+  }
 }
