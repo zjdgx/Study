@@ -6,13 +6,12 @@
 var cluster = require('cluster');
 var http = require('http');
 var numCPUs = require('os').cpus().length;
-
+console.log("isMaster:"+cluster.isMaster+", isWorker: "+cluster.isWorker+", Node_unique_id: "+process.env.NODE_UNIQUE_ID);
 if (cluster.isMaster) {
-	// process.env.NODE_UNIQUE_ID: undefined
-	console.log("master start： "+process.env.NODE_UNIQUE_ID);
-
+	console.log("master start...");
 	// Fork workers.
 	for (var i = 0; i < numCPUs; i++) {
+		console.log("fork start...");
 		cluster.fork();
 	}
 
@@ -24,10 +23,19 @@ if (cluster.isMaster) {
 	cluster.on('exit', function(worker, code, signal) {
 		console.log('worker ' + worker.process.pid + ' died');
 	});
+
+	cluster.on('disconnect', function(worker) {
+		console.log('The worker #' + worker.id + ' has disconnected');
+	});
+
 } else {
+	console.log("worker starts....");
 	http.createServer(function(req, res) {
-		console.log("master start： "+process.env.NODE_UNIQUE_ID);
 		res.writeHead(200);
 		res.end("hello world\n");
-	}).listen(0);
+	}).listen(8000);
+
+	setTimeout(function(){
+		cluster.worker.disconnect();
+	},4000);
 }
