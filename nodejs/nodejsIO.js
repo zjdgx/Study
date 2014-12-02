@@ -27,10 +27,9 @@ var server = http.createServer(function (req, res) {
     var json = url.parse(req.url, true),
         start = new Date().getTime(),
         pn = json.pathname;
-
+	console.log(pn);
     getFileData(pn, function (data) {
         if( pn.indexOf("url") > -1 ) {
-            console.log(1234);
             res.writeHead(200, {"Content-Type": "image/png"});
             res.write(data, "binary");
             res.end();
@@ -42,30 +41,25 @@ var server = http.createServer(function (req, res) {
 
 
 function getFileData(type, callback) {
-    if (type === 'file_sync') {
+    if (type === '/file_sync') {
         callback(fs.readFileSync(filename, {encoding: "utf8"}).toString());
-    } else if (type === 'file_async') {
+    } else if (type === '/file_async') {
         fs.readFile("./f.txt", {encoding: "utf8"}, function (err, data) {
             if (err)
                 throw err;
             callback(data.toString());
         });
-    } else if (type === 'url_sync') {
+    } else if (type === '/url_sync') {
         var html = "";
-        var req = http.get(urlresource);
-        req.on('response', function(res) {
-            var type = res.headers["content-type"],
-                body = "";
-            res.setEncoding('binary');
-            res.on("data",function( data ){
-                html += data;
-            });
-            res.on("end",function(){
-                callback(html);
-            });
-        });
-        console.log("url_sync finished....");
+		http.get(urlresource, function(res) {
+			res.on("data", function(data) {
+				html += data;
+			});
+			res.on("end", function(){
+				callback(html);
+			});
+		});
     } else if (type === 'url_async') {
-
+		// how to do getting data from url through async?!
     }
 }
