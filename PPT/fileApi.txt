@@ -1,0 +1,115 @@
+﻿file system:
+1. fs.rename(path1, path2, [callback]),fs.renameSync(path1, path2)
+	重命名某个文件,前者异步调用，后者同步调用。除非回调函数执行过程出现了异常，否则不会传递任何参数.
+
+2. fs.truncate(fd,len,[callback]),fs.trucateSync(fd,len)
+	异步调用截断某个文件，如果执行过程中出现异常，回调函数接收一个参数(err),否则不传递任何参数.
+
+3. fs.chmod(path, mode, [callback]) 和 fs.chmodSync(path, mode)
+	修改文件权限，主要说下第二个参数,实际上是：-rwxrwxrwx，三个一组，r:4、w:2、x:1、-: 0。
+
+4. fs.stat(path, [callback])
+   fs.lstat(path, [callback])
+   fs.fstat(fd, [callback])
+   fs.statSync(path)
+   fs.lstatSync(path)
+   fs.fstatSync(fd)
+	读取文件元信息，回调函数将返回两个参数(err, stats)，其中stats是fs.Stats的一个对象.者的区别在于：
+	第一个是返回文件的信息，参数是路径
+	第二个是和第一个一样，当路径是文件链接时，返回这个链接文件的信息
+	第三个是传递参数为fd文件描述符
+
+5. fs.link(srcpath, dstpath, [callback])
+   fs.linkSync(srcpath, dstpath)
+   fs.symlink(linkdata, path, [callback])
+   fs.symlinkSync(linkdata, path)
+	建立文件链接，除非回调函数执行过程出现了异常，否则不会传递任何参数。link和symlink的区别是：
+		link 创建的是hard link 所谓硬链接 symlink创建的是symbolic link 所谓符号链接 硬链接就是备份，软连接就是快捷方式
+
+6. fs.readlink(path, [callback])
+   fs.realpath(path, [callback])
+   fs.unlink(path, [callback])
+   fs.readlinkSync(path)
+   fs.realpathSync(path)
+   fs.unlinkSync(path)
+	异步调用readlink，回调函数返回两个参数(err,resolvedPath)，resolvedPath为解析后的文件路径。 这3个函数分别是：
+	 1、readlink：读取链接源地址
+	 2、realpath：根据相对地址转换为绝对地址
+	 3、unlink：删除某一个文件链接
+
+7. fs.rmdir(path, [callback])
+   fs.mkdir(path, mode, [callback])
+   fs.readdir(path, [callback])
+   fs.rmdirSync(path)
+   fs.mkdirSync(path, mode)
+   fs.readdirSync(path)
+	三个命令分别是： rmdir:删除目录 mkdir:建立目录 readdir：读取目录中的内容。
+	回调函数接受两个参数(err, files)，其中files参数是保存了目录中所有文件名的数组（'.'和'..'除外）。
+
+8. fs.close(fd, [callback])
+   fs.closeSync(fd)
+   fs.open(path, flags, [mode], [callback])
+   fs.openSync(path, flags, [mode])
+	fs.open与 C 语言标准库中的 fopen 函数类似。它接受两个必选参数，path 为文件的路径， flags 可以是以下值:
+		 r ：以读取模式打开文件。
+    	 r+：以读写模式打开文件。
+    	 w ：以写入模式打开文件，如果文件不存在则创建。
+    	 w+：以读写模式打开文件，如果文件不存在则创建。
+    	 a ：以追加模式打开文件，如果文件不存在则创建。
+    	 a+：以读取追加模式打开文件，如果文件不存在则创建。
+	mode 参数用于创建文件时给文件指定权限，默认是 0666。回调函数将会传递一个文 件描述符 fd。
+
+9. fs.utimes(path, atime, mtime, callback)
+   fs.utimesSync(path, atime, mtime)
+   fs.futimes(path, atime, mtime, callback)
+   fs.futimesSync(path, atime, mtime)
+	更改文件时间戳，2者区别在于，utimes更改此文件时间戳，如果此文件指向一个符号链接，futimes更改符号链接的时间戳。
+
+10. fs.write(fd, buffer, offset, length, position, [callback])
+	fs.writeSync(fd, buffer, offset, length, position)
+	fs.writeSync(fd, str, position, encoding='utf8')
+	 fs.write将buffer缓冲器内容写入fd文件描述符,
+	 offset和length决定了将缓冲器中的哪部分写入文件。
+	 position指明将数据写入文件从头部算起的偏移位置，若position为null，数据将从当前位置开始写入
+	 回调函数接受两个参数(err, written)，其中written标识有多少字节的数据已经写入
+	 第三个是基于字符串的fs.write()的同步版本，返回写入数据的字节数。
+	 注意：写完后要关闭它
+11. fs.read(fd, buffer, offset, length, position, [callback])
+	fs.readSync(fd, buffer, offset, length, position)
+	fs.readSync(fd, length, position, encoding)
+	fs.readFile(filename, [encoding], [callback])
+	fs.readFileSync(filename, [encoding])
+	 前3个是读取文件描述符和BUFFER的方法，后2个是读取文件全部内容，比如输出html模版，或者css文件等。
+	 一般来说，除非必要，否则不要使用前3个是读取文件方式读取文件，因为它要求你手动管理缓冲区 和文件指针，尤其是在你不知道文件大小的时候，这将会是一件很麻烦的
+     事情。
+	 fs.read回调函数接受两个参数，(err, bytesRead),bytesRead返回读取到的字节数。
+	 fs.readFile的回调函数将传入两个参数(err, data)，其中data为文件内容，如果没有设置编码，那么将返回原始内容格式的缓冲器。
+
+12. fs.writeFile(filename, data, encoding='utf8', [callback])
+	fs.writeFileSync(filename, data, encoding='utf8')
+	对应文件写功能
+
+13. fs.watchFile(filename, [options], listener)
+	fs.unwatchFile(filename)
+	 fs.watchFile监听指定文件filename的变化，回调函数listener将在每次该文件被访问时被调用.
+	 第二个参数[options]是可选项，如果指定了options参数，它应该是一个包含如下内容的对象：名为persistent的布尔值，和名为interval单位为毫秒的轮询时间间     隔，默认值为{ persistent: true, interval: 0 }。 listener监听器将获得两个参数(curr, prev)，分别标识当前的状态对象和改变前的状态对象,这些状态    对象为fs.Stat的实例。
+	fs.unwatchFile停止监听文件filename的变化。
+
+14. fs.Stats
+	fs.stat()和 fs.lstat()方法返回的对象为此类型
+	 stats.isFile()
+	 stats.isDirectory()
+	 stats.isBlockDevice()
+	 stats.isCharacterDevice()
+	 stats.isSymbolicLink() (only valid with fs.lstat()) stats.isSymbolicLink() （仅对fs.lstat()有效）
+	 stats.isFIFO()
+	 stats.isSocket()
+
+15. fs.createReadStream(path, [options])
+	 返回一个新的可读流对象options是包含如下默认值的对象：
+	 { flags: 'r', encoding: null, fd: null, mode: 0666, bufferSize: 64 * 1024 }
+	 如果不想读取文件的全部内容，可以在options参数中设置start和end属性值以读取文件中指定范围的内容
+	 start和end包含在范围中（闭集合），取值从0开始。这两个参数需要同时设置。
+
+16. fs.createWriteStream(path, [options])
+	 options参数是包含如下默认值的对象：{ flags: 'w', encoding: null, mode: 0666 }

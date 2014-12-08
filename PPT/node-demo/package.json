@@ -1,0 +1,22 @@
+{
+  "name":"connect-express-module-demo",
+  "description":"Baidu internal demo, contact me before sharing with guy outside",
+  "version":"0.0.1",
+  "author":"xukai <xukai01@baidu.com>",
+  "dependencies":{
+    "connect":"2.4.5",
+    "jade":"*",
+    "connect-header":"*",
+    "markdown-util":"*",
+	"cheerio": "0.18.0",
+    "express": "4.10.4",
+    "mime": "~1.2.7",
+    "socket.io": "~0.9.6",
+    "superagent": "0.21.0",
+    "utility": "^1.2.0"
+  },
+  "engines":{
+    "node":"*"
+  }
+}
+
