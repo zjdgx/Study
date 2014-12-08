@@ -3,10 +3,16 @@
  *   nodejs desx encrypt & decrypt
  */
 var	content = '',
-	title = '网易',
+	title = 'Yobi',
 	fs = require('fs'),
 	fileName = "./secret.txt",
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	express = require('express'),
+	app = express();
+
+app.engine('jade', require('jade').__express);
+app.set('views', __dirname + '\\jade');
+app.set('view engine', 'jade');
 
 if( content.length > 0 ) {
 	fs.appendFile(fileName, title+zjdgxEncrypt("en",content)+"\n", function(err){

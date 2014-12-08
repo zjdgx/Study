@@ -32,10 +32,13 @@ if (cluster.isMaster) {
 	console.log("worker starts....");
 	http.createServer(function(req, res) {
 		res.writeHead(200);
-		res.end("hello world\n");
-	}).listen(8000);
-
-	setTimeout(function(){
+		res.end('Worker #' + cluster.worker.id + ' make a response.\n'+"hello world\n");
 		cluster.worker.disconnect();
-	},4000);
+	}).listen(8000,function(){
+		console.log("cluster demo started on port: 8000\n");
+	});
+
+	/*setTimeout(function(){
+		cluster.worker.disconnect();
+	},4000);*/
 }
