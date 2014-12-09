@@ -2,8 +2,8 @@
  * Created by zjdgx on 2014/12/03
  *   nodejs desx encrypt & decrypt
  */
-var	content = '',
-	title = 'Yobi',
+var	content = process.argv[3] || '',
+	title = process.argv[2] || '',
 	fs = require('fs'),
 	fileName = "./secret.txt",
 	crypto = require('crypto'),
