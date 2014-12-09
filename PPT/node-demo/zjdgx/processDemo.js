@@ -16,6 +16,7 @@ process.stdin.on('readable', function () {
 });
 
 process.stdin.on('end', function () {
+	debugger;
 	fs.write('zjdgx.process.log',str,function(err){
 		console.log("file write failed...");
 	});
