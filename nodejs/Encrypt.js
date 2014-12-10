@@ -29,7 +29,7 @@ if( content.length > 0 ) {
 			result = "", index = -1;
 			
 		for(var i=0; i<len; i++) {
-			index = lines[i].indexOf(title);
+			index = lines[i].toLowerCase().indexOf(title.toLowerCase());
 			
 			if( index > -1 ) {
 				result += zjdgxEncrypt( "des", lines[i].substring(lines[i].indexOf(":")+1))+"\n";

@@ -1,4 +1,57 @@
 nodejs API
-	Buffer: ��������������
-	C/C++ Addons: �ṩʹ��C/C++��������
-	Child Processes: �ӽ���(stdin, stdout)
+	Buffer: 处理二进制数据
+	C/C++ Addons: 提供使用C/C++类库的能力
+	Child Processes: 子进程(stdin, stdout)
+	cluster: 利用多核CPU提高nodejs性能
+	console: 打印文字信息
+	crypto: 加密解密
+	debugger: nodejs调试工具
+	DNS: dns解析(resolve:把域名转换成DNS记录, reverse: 把IP地址转换成域名)
+	Domain: 捕捉异步回调中出现的异常
+	Events
+	File System
+	Globals: 全局对象(process, console, exports, setTimeout...)
+	http: 处理请求
+	https: 处理请求
+	Modules: 模块管理
+	Net: nodejs异步网络编程的封装(基于 TCP 的封装)
+	OS: 操作系统相关module
+	Path: 路径handling and transforming file paths
+	process: 进程
+	punycode: 转码工具
+	query strings: 查询字符串处理(stringify, parse, escape, unescape)
+	Readline: 按行读取流
+	repl: 交互式解释器, 用于调试、测试
+	Stream: 提供对数据流的操作
+	String decoder: 字符串解码(默认utf-8)
+	timers: setTimeout, setInterval, unref, ref, setImmediate, clearImmediate
+	TLS/SSL: (加密连接)Transport Layer Security and/or Secure Socket Layer: encrypted stream communication
+	TTY: 是一个支持在浏览器中运行的命令行窗口，基于node.js平台，依赖socket.io库，通过websocket与Linux系统通信。
+	UDP/Datagram:  数据报套接字模块
+	URL: url处理工具(parse, format, resolve)
+	Utilities: 工具类(isArray, isError, isDate, log, print, puts...)
+	VM: 类似于eval, 可以执行任意代码并返回结果
+	ZLIB: GZip/GunZip压缩
+	
+	
+常用module功能:
+	underscore: 强大的js工具包
+	async: 异步流程控制,多任务时间管理
+	request: http请求库, 简化http请求
+	lodash: js工具包, 比underscore快(http://jsperf.com/underscore-lodash/3)
+	__commander: 命令行参数解析器
+	express: web开发框架
+	colors: 在console用的颜色模块
+		moduleDemo: colors.js
+	*coffee-script: 简化js代码的编写
+		coffee --compile --output lib/ src/
+	optimist: 实现命令行解析
+	debug: 基于nodejs debug技术实现的调试工具
+	mkdirp: 递归创建目录
+	q: A library for promises(https://www.npmjs.com/package/q)
+	__yeoman-generator
+	chalk: 类似于colors
+	moment: 日期操作
+	glob: 文件过滤
+	gulp-util: UUID生成工具
+	uglify: 合并压缩混淆JS代码
