@@ -46,4 +46,10 @@ function admin(req, res, next) {
     }
 }
 
-app.use(logger).use('/admin', redirect).use('/admin', admin).use(hello).listen(8000);
+app.use(logger)
+    .use('/admin', admin)
+    .use('/admin', redirect)
+    .use(hello)
+    .listen(8000, function(){
+        console.log('connectDemo start on port 8000');
+    });
