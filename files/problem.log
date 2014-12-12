@@ -1,0 +1,14 @@
+﻿fixed
+2014/12/12:
+	nodejs解决response乱码问题(charset=UTF-8): res.setHeader('Content-Type', 'text/html;charset=UTF-8');
+2014/12/03:
+	nodejs des encrypt
+2014/12/02:
+	superCheerIo.js网页爬虫
+	
+not fixed
+	(20141203)百度云数据库
+	(20141212)curl压力测试 ab
+	(20141212)restful delete and put test failed.
+	(20141212)formidable上传文件的Content-Type为空
+	(20141212)ZJDGX logo
