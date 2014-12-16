@@ -71,16 +71,16 @@ exports.archive = function(db, req, res) {
 exports.show = function(db, res, showArchived) {
 	var archiveValue = showArchived ? 1 : 0;
 		query = 'SELECT * FROM time_track ' + 'WHERE archived=? ' + 'ORDER BY date DESC';
-	
+		
 	db.query(
 		query,
 		[archiveValue],
 		function(err, rows) {
 			if (err) throw err;
-			exports.show(db, res);
 			var html = showArchived ? '' : '<a href="/archived">Archived Work</a><br/>';
-			console.log(rows.length);
+
 			html += exports.workHitlistHtml(rows);
+			html += exports.workFormHtml();
 			exports.sendHtml(res, html);
 		});
 };
@@ -109,7 +109,7 @@ exports.workFormHtml = function() {
 	var html = '<form method="POST" action="/">' + 
 			'<p>Date (YYYY-MM-DD):<br/><input name="date" type="text" /></p>' + 
 			'<p>Hours workd:<br/><input name="hours" type="text" /></p>' + 
-			'<p>Description:<br/><textarea name="description"</textarea></p>' + 
+			'<p>Description:<br/><textarea name="description"></textarea></p>' + 
 			'<input type="submit" value="add"/></form>';
 	return html;
 };
