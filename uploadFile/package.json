@@ -6,9 +6,9 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.4.3",
-    "ejs": "*",
-	"promise": "*",
-	"ndir": "*"
+    "express": "latest",
+    "body-parser": "latest",
+    "formidable": "*",
+    "underscore": "1.8.2"
   }
 }

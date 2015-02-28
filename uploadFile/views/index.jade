@@ -1,0 +1,19 @@
+doctype html
+html
+	head
+		meta(http-equiv="content-type",content="text/html;charset=utf8")
+		meta(name='date' content=date)
+		title=title
+		link(rel="stylesheet" href="/style/page.css")
+	body
+		include common/header.jade
+		div.main
+			form(action='/fileUpload' method='POST' target='fileUpload' enctype='multipart/form-data')
+				input(type='file' name='file')
+				input(type='file' name='second')
+				input(type='submit' value='上传')
+		div.footer
+		iframe#fileUpload(name='fileUpload' src='javascript:false')
+		script(type='text/javascript' src='js/common/require.js')
+		script(type='text/javascript' src='js/common/jquery-1.8.1.js')
+		script(type='text/javascript' src='js/fileUpload/main.js')
