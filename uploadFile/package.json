@@ -6,9 +6,10 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "latest",
     "body-parser": "latest",
+    "express": "latest",
     "formidable": "*",
+    "jade": "^1.9.2",
     "underscore": "1.8.2"
   }
 }

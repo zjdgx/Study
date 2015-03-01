@@ -6,3 +6,9 @@ $('input[type="submit"]').click(function () {
 		return false;
 	}
 });
+
+function uploadResult(result) {
+	if (result === 0) {
+		$.msgbox('File upload succeed...', 
+	}
+}
