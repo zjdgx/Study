@@ -4,11 +4,15 @@ $('input[type="submit"]').click(function () {
 	if (!file.val()) {
 		alert('Please choose file to upload');
 		return false;
+	} else {
+		uploadResult(0);
 	}
 });
 
 function uploadResult(result) {
 	if (result === 0) {
-		$.msgbox('File upload succeed...', 
+		$.msgbox('File upload succeed...', function(){
+			console.log(1);
+		});
 	}
 }
