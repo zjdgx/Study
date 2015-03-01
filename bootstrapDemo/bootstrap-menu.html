@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Bootstrap Menu</title>
+	<meta charset='UTF-8'>
+	<link rel="stylesheet" href="bootstrap.css">
+	<style type="text/css">
+		.alert {
+			top: 10px;
+			left: 50%;
+			width: 300px;
+			position: absolute;
+			margin-left: -150px;
+		}
+	</style>
+	<script src="jquery-1.11.2.min.js"></script>
+	<script src="bootstrap.3.0.3.min.js"></script>
+</head>
+<body>
+	<div class='container'>
+		<div class='menu' role='menu'>
+			<a id='dLabel' role='button' data-toggle='menu' class='btn btn-primary' data-target='#' href='javascript:;'>下拉菜单<span class='caret'></span></a>
+			<ul class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu'>
+				<li><a href='javascript:;'>Menu12</a></li>
+				<li><a href='javascript:;'>Menu23</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="alert alert-block alert-error fade in">
+		<button class="close" type="button" data-dismiss="alert">&times;</button>
+		<p class="content">afdssf </p>
+	</div>
+	<div class='alert alert-error alert-block'>
+		<button type='button' data-dismiss="alert" class='close'>&times;</button>
+		<h4>test</h4>
+	</div>
+</body>
+</html>

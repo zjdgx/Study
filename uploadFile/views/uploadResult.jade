@@ -1,0 +1,8 @@
+script(type='text/javascript', src='/js/common/require.js')
+div.result !{result}
+div.msg !{msg}
+script(type='text/javascript').
+    var res = #{result};
+    if (res == 0) {
+        console.log(1234);
+    }

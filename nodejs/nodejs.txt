@@ -1,3 +1,10 @@
+4.(2015/01/15)V8的内存限制
+	nodejs只能使用部分内存(V8)
+		64位: 1.4GB, 32位: 0.7GB
+	打开限制: 
+		node --max-old-space-size=1700 test.js//单位为MB: 老生代内存空间
+		node --max-new-space-size=1700 test.js//单位为MB：新生代内存空间
+	
 1. 常用工具包: socket.io, moment.js, underscore.js, async.js, express.js, grunt.js, forever.js...
 2. nodejs实现了对内存堆栈的监控系统
 3. 每个nodejs进程可以支持超过12万活跃的连接, 每个连接消耗大约2KB的内存.

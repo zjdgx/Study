@@ -24,28 +24,65 @@
 
 5.3 NoSQL(P100)
 
-    4.3.1 创建一个静态文件服务器(P73)
-        用stream.pipe()优化数据传输. 所有一个createReadStream都能接入任何一个WritableStream中.
+    5.3.1 Redis(P101)
+		适合处理不需要长期访问的简单的数据存储, 如短信和游戏中的数据. 
+		Redis把数据存放在RAM中, 在磁盘中记录数据的变化. 
+		优点: 数据操作非常快.
+		缺点: 存储空间有限, 崩溃导致数据丢失. 但可以从磁盘文件中恢复.
 
-    4.3.2 处理服务器错误(P77)
+    5.3.2 MongoDB(P105)
         在Node中, 所有继承了EventEmitter的类都可能会触发error事件.
+		(1).连接MongoDB
+			var mongodb = require('mongodb');
+			var server = new mongodb.Server('127.0.0.1', 27017, {});
+			var client = new mongodb.Db('mydatabase', server, {w: 1});
+		(2).访问MongoDB集合
+			client.open(function(err){
+				if (err) throw err;
+				
+				client.collection('test_insert', function (err, collection) {
+					if (err) throw err;
+					
+					console.log('We are now able to perform queries.');
+				});
+			});
+		(3).将文档插入集合中
+			client.insert(
+				{'title':'zdsfs', 'zds':'afdsfasafsfas'},
+				{safe: true},
+				function (err, documents) {
+					if (err) throw err;
+					
+					console.log('Document ID is: ' + documents[0]._id);
+				}
+			)
+		(4).用文档ID更新数据
+			var _id = new client.bson_serializer.ObjectID('4e650d344ac74b5a01000001');
+			
+			collection.update(
+				{_id: _id},
+				{$set: {'title':'I ate too much cake.'}},
+				{safe: true},
+				function (err) {
+					if (err) throw err;
+				}
+			);
+		(5).搜索文档
+			collection.find({'title':'I like cake'}).toArray(function(err, results){
+				if (err) throw err;
+				
+				console.log(results);
+			});
+		(6).删除文档
+			var _id = new client.bson_serializer.ObjectID('54a9ecf3f26bfc9c14457130');
+			
+			collection.remove({_id:_id}, {safe: true}, function (err) {
+				if (err) throw err;
+			});
 
-    4.3.3 用fs.stat()实现先发制人的错误处理(P77)
-        *fs.stat(path, func)会在文件不存在时返回err.code('ENOENT')
+    5.3.3 Mongoose(P107)
+        ------
 
-4.4 从表单中接受用户输入(P78)
-
-    4.4.1 处理提交的表单域(P78)
-        表单提交请求带的Content-Type通常有两种:
-            1). application/x-www-form-urlencoded: HTML表单的默认值;
-            2). multipart/form-data: 在表单中含有文件或非ASCII或二进制数据时使用.
-        *解决response乱码问题: res.setHeader('Content-Type', 'text/html;charset=UTF-8');
-
-    4.4.2 用formidable处理上传的文件(P81)
-
-    4.4.3 计算上传进度(P84)
-        formidable.on('progress', function(received, expected){})
-
-4.5 用HTTPS加强程序的安全性(P85)
-    OpenSSL生成私钥. openssl genrsa 1024 > key.pem
-    创建证书需要私钥: openssl req -x509 -new -key ken.pem > key-cert.pem
+5.4 小结(P109)
+	
+	

@@ -1,0 +1,166 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'e:\\projects\\zjdgx\\Study\\uploadFile',
+5 verbose install   [ 'express', 'bodyParser' ] ]
+6 info preinstall application-name@0.0.1
+7 verbose readDependencies using package.json deps
+8 verbose cache add [ 'express@latest', null ]
+9 verbose cache add name=undefined spec="express@latest" args=["express@latest",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'express@latest',
+10 verbose parsed url   path: 'express@latest',
+10 verbose parsed url   href: 'express@latest' }
+11 verbose cache add [ 'bodyParser@latest', null ]
+12 verbose cache add name=undefined spec="bodyParser@latest" args=["bodyParser@latest",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'bodyParser@latest',
+13 verbose parsed url   path: 'bodyParser@latest',
+13 verbose parsed url   href: 'bodyParser@latest' }
+14 verbose cache add name="express" spec="latest" args=["express","latest"]
+15 verbose parsed url { protocol: null,
+15 verbose parsed url   slashes: null,
+15 verbose parsed url   auth: null,
+15 verbose parsed url   host: null,
+15 verbose parsed url   port: null,
+15 verbose parsed url   hostname: null,
+15 verbose parsed url   hash: null,
+15 verbose parsed url   search: null,
+15 verbose parsed url   query: null,
+15 verbose parsed url   pathname: 'latest',
+15 verbose parsed url   path: 'latest',
+15 verbose parsed url   href: 'latest' }
+16 verbose addNamed [ 'express', 'latest' ]
+17 verbose addNamed [ null, null ]
+18 verbose cache add name="bodyParser" spec="latest" args=["bodyParser","latest"]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'latest',
+19 verbose parsed url   path: 'latest',
+19 verbose parsed url   href: 'latest' }
+20 verbose addNamed [ 'bodyParser', 'latest' ]
+21 verbose addNamed [ null, null ]
+22 silly lockFile c30a01ab-express-latest express@latest
+23 verbose lock express@latest C:\Users\nhn\AppData\Roaming\npm-cache\c30a01ab-express-latest.lock
+24 silly lockFile c127545b-bodyParser-latest bodyParser@latest
+25 verbose lock bodyParser@latest C:\Users\nhn\AppData\Roaming\npm-cache\c127545b-bodyParser-latest.lock
+26 info addNameTag [ 'express', 'latest' ]
+27 info addNameTag [ 'bodyParser', 'latest' ]
+28 verbose request where is /bodyParser
+29 verbose request registry https://registry.npmjs.org/
+30 verbose request id 882fe65f0df6ba83
+31 verbose url raw /bodyParser
+32 verbose url resolving [ 'https://registry.npmjs.org/', './bodyParser' ]
+33 verbose url resolved https://registry.npmjs.org/bodyParser
+34 verbose request where is https://registry.npmjs.org/bodyParser
+35 info trying registry request attempt 1 at 09:49:45
+36 http GET https://registry.npmjs.org/bodyParser
+37 verbose request where is /express
+38 verbose request registry https://registry.npmjs.org/
+39 verbose url raw /express
+40 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+41 verbose url resolved https://registry.npmjs.org/express
+42 verbose request where is https://registry.npmjs.org/express
+43 info trying registry request attempt 1 at 09:49:45
+44 verbose etag "17MC6IPP5OVHSRB9M63T1H7KI"
+45 http GET https://registry.npmjs.org/express
+46 http 304 https://registry.npmjs.org/express
+47 silly registry.get cb [ 304,
+47 silly registry.get   { date: 'Sat, 28 Feb 2015 00:49:46 GMT',
+47 silly registry.get     server: 'Apache',
+47 silly registry.get     via: '1.1 varnish',
+47 silly registry.get     'last-modified': 'Sat, 28 Feb 2015 00:49:46 GMT',
+47 silly registry.get     'cache-control': 'max-age=60',
+47 silly registry.get     etag: '"17MC6IPP5OVHSRB9M63T1H7KI"',
+47 silly registry.get     age: '7',
+47 silly registry.get     'x-served-by': 'cache-nrt6127-NRT',
+47 silly registry.get     'x-cache': 'HIT',
+47 silly registry.get     'x-cache-hits': '1',
+47 silly registry.get     'x-timer': 'S1425084586.789775,VS0,VE4',
+47 silly registry.get     vary: 'Accept',
+47 silly registry.get     'content-length': '0',
+47 silly registry.get     'keep-alive': 'timeout=10, max=50',
+47 silly registry.get     connection: 'Keep-Alive' } ]
+48 verbose etag https://registry.npmjs.org/express from cache
+49 verbose addNamed [ 'express', '4.12.0' ]
+50 verbose addNamed [ '4.12.0', '4.12.0' ]
+51 silly lockFile 334bb224-express-4-12-0 express@4.12.0
+52 verbose lock express@4.12.0 C:\Users\nhn\AppData\Roaming\npm-cache\334bb224-express-4-12-0.lock
+53 silly lockFile 334bb224-express-4-12-0 express@4.12.0
+54 silly lockFile 334bb224-express-4-12-0 express@4.12.0
+55 silly lockFile c30a01ab-express-latest express@latest
+56 silly lockFile c30a01ab-express-latest express@latest
+57 http 404 https://registry.npmjs.org/bodyParser
+58 verbose headers { date: 'Sat, 28 Feb 2015 00:49:47 GMT',
+58 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+58 verbose headers   'content-type': 'application/json',
+58 verbose headers   'cache-control': 'max-age=0',
+58 verbose headers   'content-length': '52',
+58 verbose headers   'accept-ranges': 'bytes',
+58 verbose headers   via: '1.1 varnish',
+58 verbose headers   age: '0',
+58 verbose headers   'x-served-by': 'cache-nrt6135-NRT',
+58 verbose headers   'x-cache': 'MISS',
+58 verbose headers   'x-cache-hits': '0',
+58 verbose headers   'x-timer': 'S1425084586.787642,VS0,VE459',
+58 verbose headers   'keep-alive': 'timeout=10, max=50',
+58 verbose headers   connection: 'Keep-Alive' }
+59 silly registry.get cb [ 404,
+59 silly registry.get   { date: 'Sat, 28 Feb 2015 00:49:47 GMT',
+59 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+59 silly registry.get     'content-type': 'application/json',
+59 silly registry.get     'cache-control': 'max-age=0',
+59 silly registry.get     'content-length': '52',
+59 silly registry.get     'accept-ranges': 'bytes',
+59 silly registry.get     via: '1.1 varnish',
+59 silly registry.get     age: '0',
+59 silly registry.get     'x-served-by': 'cache-nrt6135-NRT',
+59 silly registry.get     'x-cache': 'MISS',
+59 silly registry.get     'x-cache-hits': '0',
+59 silly registry.get     'x-timer': 'S1425084586.787642,VS0,VE459',
+59 silly registry.get     'keep-alive': 'timeout=10, max=50',
+59 silly registry.get     connection: 'Keep-Alive' } ]
+60 silly lockFile c127545b-bodyParser-latest bodyParser@latest
+61 silly lockFile c127545b-bodyParser-latest bodyParser@latest
+62 error 404 404 Not Found: bodyParser
+62 error 404
+62 error 404 'bodyParser' is not in the npm registry.
+62 error 404 You should bug the author to publish it
+62 error 404 It was specified as a dependency of 'application-name'
+62 error 404
+62 error 404 Note that you can also install from a
+62 error 404 tarball, folder, or http url, or git url.
+63 error System Windows_NT 6.1.7601
+64 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+65 error cwd e:\projects\zjdgx\Study\uploadFile
+66 error node -v v0.10.33
+67 error npm -v 1.4.28
+68 error code E404
+69 verbose exit [ 1, true ]

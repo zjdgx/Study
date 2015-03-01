@@ -1,4 +1,10 @@
-﻿fixed
+﻿2015/02/03:
+	编辑器 github Atom
+	Java WebCollector
+	NodeBB论坛
+	
+
+fixed
 2014/12/12:
 	nodejs解决response乱码问题(charset=UTF-8): res.setHeader('Content-Type', 'text/html;charset=UTF-8');
 2014/12/03:
