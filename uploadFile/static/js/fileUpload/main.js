@@ -4,8 +4,6 @@ $('input[type="submit"]').click(function () {
 	if (!file.val()) {
 		alert('Please choose file to upload');
 		return false;
-	} else {
-		uploadResult(0);
 	}
 });
 

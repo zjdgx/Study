@@ -314,7 +314,6 @@ body{
 	z-index: 1000;
 }
 .lightbox dialog {
-	background: url(../img/loading.gif) no-repeat center;
 	border: none;
 	padding: 0;
 }
