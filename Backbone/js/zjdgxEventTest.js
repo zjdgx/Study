@@ -1,5 +1,5 @@
 $(function(){
-	var object = {};
+	/*var object = {};
 
 	_.extend(object, Backbone.Events);
 
@@ -7,5 +7,5 @@ $(function(){
 		alert('Triggered: '+msg);
 	});
 
-	object.trigger('alert','an event');
+	object.trigger('alert','an event');*/
 });

@@ -1,0 +1,12 @@
+doctype html
+html
+	head
+		title=title
+	body
+		p 132345132s
+		#todoList
+		script(src='common/require.js')
+		script.
+			require(['common/jquery','common/underscore', 'zjdgx'], function($, _, zjdgx) {
+				zjdgx.todoMain();
+			});

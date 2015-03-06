@@ -1,17 +1,22 @@
-html, body, ul, p, li, h1 {
+html, body, ul, p, li, h1, input {
     margin: 0;
     padding: 0;
 }
 body {
-    background-color: #f8f8f8;
+    background-color: #fff;
+	font-family: courier new;
+}
+
+input, pre {
+	font-family: courier new;
 }
 
 .main {
     width: 600px;
-    margin: 0 auto;
     padding: 10px 0;
+    margin: 20px auto 0;
     border: 1px solid #ccc;
-    box-shadow: 0 0 1px 1px #ddd;
+    box-shadow: 0 0 1px 3px #eee;
 }
 
 .main h1 {
@@ -20,20 +25,33 @@ body {
 }
 #todo {
     height: 40px;
+	width: 560px;
+    padding: 5px;
     display: block;
     margin: 0 auto;
-    padding: 0 5px;
     font-size: 36px;
     line-height: 40px;
-    font-style: italic;
     border: 1px solid #ccc;
-    box-shadow: -1px -1px 10px 1px #ddd inset;
+}
+.main .markAll {
+	margin: 20px 15px;
+}
+.main #toggleAllComplete {
+	margin-right: 3px;
+	vertical-align: middle;
 }
 .main ul li {
     height: 40px;
-    padding: 0 20px;
+    padding: 0 15px;
     list-style: none;
     line-height: 40px;
+	border-bottom: 1px solid #ccc;
+}
+.main ul li:last-child {
+	border: none;
+}
+.main ul li:hover {
+	background-color: #E1E1E1;
 }
 .main ul li .destroy {
     width: 20px;
