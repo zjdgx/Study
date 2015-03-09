@@ -23,7 +23,7 @@ define(['common/backbone', './templates', './TodoCollection', './TodoItemView'],
 			
 			var todoItemView = new TodoItemView({model: item});
 			
-			this.$el.appendChild(todoItemView.render().el);
+			this.$el.append(todoItemView.render().el);
 		}
 	});
 });

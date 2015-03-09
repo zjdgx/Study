@@ -54,6 +54,12 @@ module.exports = function (grunt) {
 				dest: 'static/common/require.js'
 			}
 		},
+		concat_css: {
+			options: {},
+			files: {
+				'static/css/main.css': ['']
+			}
+		},
 		uglify: {
 			templates: {
 				files: {

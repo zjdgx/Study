@@ -7,7 +7,7 @@ define(['common/backbone', 'common/underscore'], function (Backbone, _) {
 		toJSON: function() {
 			var t = {};
 			
-			t.title = this.get('title');
+			t.content = this.get('content');
 			t.date = this.get('date');
 			
 			return t;

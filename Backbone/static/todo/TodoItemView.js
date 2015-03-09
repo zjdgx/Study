@@ -10,6 +10,8 @@ define(['common/backbone', './templates', './TodoModel'], function(Backbone, tem
 		},
 		render: function() {
 			this.$el.html(this.template(this.model.toJSON()));
+			
+			return this;
 		},
 		removeTodo: function(e) {
 			var _id = $(e.target).data('todoId');

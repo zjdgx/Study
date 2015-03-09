@@ -5,5 +5,5 @@ exports.main = function(req, res) {
 }
 
 exports.getTodoList = function(req, res) {
-	res.json({count: 1, results:[{'title':'zjdgx1', 'date':'2015-03-06 14:40:23'}]});
+	res.json({count: 1, results:[{'content':'zjdgx1', 'date':'2015-03-06 14:40:23'}]});
 }
