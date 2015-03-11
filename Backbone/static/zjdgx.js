@@ -8,7 +8,7 @@ define(['common/jquery', 'common/underscore', 'common/backbone'], function($, _,
 			
 			mainview.render();
 		});
-	}
-	
+	};
+
 	return zjdgx;
 });

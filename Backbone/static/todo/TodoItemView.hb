@@ -1,4 +1,4 @@
-<input type='checkbox'>
-<span>{{content}}</span>
+<input class="toggle" type="checkbox" />
+<label>{{content}}</label>
 <span>{{date}}</span>
-<a class='destroy' href="#" onclick='return false;'>&times;</a>
+<a class="destroy" href="#" onclick='return false;'>&times;</a>
