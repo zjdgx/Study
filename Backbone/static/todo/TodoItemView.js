@@ -7,7 +7,6 @@ define(['common/backbone', './templates', './TodoModel'], function (Backbone, te
 		},
 		initialize: function (options) {
 			this.model = options.model;
-			//this.listenTo(this.model, 'remove', this.remove);
 		},
 		render: function () {
 			this.$el.html(this.template(this.model.toTemplateObject()));

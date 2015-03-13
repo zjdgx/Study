@@ -28,9 +28,10 @@ define(['common/backbone', './templates', './TodoCollection', './TodoItemView'],
 						},
 						{
 							url: '/createTodo',
-							success: function(collection, response, options) {
-								if (response.result == 1) {
-									console.log('Task create successfully....');
+							success: function(model, res) {
+								if (res.result == 1) {
+									$("#todo").val('');
+									self.render();
 								} else {
 									console.warn('Task create failed....');
 								}
@@ -46,6 +47,7 @@ define(['common/backbone', './templates', './TodoCollection', './TodoItemView'],
 		render: function () {
 			var self = this;
 
+			this.$el.find('ul').empty();
 			this.collection.fetch({
 				success: function () {
 					self.collection.each(self.addItem, self);

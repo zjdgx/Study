@@ -1,0 +1,90 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>jQuery Plugin Demos</title>
+	<link rel="stylesheet" href="prettify.css">
+	<style type='text/css'>
+		body {
+			font-family: courier new;
+		}
+		html, body, ul, li, p, h1, h2, h3 {
+			margin: 0;
+			padding: 0;
+			font-size: 12px;
+		}
+		.header {
+			padding: 20px 0;
+			font-size: 60px;
+			text-align: center;
+			border-bottom: 1px solid #ccc;
+		}
+		.main {
+			width: 980px;
+			padding: 20px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+			border-width: 0 1px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">jQuery Plugin Demo</div>
+	<div class="main">
+		<ol>
+			<li>
+				<h1>this关键字</h1>
+				<pre class='prettyprint linenums:1'>
+(function($){
+	$.fn.pinkify = function() {
+		// this引用的是jQuery本身
+		return this.each(function() {
+			// 在循环体内，this关键字引用的是DOM元素
+			$(this).css({
+				'background-color': '#fe57a1',
+				'color': '#fff',
+				'text-shadow': 'none'
+			});
+		});
+	}
+})(jQuery)</pre>
+				<button id='thiskeyword'>测试</button>
+			</li>
+			<li>
+				<h1>确保$指向jQuery</h1>
+				<pre class='prettyprint'>
+(function($, window, document, undefined){
+	$.fn.pinkify = function() {}
+})(jQuery, window, document)</pre>
+			</li>
+			<li>
+				<h1>链式调用</h1>
+				<pre class="prettyprint">$element.pinkify().css('font-size','32px')</pre>
+				<button id='chainCall'>测试</button>
+			</li>
+			<li>
+				<h1>插件参数设置</h1>
+				<pre class="prettyprint">
+;(function($){
+	$.fn.bestPluginEver = function(options) {
+		var settings = $.extend({
+				'color': '#fff',
+				'background-color': '#fe57a1'
+			}, options);
+		
+		return this.css(settings);
+	}
+})(jQuery)</pre>
+			</li>
+			<li>
+				<h1></h1>
+				<pre class="prettyprint"></pre>
+			</li>
+			li>h1+pre.prettyprint
+		</ol>
+	</div>
+	<script type='text/javascript' src='jquery-1.8.1.min.js'></script>
+	<script type='text/javascript' src='thisKeyword.js'></script>
+	<script type='text/javascript' src='run_prettify.js'></script>
+	<script type='text/javascript' src='demoEvents.js'></script>
+</body>
+</html>
