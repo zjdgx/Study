@@ -18,7 +18,7 @@ html, body, ul, li, p, h1, h2, h3 {
 	margin: 0 auto;
 	overflow: hidden;
 	border: 1px solid #ccc;
-	border-width: 0 1px;
+	border-top: none;
 }
 .main ol li {
 	padding: 10px 0;
@@ -28,11 +28,15 @@ html, body, ul, li, p, h1, h2, h3 {
 	width: 45%;
 	float: left;
 	padding-right: 6%;
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;
 	border-right: 1px solid #ccc;
 }
 .widget-plugin {
 	width: 47%;
 	float: right;
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;	
 }
 .main h1 {
 	margin-bottom: 10px;

@@ -13,47 +13,47 @@
 			<ol>
 				<li>
 					<h1>this关键字</h1>
-					<pre class='prettyprint linenums:1 v-hidden'>
+					<pre class='prettyprint'>
 (function($){
-  $.fn.pinkify = function() {
-    // this引用的是jQuery本身
-    return this.each(function() {
-      // 在循环体内，this关键字引用的是DOM元素
-      $(this).css({
-        'background-color': '#fe57a1',
-        'color': '#fff',
-        'text-shadow': 'none'
+   $.fn.pinkify = function() {
+      // this引用的是jQuery本身
+      return this.each(function() {
+         // 在循环体内，this关键字引用的是DOM元素
+         $(this).css({
+            'background-color': '#fe57a1',
+            'color': '#fff',
+            'text-shadow': 'none'
+         });
       });
-    });
-  }
+   }
 })(jQuery)</pre>
 					<button class='seeCode'>查看代码</button><button id='thiskeyword'>测试</button>
 				</li>
 				<li>
 					<h1>确保$指向jQuery</h1>
-					<pre class='prettyprint v-hidden'>
+					<pre class='prettyprint'>
 (function($, window, document, undefined){
-  $.fn.pinkify = function() {}
+   $.fn.pinkify = function() {}
 })(jQuery, window, document)</pre>
 					<button class='seeCode'>查看代码</button>
 				</li>
 				<li>
 					<h1>链式调用</h1>
-					<pre class="prettyprint v-hidden">$element.pinkify().css('font-size','32px')</pre>
-					<button class='seeCode'>查看代码</button><button id='chainCall'>测试</button>
+					<pre class="prettyprint">$element.pinkify().css('font-size','32px')</pre>
+					<button id='chainCall'>测试</button>
 				</li>
 				<li>
 					<h1>插件参数设置</h1>
 					<pre class="prettyprint v-hidden">
 ;(function($){
-  $.fn.bestPluginEver = function(options) {
-    var settings = $.extend({
-        'color': '#fff',
-        'background-color': '#fe57a1'
-      }, options);
-    
-    return this.css(settings);
-  }
+   $.fn.bestPluginEver = function(options) {
+      var settings = $.extend({
+            'color': '#fff',
+            'background-color': '#fe57a1'
+         }, options);
+      
+      return this.css(settings);
+   }
 })(jQuery)</pre>
 					<button class='seeCode'>查看代码</button>
 				</li>
@@ -61,15 +61,15 @@
 					<h1>保持私有函数的私有性</h1>
 					<pre class="prettyprint v-hidden">
 (function($, windows, document, undefined){
-  $.fn.dataCruncher = function(options) {
-    //插件之外不可访问
-    function privateSort( data ) {
-      // 私有方法
-    }
-    return this.each(function() {
-      var data = privateSort( data );
-    });
-  }
+   $.fn.dataCruncher = function(options) {
+      //插件之外不可访问
+      function privateSort( data ) {
+         // 私有方法
+      }
+      return this.each(function() {
+         var data = privateSort( data );
+      });
+   }
 })(jQuery, windows, document)</pre>
 					<button class='seeCode'>查看代码</button>
 				</li>
