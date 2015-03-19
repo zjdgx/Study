@@ -2,88 +2,191 @@
 <html>
 <head>
 	<title>jQuery Plugin Demos</title>
+	<link rel="stylesheet" href="demo.css">
 	<link rel="stylesheet" href="prettify.css">
-	<style type='text/css'>
-		body {
-			font-family: courier new;
-		}
-		html, body, ul, li, p, h1, h2, h3 {
-			margin: 0;
-			padding: 0;
-			font-size: 12px;
-		}
-		.header {
-			padding: 20px 0;
-			font-size: 60px;
-			text-align: center;
-			border-bottom: 1px solid #ccc;
-		}
-		.main {
-			width: 980px;
-			padding: 20px;
-			margin: 0 auto;
-			border: 1px solid #ccc;
-			border-width: 0 1px;
-		}
-	</style>
+	<link rel="stylesheet" href="dialog/jquery-ui.css">
 </head>
-<body>
+<body id='jquery-plugin'>
 	<div class="header">jQuery Plugin Demo</div>
 	<div class="main">
-		<ol>
-			<li>
-				<h1>this关键字</h1>
-				<pre class='prettyprint linenums:1'>
+		<div class='fn-plugin'>
+			<ol>
+				<li>
+					<h1>this关键字</h1>
+					<pre class='prettyprint linenums:1 v-hidden'>
 (function($){
-	$.fn.pinkify = function() {
-		// this引用的是jQuery本身
-		return this.each(function() {
-			// 在循环体内，this关键字引用的是DOM元素
-			$(this).css({
-				'background-color': '#fe57a1',
-				'color': '#fff',
-				'text-shadow': 'none'
-			});
-		});
-	}
+  $.fn.pinkify = function() {
+    // this引用的是jQuery本身
+    return this.each(function() {
+      // 在循环体内，this关键字引用的是DOM元素
+      $(this).css({
+        'background-color': '#fe57a1',
+        'color': '#fff',
+        'text-shadow': 'none'
+      });
+    });
+  }
 })(jQuery)</pre>
-				<button id='thiskeyword'>测试</button>
-			</li>
-			<li>
-				<h1>确保$指向jQuery</h1>
-				<pre class='prettyprint'>
+					<button class='seeCode'>查看代码</button><button id='thiskeyword'>测试</button>
+				</li>
+				<li>
+					<h1>确保$指向jQuery</h1>
+					<pre class='prettyprint v-hidden'>
 (function($, window, document, undefined){
-	$.fn.pinkify = function() {}
+  $.fn.pinkify = function() {}
 })(jQuery, window, document)</pre>
-			</li>
-			<li>
-				<h1>链式调用</h1>
-				<pre class="prettyprint">$element.pinkify().css('font-size','32px')</pre>
-				<button id='chainCall'>测试</button>
-			</li>
-			<li>
-				<h1>插件参数设置</h1>
-				<pre class="prettyprint">
+					<button class='seeCode'>查看代码</button>
+				</li>
+				<li>
+					<h1>链式调用</h1>
+					<pre class="prettyprint v-hidden">$element.pinkify().css('font-size','32px')</pre>
+					<button class='seeCode'>查看代码</button><button id='chainCall'>测试</button>
+				</li>
+				<li>
+					<h1>插件参数设置</h1>
+					<pre class="prettyprint v-hidden">
 ;(function($){
-	$.fn.bestPluginEver = function(options) {
-		var settings = $.extend({
-				'color': '#fff',
-				'background-color': '#fe57a1'
-			}, options);
-		
-		return this.css(settings);
-	}
+  $.fn.bestPluginEver = function(options) {
+    var settings = $.extend({
+        'color': '#fff',
+        'background-color': '#fe57a1'
+      }, options);
+    
+    return this.css(settings);
+  }
 })(jQuery)</pre>
-			</li>
-			<li>
-				<h1></h1>
-				<pre class="prettyprint"></pre>
-			</li>
-			li>h1+pre.prettyprint
-		</ol>
+					<button class='seeCode'>查看代码</button>
+				</li>
+				<li>
+					<h1>保持私有函数的私有性</h1>
+					<pre class="prettyprint v-hidden">
+(function($, windows, document, undefined){
+  $.fn.dataCruncher = function(options) {
+    //插件之外不可访问
+    function privateSort( data ) {
+      // 私有方法
+    }
+    return this.each(function() {
+      var data = privateSort( data );
+    });
+  }
+})(jQuery, windows, document)</pre>
+					<button class='seeCode'>查看代码</button>
+				</li>
+				li>h1+pre.prettyprint
+			</ol>
+		</div>
+		<div class="widget-plugin">
+			<ol>
+				<li>
+					<h1>简单的有状态的插件</h1>
+					<pre class="prettyprint v-hidden">
+$.widget('zjdgx.progressbar', {
+   // 重写_create方法
+   _create: function() {
+      var progress = this.options.value + '%';
+      
+      this.element.addClass('progressbar').text(progress);
+   }
+});</pre>
+					<button class="seeCode">查看代码</button><button id='progressbarTest'>测试</button>
+					<div class="progressbarTest"></div>
+				</li>
+				<li>
+					<h1>widget插件的继承</h1>
+					<pre class="prettyprint v-hidden">
+$.widget('zjdgx.dialog', $.ui.dialog, {
+   red: function() {
+      this.element.css('color', 'red');
+   }
+});
+
+//调用方法
+var extendDialog;
+$('.widgetExtend').click(function(){
+   if (!extendDialog) {
+      extendDialog = $(this).next().dialog();
+   } else {
+      extendDialog.dialog().dialog('red');
+      //extendDialog.dialog('red');
+      //   有效果但不显示dialog
+   }
+});
+</pre>
+					<button class="seeCode">查看代码</button><button class="widgetExtend">测试</button>
+					<p class='widgetExtendText'>widget extension test character.</p>
+				</li>
+				<li>
+					<h1>widget _supper _supperApply</h1>
+					<pre class="prettyprint v-hidden">
+$.widget('zjdgx.suppercompute', {
+	compute: function(a, b) {
+		this.element.html(a+b);
+		console.log('suppercompute: '+ (a+b));
+	}
+});
+$.widget('zjdgx.subcompute', $.zjdgx.suppercompute, {
+	compute: function(a, b, c) {
+		console.log('subcompute called suppercompute...');
+		this._supper(a, b);
+		this.element.html(a+b+c);
+		console.log('subcompute: '+ (a+b+c));
+	}
+});</pre>
+					<button class="seeCode">查看代码</button><button id='supper'>super测试</button><button id='supperSub'>sub测试</button>
+					<div id='_supperResult'><p>supper result</p><p>sub result</p></div>
+				</li>
+				li>h1+pre.prettyprint.v-hidden+button.seeCode{查看代码}
+				<li>
+					<h1>textboxdecorator(修改textbox样式)</h1>
+					<pre class="prettyprint v-hidden">
+(function($, windows, document, undefined) {
+  $.widget('ui.textboxcecorator', {
+    options: {},
+    _init: function(){  
+      //验证是否是需要装饰的元素 
+      
+      //this.element也就是调用此widget的元素  
+      var  e = this.element,
+          tg = e.attr("tagName").toLowerCase(),
+          ty = e.attr("type").toLowerCase();
+              
+      if (!(tg === "input" || tg === "textarea")) {  
+        return;  
+      }  
+      if (!(ty === "text" || ty === "password")) {  
+        if (tg === "input")   
+          return;  
+      }  
+
+      //ui-widget widget基本的样式，ui-state-default。默认状态的样式；ui- corner-all 圆角（基于css3，ie下不起作用）  
+      e.addClass("ui-widget ui-state-default ui-corner-all");  
+      //添加hover效果和active效果  
+      e.mouseover(function(){  
+        e.addClass("ui-state-hover");  
+      }).mouseout(function(){  
+        e.removeClass("ui-state-hover");  
+      }).mousedown(function(){  
+        e.addClass("ui-state-active");  
+      }).mouseup(function(){  
+        e.removeClass("ui-state-active");  
+      });  
+    },  
+    //销毁时，移除widget增加的样式  
+    destroy:function(){  
+      this.element.removeClass("ui-widget ui-state-default ui-corner-all ui-state-hover ui-state-active");  
+    }
+  });
+})(jQuery, windows, document)</pre>
+					<div class="test"><button class='seeCode'>查看代码</button><input id='widgetTextbox' type="text"></div>
+				</li>
+				li>h1+pre.prettyprint.v-hidden+button.seeCode{查看代码}
+			</ol>
+		</div>
 	</div>
 	<script type='text/javascript' src='jquery-1.8.1.min.js'></script>
-	<script type='text/javascript' src='thisKeyword.js'></script>
+	<script type='text/javascript' src='dialog/jquery-ui.min.js'></script>
+	<script type='text/javascript' src='jquery-plugin-demo.js'></script>
 	<script type='text/javascript' src='run_prettify.js'></script>
 	<script type='text/javascript' src='demoEvents.js'></script>
 </body>

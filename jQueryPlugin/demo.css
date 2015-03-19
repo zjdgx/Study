@@ -1,0 +1,89 @@
+body {
+	font-family: courier new;
+}
+html, body, ul, li, p, h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+.header {
+	padding: 20px 0;
+	font-size: 60px;
+	text-align: center;
+	border-bottom: 1px solid #ccc;
+}
+.main {
+	width: 980px;
+	padding: 0 20px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	border-width: 0 1px;
+}
+.main ol li {
+	padding: 10px 0;
+	border-bottom: 1px dotted #ccc;
+}
+.fn-plugin {
+	width: 45%;
+	float: left;
+	padding-right: 6%;
+	border-right: 1px solid #ccc;
+}
+.widget-plugin {
+	width: 47%;
+	float: right;
+}
+.main h1 {
+	margin-bottom: 10px;
+}
+.v-hidden {
+	display: none;
+}
+.seeCode {
+	margin-right: 20px;
+}
+.progressbarTest {
+	width: 100%;
+	height: 16px;
+	margin-top: 10px;
+	position: relative;
+	background-color: #ccc;
+}
+.progressbarTest .curRate {
+	top: 0;
+	left: 0;
+	color: #fff;
+	height: 100%;
+	text-align: center;
+	position: absolute;
+	background-color: #f00;
+}
+
+#jquery-plugin .widgetExtendText {
+	color: #fff;
+	display: none;
+}
+
+#supper {
+	margin-right: 20px;
+}
+#_supperResult {
+	margin-top: 10px;
+	overflow: hidden;
+}
+#_supperResult p {
+	width: 50%;
+	float: left;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	border: 1px solid #ccc;
+	border-right: none;
+}
+#_supperResult p:first-child {
+	margin-right: -3px;
+}
+#_supperResult p:last-child {
+	border-right: 1px solid #ccc;
+}
