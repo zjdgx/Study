@@ -2,7 +2,7 @@ $('#thiskeyword').click(function(){
 	$(this).pinkify();
 });
 $('#chainCall').click(function(){
-	$(this).pinkify().css('font-size', '32px');
+	$(this).next().pinkify().css({'font-weight':'bold','text-align':'center'});
 });
 $('#widgetTextbox').textboxdecorator();
 
@@ -17,10 +17,27 @@ $('.seeCode').click(function(){
 var tbar;
 $('#progressbarTest').click(function(){
 	var t = $(this);
-	if ($('.progressbarTest').hasClass('progressbar')) {
+	if ($('.progressbarTest').hasClass('progressbar-with-no-arrow')) {
 		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
 	} else {
-		tbar = $('.progressbarTest').progressbar({
+		tbar = $('.progressbarTest').removeClass('progressbar-with-arrow').addClass('progressbar-with-no-arrow').progressbar({
+			showArrow: false,
+			value: 10, 
+			hide: { 
+				effect: "explode",
+				duration: 1000
+			}}).bind('progressbarcomplete', function(event, data){
+				tbar.progressbar('option', 'hide', { effect: "explode", duration: 1000 });
+			});
+	}
+});
+$('#progressbarWithArrow').click(function(){
+	var t = $(this);
+	if ($('.progressbarTest').hasClass('progressbar-with-arrow')) {
+		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
+	} else {
+		tbar = $('.progressbarTest').removeClass('progressbar-with-no-arrow').addClass('progressbar-with-arrow').progressbar({
+			showArrow: true,
 			value: 10, 
 			hide: { 
 				effect: "explode",
@@ -51,4 +68,20 @@ $('#supper').click(function(){
 
 $('#supperSub').click(function(){
 	$('#_supperResult p:last').subcompute().subcompute('compute',1,2,3);
+});
+/** canvas demo
+-----------------------------*/
+$('button.canvas').click(function(){
+	var t = $(this);
+	
+	if (t.hasClass('canvasDemo1')) {
+		$('.test1').canvasizr();
+		var img = $('#forDownload')[0].toDataURL("image/jpeg");
+		$('.downloadCanvas').attr('href', img);
+	}
+});
+
+
+$('div.fntest button').click(function(){
+	$('div.fntest p').azure();
 });

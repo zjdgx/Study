@@ -39,8 +39,11 @@
 				</li>
 				<li>
 					<h1>链式调用</h1>
-					<pre class="prettyprint">$element.pinkify().css('font-size','32px')</pre>
-					<button id='chainCall'>测试</button>
+					<pre class="prettyprint">$element.pinkify().css({
+   'font-weight':'bold',
+   'text-align':'center'}
+)</pre>
+					<button id='chainCall'>测试</button><p class='chainCallText'>链式调用</p>
 				</li>
 				<li>
 					<h1>插件参数设置</h1>
@@ -73,11 +76,56 @@
 })(jQuery, windows, document)</pre>
 					<button class='seeCode'>查看代码</button>
 				</li>
+				<li>
+					<h1>Final Demo</h1>
+					<pre class="prettyprint"></pre>
+					<button class='seeCode'>查看代码</button><button class='canvas canvasDemo1'>测试</button><button class='canvas canvasDemo2'>测试</button><button class='canvas canvasDemo3'>测试</button>
+					<p class="test1">
+						Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo, Canvas Plugin Demo</p>
+					<a class='downloadCanvas' href="#" download>下载图片</a>
+				</li>
+				<li>
+					<h1>jQuery对象扩展demo</h1>
+					<pre class="prettyprint">
+					</pre>
+					<div class="fntest">
+						<button>测试</button>
+						<p>test text test text test text test text test text test text test text test text test text test text</p>
+						<p>测试文字测试文字测试文字测试文字测试文字</p>
+					</div>
+				</li>
 				li>h1+pre.prettyprint
 			</ol>
 		</div>
 		<div class="widget-plugin">
 			<ol>
+				<li>
+					<h1>Widget插件开发Demo</h1>
+					<pre class="prettyprint v-hidden">
+;(function($, window, document, undefined){
+   $.widget("zjdgx.pluginName", {
+      options: {
+         hashtag: "#hotpink"
+      },
+      _create: function() {
+         // 创建
+      },
+      _destroy: function() {
+         // 销毁
+      },
+      _setOption: function (key, value) {
+         // 在jQuery UI 1.8中, 必须从基widget中手动调用_setOption方法
+         $.Widget.prototype._setOption.apply(this, arguments);
+         // 在jQuery UI 1.9及更高版本中, 使用_super代替
+         this._super("_setOption", key, value);
+      },
+      pluginMethod: function() {
+         // 插件功能方法
+      }
+   });
+})(jQuery, window, document)</pre>
+					<button class="seeCode">查看代码</button>
+				</li>
 				<li>
 					<h1>简单的有状态的插件</h1>
 					<pre class="prettyprint v-hidden">
@@ -89,7 +137,7 @@ $.widget('zjdgx.progressbar', {
       this.element.addClass('progressbar').text(progress);
    }
 });</pre>
-					<button class="seeCode">查看代码</button><button id='progressbarTest'>测试</button>
+					<button class="seeCode">查看代码</button><button id='progressbarTest'>测试</button><button id='progressbarWithArrow'>测试(带箭头)</button>
 					<div class="progressbarTest"></div>
 				</li>
 				<li>

@@ -2,7 +2,11 @@
  * this keyword in plugin
  */
 ;(function($){
+	function zjdgx(a, b) {
+		console.log('a: ' + a + ', b: ' + b);
+	};
 	$.fn.pinkify = function() {
+		zjdgx(1,2);
 		// this引用的是jQuery本身
 		return this.each(function() {
 			// 在循环体内，this关键字引用的是DOM元素
@@ -63,12 +67,24 @@
 /* progress bar
 --------------------*/
 $.widget('zjdgx.progressbar', {
+	options: {
+		showArrow: true
+	},
 	// 重写_create方法
 	_create: function() {
 		var progress = this.options.value + '%',
-			progressText = '<div class="curRate" style="width: '+this.options.value+'%;">'+progress+'</div>';
-		
+			progressText = '<div class="curRate showArrow" style="width: '+this.options.value+'%;">'+progress+'</div><i class="curPosition"></i>';
+			
+		if (!this.options.showArrow) {
+			progressText = '<div class="curRate" style="width: '+this.options.value+'%;"></div><div class="barText">'+progress+'</div>';
+		}
 		this.element.addClass('progressbar').append(progressText);
+		this.setArrowPosition();
+	},
+	setArrowPosition: function() {
+		if (this.options.showArrow) {
+			this.element.find('.curPosition').css('left', this.element.find('.curRate').width()-4);
+		}
 	},
 	value: function (value) {
 		if (value) {
@@ -81,7 +97,12 @@ $.widget('zjdgx.progressbar', {
 			}
 			
 			this.options.value = value;
-			this.element.find('.curRate').css('width', value+'%').html(value+'%');
+			if (this.options.showArrow) {
+				this.element.find('.curRate').css('width', value+'%').html(value+'%');
+			} else {
+				this.element.find('.curRate').css('width', value+'%').next().html(value+'%');
+			}
+			this.setArrowPosition();
 			// 提供回调功能让用户进行扩展
 			if (this.options.value == 100) {
 				this._trigger('complete', null, {value: 100});
@@ -96,6 +117,9 @@ $.widget('zjdgx.progressbar', {
 		this.options[key] = value;
 		if (key === 'value')
 			this.value(value);
+	},
+	destroyFFF: function() {
+		this.element.removeClass('progressbar progressbar-with-arrow progressbar-with-no-arrow').text('');
 	}
 });
 
@@ -144,7 +168,6 @@ $.widget('ui.textboxdecorator', {
 			return;  
 		}  
 		if (!(ty === "text" || ty === "password")) {  
-			if (tg === "input")   
 				return;  
 		}  
 		
@@ -167,3 +190,69 @@ $.widget('ui.textboxdecorator', {
 	}
 });
 /*==========================jQuery widget==========================*/
+
+/* final demo
+---------------------*/
+;(function($, window, document, undefined){
+	$.fn.canvasizr = function( options ) {
+		options = $.extend( {}, $.fn.canvasizr.options, options );
+		
+		return this.each(function(){
+			// 此处的this为dom元素
+			var $this = $(this),
+				pos = $this.position(),
+				width = $this.outerWidth(),
+				height = $this.outerHeight() + parseInt($this.css("margin-top"),10) + parseInt($this.css("margin-bottom"),10),
+				canvas = document.createElement( "canvas" ),
+				$canvas = $( canvas),
+				ctx = canvas.getContext( "2d" );
+			
+			$canvas.attr('id', 'forDownload');
+			$.extend( ctx, options );
+			canvas.width = width;
+			canvas.height = height;
+			ctx.fillRect(0, 0, parseInt( width, 10 ), parseInt( height, 10 ));
+			if (options.border) {
+				ctx.strokeRect(0, 0, parseInt( width, 10 ), parseInt( height, 10 ));
+			}
+			ctx.fillStyle = ctx.textColor;
+			ctx.fillText( $this.text(), 8, parseInt( height, 10 ) / 2 );
+			$canvas.css({
+				position: 'absolute',
+				left: pos.left + "px",
+				top: pos.top + "px",
+				'z-index': 1
+			});
+			$("body").append( $canvas );
+		});
+	};
+	$.fn.canvasizr.options = {
+		textColor: "#f00",
+		fillColor: "#ff0000",
+		strokeStyle: "#0f0",
+		border: '1px solid #f00',
+		fontSize: "40px",
+		lineCap: "round",
+		lineJoin: "miter",
+		lineWidth: 1,
+		miterLimit: 10,
+		shadowBlur: 0,
+		shadowColor: "rgba(255,0,0,0.6)",
+		shadowOffsetX: 0,
+		shadowOffsetY: 0,
+		textAlign: 'start',
+		textBaseLine: 'alphabetic'
+	};
+})(jQuery, window, document)
+
+
+
+/* fn demo
+-------------------------------------*/
+;(function($, window, document, undefined) {
+	$.fn.azure = function() {
+		return this.each(function(){
+			$(this).css('background-color','#4040FF').css('color','#fff');
+		});
+	}
+})(jQuery, window, document)

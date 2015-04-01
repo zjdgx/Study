@@ -1,0 +1,41 @@
+﻿<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.7.1.js" ></script>
+<script src="jquery.metadata.js"></script>
+<script>
+(function($) {
+  // plug-in definition
+  var settings = {
+    "background" : "#fe57a1",
+    "color" : "#fff",
+    "text-shadow" : "none"
+  };
+  $.fn.pinkify = function( options ) {
+    return this.each(function() {
+      var style = $.extend( settings, options ),
+      $this = $( this );
+      style = $.metadata ? $.extend( style, $this.metadata() ) : style;
+      $this.css( style );
+    });
+  }
+})( jQuery );
+
+
+$(function() {
+  $('.pinkify').pinkify()
+});
+</script>
+</head>
+
+<body>
+<ul>
+    <li class="pinkify"> Hot pink </li>
+    <li class="pinkify { color : '#000', background: '#0041cc' }"> 
+      Black and Pink. Very hip.
+    </li>
+    <li class="pinkify { color : 'green' }"> 
+      Not so sure about this one. 
+    </li>
+</ul>
+</body>
+</html>
