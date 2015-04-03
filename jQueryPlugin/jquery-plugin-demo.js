@@ -128,10 +128,20 @@ $.widget('zjdgx.progressbar', {
 $.widget('zjdgx.dialog', $.ui.dialog, {
 	red: function() {
 		var e = this.element;
-		
-		setTimeout(function(){
-			e.css('color', 'red');
-		},1000);
+		if ( e.css('color') === '#f00' || e.css('color') === 'rgb(255, 0, 0)' ) {
+			this.blue();
+		} else {
+			e.css('color', '#f00');
+		}
+		return this;
+	},
+	blue: function() {
+		this.element.css('color', '#0f0');
+		return this;
+	},
+	close: function() {
+		console.log('zjdgx-dialog closed.....');
+		this._super('close');
 	}
 });
 

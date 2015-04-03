@@ -56,7 +56,7 @@ $.zjdgx.progressbar.prototype.reset = function() {
 /** widget extension
 --------------------*/
 $('.widgetExtend').click(function(){
-	$(this).next().dialog({title:'widget继承测试'}).dialog('red');
+	$('.widgetExtendText').dialog({title:'widget继承测试'}).dialog('red');
 });
 
 
@@ -85,3 +85,34 @@ $('button.canvas').click(function(){
 $('div.fntest button').click(function(){
 	$('div.fntest p').azure();
 });
+
+/*$.widget( "nmk.progressbar", {
+    options: {
+        value: 0
+    },
+    _create: function() {
+        this.element.addClass( "progressbar" );
+        this._update();
+    },
+    _setOption: function( key, value ) {
+        this.options[ key ] = value;
+        this._update();
+    },
+    _update: function() {
+        var progress = this.options.value + "%";
+        this.element.text( progress );
+        if ( this.options.value == 100 ) {
+            this._trigger( "complete", null, { value: 100 } );
+        }
+    }
+});
+
+var bar = $( "<div />" ).appendTo( "body" ).progressbar({
+    complete: function( event, data ) {
+        console.log( "Callbacks are great!" );
+    }
+}).bind( "progressbarcomplete", function( event, data ) {
+     console.log( "Events bubble and support many handlers for extreme flexibility." );
+     console.log( "The progress bar value is " + data.value );
+});
+bar.progressbar( "option", "value", 100 );*/
