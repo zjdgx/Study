@@ -20,14 +20,10 @@ $('#progressbarTest').click(function(){
 	if ($('.progressbarTest').hasClass('progressbar-with-no-arrow')) {
 		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
 	} else {
-		tbar = $('.progressbarTest').removeClass('progressbar-with-arrow').addClass('progressbar-with-no-arrow').progressbar({
+		tbar = $('.progressbarTest').show().removeClass('progressbar-with-arrow').addClass('progressbar-with-no-arrow').progressbar({
 			showArrow: false,
-			value: 10, 
-			hide: { 
-				effect: "explode",
-				duration: 1000
-			}}).bind('progressbarcomplete', function(event, data){
-				tbar.progressbar('option', 'hide', { effect: "explode", duration: 1000 });
+			value: 10}).bind('progressbarcomplete', function(event, data){
+				tbar.progressbar('complete', {str: 'progressbar finished...', style: {'color': '#fff', "background-color": '#0E0AA8'}});
 			});
 	}
 });
@@ -36,22 +32,14 @@ $('#progressbarWithArrow').click(function(){
 	if ($('.progressbarTest').hasClass('progressbar-with-arrow')) {
 		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
 	} else {
-		tbar = $('.progressbarTest').removeClass('progressbar-with-no-arrow').addClass('progressbar-with-arrow').progressbar({
-			showArrow: true,
-			value: 10, 
-			hide: { 
-				effect: "explode",
-				duration: 1000
-			}}).bind('progressbarcomplete', function(event, data){
-				console.log('complete....');
-				tbar.progressbar('option', 'hide', { effect: "explode", duration: 1000 });
+		tbar = $('.progressbarTest').show().removeClass('progressbar-with-no-arrow').addClass('progressbar-with-arrow').progressbar({value: 10}).bind('progressbarcomplete', function(event, data){
+				tbar.progressbar('complete', {str: 'progressbarWithArrow finished...', style: {'color': '#fff', "background-color": '#F0CB0F'}});
 			});
 	}
 });
-
-$.zjdgx.progressbar.prototype.reset = function() {
-	this._setOption('value',0);
-}
+$('#_destroy').click(function(){
+	$('.progressbarTest').progressbar("destroy");
+});
 
 /** widget extension
 --------------------*/
@@ -69,50 +57,8 @@ $('#supper').click(function(){
 $('#supperSub').click(function(){
 	$('#_supperResult p:last').subcompute().subcompute('compute',1,2,3);
 });
-/** canvas demo
------------------------------*/
-$('button.canvas').click(function(){
-	var t = $(this);
-	
-	if (t.hasClass('canvasDemo1')) {
-		$('.test1').canvasizr();
-		var img = $('#forDownload')[0].toDataURL("image/jpeg");
-		$('.downloadCanvas').attr('href', img);
-	}
-});
 
 
-$('div.fntest button').click(function(){
-	$('div.fntest p').azure();
+$('div.fntest button.finalTest').click(function(){
+	$('div.fntest p').highlight();
 });
-
-/*$.widget( "nmk.progressbar", {
-    options: {
-        value: 0
-    },
-    _create: function() {
-        this.element.addClass( "progressbar" );
-        this._update();
-    },
-    _setOption: function( key, value ) {
-        this.options[ key ] = value;
-        this._update();
-    },
-    _update: function() {
-        var progress = this.options.value + "%";
-        this.element.text( progress );
-        if ( this.options.value == 100 ) {
-            this._trigger( "complete", null, { value: 100 } );
-        }
-    }
-});
-
-var bar = $( "<div />" ).appendTo( "body" ).progressbar({
-    complete: function( event, data ) {
-        console.log( "Callbacks are great!" );
-    }
-}).bind( "progressbarcomplete", function( event, data ) {
-     console.log( "Events bubble and support many handlers for extreme flexibility." );
-     console.log( "The progress bar value is " + data.value );
-});
-bar.progressbar( "option", "value", 100 );*/

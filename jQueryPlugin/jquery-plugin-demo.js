@@ -62,6 +62,37 @@
 		});
 	}
 })(jQuery, window, document)
+;(function($, window, document, undefined) {
+	$.fn.highlight = function(options) {
+		debug(this);
+		var opts = $.extend({}, $.fn.highlight.defaults, options);
+		return this.each(function() {
+			$this = $(this);
+			var o = $.meta ? $.extend({}, opts, $this.data()) : opts;
+			$this.css({
+				backgroundColor: o.background,
+				color: o.foreground
+			});
+			var markup = $this.html();
+			markup = $.fn.highlight.format(markup);
+			$this.html(markup);
+		});
+	};
+	// 私有函数：debug
+	function debug($obj) {
+		if (window.console && window.console.log)
+			window.console.log('highlight selection count: ' + $obj.size());
+	};
+	// 定义暴露format函数
+	$.fn.highlight.format = function(txt) {
+		return '<strong>' + txt + '</strong>';
+	};
+	// 插件的defaults
+	$.fn.highlight.defaults = {
+		foreground: 'red',
+		background: 'yellow'
+	};
+})(jQuery, window, document)
 
 /*==========================jQuery widget==========================*/
 /* progress bar
@@ -86,6 +117,7 @@ $.widget('zjdgx.progressbar', {
 			this.element.find('.curPosition').css('left', this.element.find('.curRate').width()-4);
 		}
 	},
+	widgetEventPrefix: 'zjdgx',
 	value: function (value) {
 		if (value) {
 			if (value > 100) {
@@ -118,8 +150,17 @@ $.widget('zjdgx.progressbar', {
 		if (key === 'value')
 			this.value(value);
 	},
-	destroyFFF: function() {
-		this.element.removeClass('progressbar progressbar-with-arrow progressbar-with-no-arrow').text('');
+	destroy: function() {
+        this.element
+            .removeClass("progressbar progressbar-with-arrow progressbar-with-no-arrow")
+			.removeAttr("style")
+            .text("");
+
+        // call the base destroy function
+        $.Widget.prototype.destroy.call(this);
+    },
+	complete: function (options) {
+		this.element.html(options.str).css(options.style);
 	}
 });
 
@@ -200,69 +241,3 @@ $.widget('ui.textboxdecorator', {
 	}
 });
 /*==========================jQuery widget==========================*/
-
-/* final demo
----------------------*/
-;(function($, window, document, undefined){
-	$.fn.canvasizr = function( options ) {
-		options = $.extend( {}, $.fn.canvasizr.options, options );
-		
-		return this.each(function(){
-			// 此处的this为dom元素
-			var $this = $(this),
-				pos = $this.position(),
-				width = $this.outerWidth(),
-				height = $this.outerHeight() + parseInt($this.css("margin-top"),10) + parseInt($this.css("margin-bottom"),10),
-				canvas = document.createElement( "canvas" ),
-				$canvas = $( canvas),
-				ctx = canvas.getContext( "2d" );
-			
-			$canvas.attr('id', 'forDownload');
-			$.extend( ctx, options );
-			canvas.width = width;
-			canvas.height = height;
-			ctx.fillRect(0, 0, parseInt( width, 10 ), parseInt( height, 10 ));
-			if (options.border) {
-				ctx.strokeRect(0, 0, parseInt( width, 10 ), parseInt( height, 10 ));
-			}
-			ctx.fillStyle = ctx.textColor;
-			ctx.fillText( $this.text(), 8, parseInt( height, 10 ) / 2 );
-			$canvas.css({
-				position: 'absolute',
-				left: pos.left + "px",
-				top: pos.top + "px",
-				'z-index': 1
-			});
-			$("body").append( $canvas );
-		});
-	};
-	$.fn.canvasizr.options = {
-		textColor: "#f00",
-		fillColor: "#ff0000",
-		strokeStyle: "#0f0",
-		border: '1px solid #f00',
-		fontSize: "40px",
-		lineCap: "round",
-		lineJoin: "miter",
-		lineWidth: 1,
-		miterLimit: 10,
-		shadowBlur: 0,
-		shadowColor: "rgba(255,0,0,0.6)",
-		shadowOffsetX: 0,
-		shadowOffsetY: 0,
-		textAlign: 'start',
-		textBaseLine: 'alphabetic'
-	};
-})(jQuery, window, document)
-
-
-
-/* fn demo
--------------------------------------*/
-;(function($, window, document, undefined) {
-	$.fn.azure = function() {
-		return this.each(function(){
-			$(this).css('background-color','#4040FF').css('color','#fff');
-		});
-	}
-})(jQuery, window, document)
