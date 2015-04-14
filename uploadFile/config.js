@@ -1,6 +1,6 @@
 var server = {
 	port : 8000,
-	fileUploadPath: __dirname + '/uploadFiles'
+	fileUploadPath: 'static/uploadFiles'
 };
 
 exports.server = server;

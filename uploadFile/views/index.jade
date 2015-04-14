@@ -10,10 +10,11 @@ html
 		div.main
 			form(action='/fileUpload' method='POST' target='fileUpload' enctype='multipart/form-data')
 				input(type='file' name='file')
-				input(type='file' name='second')
 				input(type='submit' value='上传')
+			ul#fileList
 		div.footer
 		iframe#fileUpload(name='fileUpload' src='javascript:false')
 		script(type='text/javascript' src='js/common/require.js')
+		script(type='text/javascript' src='js/common/jquery-1.8.1.js')
 		script(type='text/javascript' src='upload/js/upload.common.min.js')
 		script(type='text/javascript' src='js/fileUpload/main.js')

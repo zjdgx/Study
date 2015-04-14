@@ -9,7 +9,9 @@
     "body-parser": "latest",
     "express": "latest",
     "formidable": "*",
+    "generic-pool": "^2.2.0",
     "jade": "^1.9.2",
+    "morgan": "1.5.2",
     "underscore": "1.8.2"
   },
   "devDependencies": {
