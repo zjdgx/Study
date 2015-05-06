@@ -5,7 +5,7 @@
 - 管理数据: model, 应用逻辑: controller, 展示数据: view(DOM).
 
 ##数据绑定
-### Demo ###
+[Demo](http://zjdgx.github.io/Demo/AngularJS/chap1/hello.html)
 
 -AngularJS应用程序由三部分组成
 
