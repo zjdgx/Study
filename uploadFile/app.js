@@ -22,10 +22,7 @@ app.get('/', function (req, res) {
 		date: '2015-02-27'
 	});
 });
-app.get('/filelist', zjdgxFile.filelist);
-
-app.post('/fileUpload', zjdgxFile.uploadFile);
-app.post('/zjdgxUploadFile', zjdgxFile.zjdgxUploadFile);
+require('./config/routeConfig').dispatch(app);
 
 app.listen(config.server.port, function () {
 	console.log('uploadFile starts on port ' + config.server.port);

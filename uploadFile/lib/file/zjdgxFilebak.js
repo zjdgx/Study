@@ -29,7 +29,7 @@ exports.uploadFile = function (req, res) {
 					os = null;
 
 
-				os = fs.createWriteStream(path.join(__dirname, targetPath));
+				os = fs.createWriteStream(targetPath);
 
 				is.pipe(os);
 				is.on('end', function () {
