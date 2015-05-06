@@ -6,6 +6,7 @@
 
 ##数据绑定
 [Demo](http://zjdgx.github.io/Demo/AngularJS/chap1/hello.html)
+problem: 初始状态数据没绑定上
 
 -AngularJS应用程序由三部分组成
 
