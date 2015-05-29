@@ -6,9 +6,17 @@
 
 ##数据绑定
 [Demo](http://zjdgx.github.io/Demo/AngularJS/chap1/hello.html)
+
 problem: 初始状态数据没绑定上
 
--AngularJS应用程序由三部分组成
+##依赖注入
 
-##模板(Templates)
-##
+##指令
+
+##实例：购物车
+[Demo](http://zjdgx.github.io/Demo/AngularJS/chap1/shoppingCart.html)
+
+AngularJS货币过滤器: currency
+
+#第2章 AngularJS的应用骨架
+

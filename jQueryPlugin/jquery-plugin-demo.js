@@ -99,6 +99,7 @@
 --------------------*/
 $.widget('zjdgx.progressbar', {
 	options: {
+		className: 'progressbar-with-no-arrow',
 		showArrow: true
 	},
 	// 重写_create方法
@@ -109,7 +110,7 @@ $.widget('zjdgx.progressbar', {
 		if (!this.options.showArrow) {
 			progressText = '<div class="curRate" style="width: '+this.options.value+'%;"></div><div class="barText">'+progress+'</div>';
 		}
-		this.element.addClass('progressbar').append(progressText);
+		this.element.addClass(this.options.className).append(progressText);
 		this.setArrowPosition();
 	},
 	setArrowPosition: function() {
@@ -117,6 +118,7 @@ $.widget('zjdgx.progressbar', {
 			this.element.find('.curPosition').css('left', this.element.find('.curRate').width()-4);
 		}
 	},
+	// 修改回调事件前缀
 	widgetEventPrefix: 'zjdgx',
 	value: function (value) {
 		if (value) {
@@ -137,7 +139,7 @@ $.widget('zjdgx.progressbar', {
 			this.setArrowPosition();
 			// 提供回调功能让用户进行扩展
 			if (this.options.value == 100) {
-				this._trigger('complete', null, {value: 100});
+				this._trigger('complete', null, {str: 'progressbar finished...', style: {'color': '#fff', "background-color": '#0E0AA8'}});
 			}
 			//**事件类型则是由插件名称和回调名称合并而成(progressbarcomplete)。回调和事件被触发时会收到同样的两个参数：事件对象和相关数据
 		} else {
@@ -159,8 +161,8 @@ $.widget('zjdgx.progressbar', {
         // call the base destroy function
         $.Widget.prototype.destroy.call(this);
     },
-	complete: function (options) {
-		this.element.html(options.str).css(options.style);
+	complete: function() {
+		console.log('complete in plugin...');
 	}
 });
 

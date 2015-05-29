@@ -20,11 +20,14 @@ $('#progressbarTest').click(function(){
 	if ($('.progressbarTest').hasClass('progressbar-with-no-arrow')) {
 		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
 	} else {
-		tbar = $('.progressbarTest').show().removeClass('progressbar-with-arrow').addClass('progressbar-with-no-arrow').progressbar({
+		tbar = $('.progressbarTest').progressbar({
+			className: 'progressbar-with-no-arrow',
 			showArrow: false,
-			value: 10}).bind('progressbarcomplete', function(event, data){
-				tbar.progressbar('complete', {str: 'progressbar finished...', style: {'color': '#fff', "background-color": '#0E0AA8'}});
-			});
+			value: 10,
+			complete: function(event, data) {
+				$(this).html(data.str).css(data.style);
+			}
+		});
 	}
 });
 $('#progressbarWithArrow').click(function(){
@@ -32,9 +35,15 @@ $('#progressbarWithArrow').click(function(){
 	if ($('.progressbarTest').hasClass('progressbar-with-arrow')) {
 		tbar.progressbar('option', 'value', tbar.progressbar('value')+10);
 	} else {
-		tbar = $('.progressbarTest').show().removeClass('progressbar-with-no-arrow').addClass('progressbar-with-arrow').progressbar({value: 10}).bind('progressbarcomplete', function(event, data){
-				tbar.progressbar('complete', {str: 'progressbarWithArrow finished...', style: {'color': '#fff', "background-color": '#F0CB0F'}});
-			});
+		tbar = $('.progressbarTest').progressbar({
+			className: 'progressbar-with-arrow',
+			value: 10,
+			complete: function(event, data) {
+				$(this).html(data.str).css(data.style);
+			}
+		}).bind('zjdgxcomplete', function(event, data){
+			console.log('complete event triggered....');
+		});
 	}
 });
 $('#_destroy').click(function(){
@@ -60,5 +69,16 @@ $('#supperSub').click(function(){
 
 
 $('div.fntest button.finalTest').click(function(){
+	$('div.fntest p').highlight();
+});
+
+$('div.fntest button.finalTest2').click(function(){
+	$.fn.highlight.defaults = {
+		foreground: '#fff',
+		background: '#5E76F4'
+	};
+	$.fn.highlight.format = function(txt) {
+		return txt.replace(/(\btext\b)/g, '<font color="#f00">$1</font>');
+	};
 	$('div.fntest p').highlight();
 });
