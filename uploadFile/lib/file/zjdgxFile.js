@@ -24,18 +24,31 @@ exports.uploadFile = function (req, res) {
 			});
 		},
 		function(fileds, file, cb) {
+			console.log(JSON.stringify(file));
 			var is = fs.createReadStream(file.file.path),
 					os = fs.createWriteStream(path.join(rootPath, targetPath, file.file.name));
 
+			console.log('file upload pipe startd=ed. rootPath: ' + path.join(rootPath, targetPath, file.file.name));
 			is.pipe(os);
+			console.log('file upload pipe started.');
 			os.on('end', function (err) {
+				console.log('file upload pipe end.');
 				if (err) {
 					cb(err);
 				} else {
+					console.log('file upload unlinkSync started.');
 					fs.unlinkSync(file.file.path);
-					cb(null);
+					cb();
 				}
 			});
+		},
+		function(cb) {
+			console.log('mongodb insert started.');
+			mongo.insert('uploadFiles', {
+				uploadTime: new Date(),
+				fileName: name,
+				path: targetPath
+			}, null, cb);
 		}
 	], function(err) {
 		if (err) {

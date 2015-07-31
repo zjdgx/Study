@@ -1,0 +1,18 @@
+.am-navbar-nav a {
+	line-height: 49px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.nav .am-dropdown .am-icon-caret-down {
+	display: inline;
+}
+
+.am-active>.am-dropdown-content {
+	left: calc(50% - 80px);
+}
+
+.am-dropdown-content:before,
+.am-dropdown-content:after {
+	left: calc(50% - 4px);
+}

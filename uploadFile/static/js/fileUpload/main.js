@@ -7,6 +7,21 @@ $('input[type="submit"]').click(function () {
 	}
 });
 
+$('.flashUpload').click(function() {
+	var params = {
+		useSize: '0',
+		totalSize: '107374182400',
+		uploadServerUrl : "/fileUpload",//上传响应页面(必须设置)
+		loadComplete: '',
+		nologinFunction: 'nologinWhenUpload',
+		jsFunction : "getFileList",//上传成功后回调JS
+		filter : "*.jpeg;*.gif;*.jpg;*.png"			//上传文件类型限制
+	};
+	console.log(123);
+	swfobject.embedSWF("js/fileUpload/imagecut.swf", "image", "388", "272", "10.0.0", "js/fileUpload/expressInstall.swf", params, {wmode:"transparent"});
+	$('.flashUploadContainer').show();
+});
+
 function uploadResult(result) {
 	if (result === 0) {
 		$.msgbox('File upload succeed...', function(){
@@ -14,6 +29,7 @@ function uploadResult(result) {
 		});
 	}
 }
+
 
 function getFileList() {
 	$.ajax({

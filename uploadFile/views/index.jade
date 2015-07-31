@@ -11,10 +11,15 @@ html
 			form(action='/fileUpload' method='POST' target='fileUpload' enctype='multipart/form-data')
 				input(type='file' name='file')
 				input(type='submit' value='上传')
+			div.flashUpload 上传
 			ul#fileList
 		div.footer
+		.flashUploadContainer
+			h1 上传头像
+			#image
 		iframe#fileUpload(name='fileUpload' src='javascript:false')
 		script(type='text/javascript' src='js/common/require.js')
+		script(type='text/javascript' src='js/common/swfobject.js')
 		script(type='text/javascript' src='js/common/jquery-1.8.1.js')
 		script(type='text/javascript' src='upload/js/upload.common.min.js')
 		script(type='text/javascript' src='js/fileUpload/main.js')
