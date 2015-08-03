@@ -1,0 +1,24 @@
+{
+  "name": "nodejs_session",
+  "version": "1.0.0",
+  "description": "nodejs session",
+  "author": "George",
+  "date": "2015-08-03",
+  "license": "ZJDGX",
+  "dependencies": {
+    "async": "^1.4.0",
+    "body-parser": "^1.12.0",
+    "compression": "1.4.1",
+    "express": "^4.13.3",
+    "express-session": "latest",
+    "generic-pool": "^2.1.1",
+    "jade": "^1.9.2",
+    "method-override": "^2.3.1",
+    "moment": "^2.10.6",
+    "mongodb": "^1.4.34",
+    "nconf": "^0.7.1",
+    "pkginfo": "^0.3.0",
+    "underscore": "^1.8.3"
+  },
+  "main": "app"
+}

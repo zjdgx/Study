@@ -1,0 +1,10 @@
+{
+    "routes": [
+        {
+            "url": "/login",
+            "path": "./lib/user/userActionController.js",
+            "objName": "login",
+            "method": "post"
+        }
+    ]
+}
