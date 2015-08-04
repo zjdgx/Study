@@ -1,0 +1,26 @@
+{
+  "name": "zjdgx",
+  "version": "1.1.0",
+  "authors": [
+    "George<zjdgx20131030@163.com>"
+  ],
+  "description": "ZJDGX HOME TEACH",
+  "license": "ZJDGX...",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "backbone": "1.2.1",
+    "handlebars": "3.0.3",
+    "jquery": "1.8.1",
+    "moment": "2.10.6",
+    "requirejs": "2.1.20",
+    "underscore": "1.8.3"
+  },
+  "resolutions": {
+    "jquery": "1.8.1"
+  }
+}

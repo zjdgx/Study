@@ -1,0 +1,16 @@
+{
+    "routes": [
+        {
+            "url": "/login",
+            "path": "./lib/user/userActionController.js",
+            "objName": "login",
+            "method": "post"
+        },
+        {
+            "url": "/register",
+            "path": "./lib/user/userActionController.js",
+            "objName": "register",
+            "method": "post"
+        }
+    ]
+}
