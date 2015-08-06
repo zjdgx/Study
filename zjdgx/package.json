@@ -24,7 +24,12 @@
     "underscore": "^1.8.3",
     "compression": "^1.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-amd-optimizer": "^0.3.4",
+    "gulp-compile-js": "0.0.3",
+    "gulp-replace": "^0.5.4",
+    "gulp-requirejs": "^0.1.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

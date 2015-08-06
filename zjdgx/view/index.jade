@@ -267,8 +267,18 @@ html
                      li 3分钟前阳女士预约了成都小学数学家教
                      li 3分钟前阳女士预约了成都小学数学家教
    div.footer
-      script(type="text/javascript", src="js/common.js")
-
-
-
-
+      div.hide
+         form#register
+            label 用 户 名：<input type="text" name="username" placeholder="用户名">
+            label 邮    箱：<input type="text" name="email" placeholder="邮箱">
+            label 密    码：<input type="password" name="email" placeholder="密码">
+            label 确认密码：<input type="text" name="email" placeholder="邮箱">
+            div.btnGroup
+               span.btn.sure 保存
+               span.btn.cancel 取消
+      script(type="text/javascript", src="js/common/require.min.js")
+      script.
+         require(['jquery', 'common', 'zjdgxPopup'], function ($, zjdgx) {
+            zjdgx.loadMain();
+            $.popup('弹出框测试', {title: '弹出框', type: 'prompt'});
+         });

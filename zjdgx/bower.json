@@ -18,7 +18,8 @@
     "jquery": "1.8.1",
     "moment": "2.10.6",
     "requirejs": "2.1.20",
-    "underscore": "1.8.3"
+    "underscore": "1.8.3",
+    "magnific-popup": "~1.0.0"
   },
   "resolutions": {
     "jquery": "1.8.1"
