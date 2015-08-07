@@ -6,6 +6,7 @@
  */
 
 var http = require('http'),
+	path = require('path'),
 	express = require('express'),
 	app = express(),
 	route,
@@ -15,7 +16,6 @@ var http = require('http'),
 	routes = require('./config').routes,
 	session = require('express-session'),
 	compression = require('compression');
-
 
 app.set('views', __dirname + '/view');
 app.set('view engine', 'jade');

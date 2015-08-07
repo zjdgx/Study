@@ -5,11 +5,14 @@
  * Description:
  */
 var gulp = require('gulp'),
+		wrap = require('gulp-wrap'),
 		bower = require('gulp-bower'),
 		uglify = require('gulp-uglify'),
 		concat = require('gulp-concat'),
+		replace = require('gulp-replace'),
+		declare = require('gulp-declare'),
 		minifyCss = require('gulp-minify-css'),
-		replace = require('gulp-replace');
+		handlebars = require('gulp-handlebars');
 
 gulp.task('css-concat', function () {
 	gulp.src(['node_modules/normalize.css/normalize.css', 'static/css/common.css', 'static/css/components/popup.css', 'static/css/index.css'])
@@ -56,6 +59,14 @@ gulp.task('requirejs', function () {
 		.pipe(concat('require.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('static/js/common'));
+});
+
+gulp.task('templates', function(){
+	gulp.src('static/js/**/*.hbs', {base: 'static/js'})
+		.pipe(handlebars())
+		.pipe(wrap('Handlebars.template(<%= contents %>)'))
+		.pipe(concat('templates.js'))
+		.pipe(gulp.dest(''));
 });
 
 gulp.task('default', ['css-concat', 'js-min', 'requirejs']);

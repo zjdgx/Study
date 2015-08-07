@@ -1,9 +1,10 @@
 html
    head
       include common/header
-      link(rel="stylesheet", href="/css/index.min.css")
+      link(rel="stylesheet", href="/dist/index.min.css")
    body
       include common/head
+   //
       div.page
          div.main
             div.leftSideBar
@@ -267,6 +268,7 @@ html
                      li 3分钟前阳女士预约了成都小学数学家教
                      li 3分钟前阳女士预约了成都小学数学家教
    div.footer
+   //
       div.hide
          form#register
             label 用 户 名：<input type="text" name="username" placeholder="用户名">
@@ -276,9 +278,13 @@ html
             div.btnGroup
                span.btn.sure 保存
                span.btn.cancel 取消
-      script(type="text/javascript", src="js/common/require.min.js")
-      script.
-         require(['jquery', 'common', 'zjdgxPopup'], function ($, zjdgx) {
-            zjdgx.loadMain();
-            $.popup('弹出框测试', {title: '弹出框', type: 'prompt'});
+   script(type="text/javascript", src="/js/common/require.min.js")
+   script.
+      require(['jquery', 'common', 'zjdgxPopup'], function ($, zjdgx, PopupView) {
+         $('.login a').click(function () {
+            require(['user/registerView'], function (RegisterView) {
+               new RegisterView().render();
+            });
+            return false;
          });
+      });
