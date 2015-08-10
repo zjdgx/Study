@@ -3,4 +3,5 @@
 node_modules
 bower_components
 templates.js
-common
+pages.css
+static/js/common/*.js
