@@ -15,7 +15,8 @@ var http = require('http'),
 	bodyParser = require('body-parser'),
 	routes = require('./config').routes,
 	session = require('express-session'),
-	compression = require('compression');
+	compression = require('compression'),
+	favicon = require('serve-favicon');
 
 app.set('views', __dirname + '/view');
 app.set('view engine', 'jade');
@@ -25,6 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./static'));
 app.use(compression());
+app.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')));
 
 app.get('/', function (req, res) {
 	res.charset = 'utf-8';

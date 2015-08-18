@@ -7,17 +7,29 @@
 
 var _ = require('underscore'),
 		async = require('async'),
-		moment = require("moment");
+		moment = require("moment"),
+		mysql = require('../util/mySqlPool');
+
 
 exports.login = function (req, res) {
 	req.session.username = req.body.username;
 	req.session.email = req.body.email;
-	writeSession(req);
 	res.redirect('/');
 };
 
-function writeSession(req) {
-	for (var i=0; i<10; i++) {
-		req.session['zjdgx' + i] = 'zjdgx' + Math.random();
-	}
-}
+exports.register = function (req, res) {
+	mysql.mySqlQuery(
+		'INSERT INTO user SET ?',
+		{
+			name: req.body.name,
+			email: req.body.email,
+			phone: req.body.phone,
+			password: req.body.password,
+			register_date: new Date()
+		},
+		function (err, result) {
+			console.log(JSON.stringify(result));
+			res.send(result);
+		}
+	);
+};

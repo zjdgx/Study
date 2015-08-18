@@ -47,6 +47,16 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		copy: {
+			components: {
+				files: [
+					{
+						src: 'node_modules/backbone.modelbinder/Backbone.ModelBinder.js',
+						dest: 'static/js/common/Backbone.ModelBinder.js'
+					}
+				]
+			}
+		},
 		handlebars: {
 			compile: {
 				options: {
