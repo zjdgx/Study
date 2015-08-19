@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div class="wrapper {{type}}">
     <div class="inner">
         {{#if title}}
             <h1>{{title}}</h1>
         {{/if}}
         <i class="btn close">&times;</i>
-        <div class="content"></div>
+        <div class="content">{{msg}}</div>
         <div class="btnGroup">
             {{#if sureText}}
                 <span class="btn btn-sure">{{sureText}}</span>

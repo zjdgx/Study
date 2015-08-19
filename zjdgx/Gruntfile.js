@@ -41,9 +41,9 @@ module.exports = function (grunt) {
 					cwd: 'static/css'
 				},
 				files: {
-					'static/dist/index.min.css': ['static/css/common/pages.css', 'index.css'],
-					'static/dist/student.min.css': ['static/css/common/pages.css', 'student.css'],
-					'static/dist/teacher.min.css': ['static/css/common/pages.css', 'teacher.css']
+					'static/dist/index.min.css': ['static/css/common/pages.css', 'static/css/index.css'],
+					'static/dist/student.min.css': ['static/css/common/pages.css', 'static/css/student.css'],
+					'static/dist/teacher.min.css': ['static/css/common/pages.css', 'static/css/teacher.css']
 				}
 			}
 		},

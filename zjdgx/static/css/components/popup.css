@@ -29,6 +29,7 @@
     width: 18px;
     height: 18px;
     display: block;
+    cursor: pointer;
     font-size: 18px;
     line-height: 18px;
     position: absolute;
@@ -56,6 +57,7 @@
 }
 
 span.btn {
+    cursor: pointer;
     padding: 5px 12px;
     display: inline-block;
     vertical-align: middle;

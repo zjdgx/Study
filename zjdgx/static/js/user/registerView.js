@@ -5,54 +5,67 @@
  * Description:
  */
 
-define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', 'zjdgxPopup'], function ($, Backbone, ModelBinder, templates, registerModel, PopupView) {
+define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', '../common/zjdgxUtil'], function ($, Backbone, ModelBinder, templates, registerModel) {
 	return Backbone.View.extend({
-		className: 'register',
+		className: 'zjdgxPopup register',
 		template: templates.registerTemplate,
 		model: new registerModel(),
 		modelBinder: new ModelBinder(),
+		events: {
+			'click i.close': 'close',
+			'click .btn-sure': 'save',
+			'click .btn-cancel': 'close'
+		},
 		initialize: function () {
-
 		},
-		render: function () {
-			var self = this;
+		render: function (type) {
+			var self = this,
+					opts = {
+						title: '注册',
+						className: 'register',
+						sureText: '注册',
+						cancelText: '取消'
+					};
 
-			new PopupView().render({
-				title: '注册',
-				className: 'register',
-				content: this.$el.html(this.template()).html(),
-				sureCallback: function () {
-					self.save();
-				},
-				sureText: '注册',
-				cancelText: '取消'
+			this.$el.html(this.template(opts));
+
+			this.modelBinder.bind(this.model, this.$el, {
+				name: "[name=username]",
+				email: "[name=email]",
+				phone: "[name=phone]",
+				password: "[name=password]"
 			});
-			this.modelBinder.bind(this.model, this.el);
-		},
-		close: function () {
 
+			return this;
 		},
 		save: function () {
-			this.setValue();
+			var self = this;
+
 			this.model.save(
 				{
 				},
 				{
 					wait: true,
 					success: function (model, response) {
-						console.log(JSON.stringify(model)+'\n==============================\n'+JSON.stringify(response));
+						self.close({msg: '注册成功.', title: '提示', sureText: '确定', type: 'success'});
 					},
 					error: function (error, model) {
-
+						self.close({msg: '注册成功.', title: '提示', sureText: '确定', type: 'error'});
 					}
 				}
 			);
 		},
-		setValue: function () {
-			this.model.set('name', $('input[name="name"]').val());
-			this.model.set('email', $('input[name="email"]').val());
-			this.model.set('phone', $('input[name="phone"]').val());
-			this.model.set('password', $('input[name="password"]').val());
+		close: function (opts) {
+			if (opts instanceof $.Event) {
+				this.$el.remove();
+			} else {
+				var self = this;
+
+				this.$el.find('.inner').animate({top: -$(window).height()/2, opacity: 0}, 200, function () {
+					self.$el.remove();
+					zjdgxUtil.alert(opts);
+				});
+			}
 		}
 	});
 });
