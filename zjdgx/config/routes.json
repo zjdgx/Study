@@ -11,6 +11,12 @@
             "path": "./lib/user/userActionController.js",
             "objName": "register",
             "method": "post"
+        },
+        {
+            "url": "/uploadPortrait",
+            "path": "./lib/util/fileUpload.js",
+            "objName": "uploadFile",
+            "method": "post"
         }
     ]
 }

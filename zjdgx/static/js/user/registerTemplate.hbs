@@ -3,11 +3,17 @@
         <h1>{{title}}</h1>
         <i class="btn close">&times;</i>
         <div class="content">
-            <div class="item"><label>用户名</label>:<input type="text" name="username" placeholder="用户名"></div>
-            <div class="item"><label>邮箱</label>:<input type="email" name="email" placeholder="邮箱"></div>
-            <div class="item"><label>电话号码</label>:<input type="text" name="phone" placeholder="电话号码"></div>
-            <div class="item"><label>密码</label>:<input type="password" name="password"></div>
-            <div class="item"><label>确认密码</label>:<input type="password"></div>
+            <div class="portrait">
+                <img src="{{#if portrait}}portrait{{else}}img/default.png{{/if}}"/>
+                <a class="upload" href="#" onclick="return false;">上传头像</a>
+            </div>
+            <div class="info">
+                <div class="item"><label>用户名</label>:<input type="text" name="username" placeholder="用户名"></div>
+                <div class="item"><label>邮箱</label>:<input type="email" name="email" placeholder="邮箱"></div>
+                <div class="item"><label>电话号码</label>:<input type="text" name="phone" placeholder="电话号码"></div>
+                <div class="item"><label>密码</label>:<input type="password" name="password"></div>
+                <div class="item"><label>确认密码</label>:<input type="password"></div>
+            </div>
         </div>
         <div class="btnGroup">
             <span class="btn btn-sure">{{sureText}}</span>

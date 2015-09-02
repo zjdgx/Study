@@ -47,6 +47,7 @@
 .zjdgxPopup .wrapper .inner .content {
     padding: 20px;
     min-height: 40px;
+    overflow: hidden;
     text-align: left;
     border: 1px solid #ccc;
     border-width: 1px 0;
@@ -63,7 +64,18 @@ span.btn {
     vertical-align: middle;
     border: 1px solid #ccc;
 }
-
+.register .portrait {
+    float: left;
+    width: 128px;
+}
+.register .portrait .upload {
+    display: block;
+    text-align: center;
+}
+.register .info {
+    float: left;
+    margin-left: 12px;
+}
 .register .item {
     height: 30px;
     font-size: 14px;
@@ -82,7 +94,7 @@ span.btn {
 }
 
 .register .content input {
-    width: 286px;
+    width: 146px;
     margin-left: 10px;
     vertical-align: middle;
 }

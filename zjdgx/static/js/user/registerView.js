@@ -5,7 +5,7 @@
  * Description:
  */
 
-define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', '../common/zjdgxUtil'], function ($, Backbone, ModelBinder, templates, registerModel) {
+define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', './uploadPortraitView', '../common/zjdgxUtil'], function ($, Backbone, ModelBinder, templates, registerModel, PortraitView, zjdgxUtil) {
 	return Backbone.View.extend({
 		className: 'zjdgxPopup register',
 		template: templates.registerTemplate,
@@ -14,7 +14,8 @@ define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerM
 		events: {
 			'click i.close': 'close',
 			'click .btn-sure': 'save',
-			'click .btn-cancel': 'close'
+			'click .btn-cancel': 'close',
+			'click a.upload': 'uploadPortrait'
 		},
 		initialize: function () {
 		},
@@ -66,6 +67,9 @@ define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerM
 					zjdgxUtil.alert(opts);
 				});
 			}
+		},
+		uploadPortrait: function (e) {
+			zjdgxUtil.portraitView = new PortraitView().render();
 		}
 	});
 });
