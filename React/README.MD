@@ -4,6 +4,7 @@ render里面必须返回一个ReactComponent: HTML标签 + 内容, 如果直接�
 
 ##react top-level api
 | top api |  |  |  |  |  |
+|------|------|------|------|------|------|
 | Component | createClass | createElement | cloneElement | createFactory | render |
 | unmountComponentAtNode | renderToString | renderToStaticMarkup | isValidElement | findDOMNode | DOM |
 | PropTypes | initializeTouchEvents | Children |  |  |  |
