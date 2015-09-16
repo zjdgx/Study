@@ -7,7 +7,7 @@ h1, h2, h3, ul, ol, p, body {
 
 body {
     font: 12px/1.5 "Microsoft Yahei", Helvetica, sans-serif;
-    background-color: #fff;
+    background-color: #ecf0f1;
 }
 
 li {
@@ -15,14 +15,17 @@ li {
 }
 
 .page {
-    width: 1000px;
-    margin: 10px auto 0;
+    padding: 10px;
+    margin: 10px 150px;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
 
 .header {
     height: 120px;
     padding: 0 100px;
     overflow: hidden;
+    background-color: #fff;
 }
 
 .header .head {

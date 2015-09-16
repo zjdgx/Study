@@ -1,0 +1,21 @@
+//
+   Created by nhn on 15/9/15.
+html
+   head
+      include ../common/header
+      link(rel="stylesheet", href="/dist/teacher.min.css")
+   body
+      include ../common/head
+      div.page.teacher
+      div.footer
+         script(type="text/javascript", src="/js/common/require.min.js")
+         script.
+            require(['jquery', 'common'], function ($, zjdgx, TeacherView) {
+               $('.login a').click(function () {
+                  require(['user/registerView'], function (RegisterView) {
+                     $('body').append(new RegisterView().render().el);
+                  });
+                  return false;
+               });
+               zjdgx.loadTeacher();
+            });

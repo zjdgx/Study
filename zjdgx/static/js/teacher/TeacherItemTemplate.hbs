@@ -1,0 +1,14 @@
+<li data-id="{{id}}" class="item">
+    <div class="info">
+        <img src="{{headIcon}}" width="80" height="80" />
+        <ul>
+            <li>姓名: {{name}}</li>
+            <li>性别: {{sex}}</li>
+            <li>电话: {{phone}}</li>
+            <li>邮箱: {{#if email}}{{email}}{{else}}无{{/if}}</li>
+        </ul>
+    </div>
+    <p>家教记录: {{teachNumber}}次</p>
+    <p>注册时间: {{registerDate}}</p>
+    <p>擅长科目: {{subjects}}</p>
+</li>

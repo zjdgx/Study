@@ -11,5 +11,11 @@ define(['jquery', 'underscore', 'backbone', 'handlebars'], function ($, _, Backb
 	zjdgx.loadMain = function () {
 	};
 
+	zjdgx.loadTeacher = function () {
+		require(['teacher/teacherView'], function (TeacherView) {
+			new TeacherView().render();
+		});
+	};
+
 	return zjdgx;
 });

@@ -53,6 +53,10 @@ module.exports = function (grunt) {
 					{
 						src: 'node_modules/backbone.modelbinder/Backbone.ModelBinder.js',
 						dest: 'static/js/common/Backbone.ModelBinder.js'
+					},
+					{
+						src: 'bower_components/moment/moment.js',
+						dest: 'static/js/common/moment.js'
 					}
 				]
 			}

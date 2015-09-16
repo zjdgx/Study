@@ -17,6 +17,18 @@
             "path": "./lib/util/fileUpload.js",
             "objName": "uploadFile",
             "method": "post"
+        },
+        {
+            "url": "/teacher.html",
+            "path": "./lib/teacher/teacherController.js",
+            "objName": "main",
+            "method": "get"
+        },
+        {
+            "url": "/teacherlist",
+            "path": "./lib/teacher/teacherController.js",
+            "objName": "teacherList",
+            "method": "get"
         }
     ]
 }
