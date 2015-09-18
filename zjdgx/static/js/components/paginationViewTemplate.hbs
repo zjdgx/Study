@@ -1,0 +1,14 @@
+<a href="#" onClick="return false;" class="first"></a>
+<a href="#" onClick="return false;" class="prev"></a>
+<input type="text" value="{{page}}"/> /
+<span class="total">{{totalPage}}</span>
+<a href="#" onClick="return false;" class="next"></a>
+<a href="#" onClick="return false;" class="last"></a>
+<div class="page-size dropdown">
+    <label>{{pageSize}}</label>
+    <ul class="page-size dropdown">
+        {{#each selects}}
+            <li data-value="{{this}}">{{this}}</li>
+        {{/each}}
+    </ul>
+</div>

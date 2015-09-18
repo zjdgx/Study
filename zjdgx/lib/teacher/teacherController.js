@@ -28,8 +28,11 @@ exports.main = function (req, res) {
 };
 
 exports.teacherList = function (req, res) {
+	var offset = req.body.offset || 0,
+			limit = req.body.limit;
+
 	mysql.mySqlQuery(
-		'SELECT * FROM teacher',
+		'SELECT * FROM teacher' + (limit ? ' limit ' + offset + ', ' + limit : ''),
 		{},
 		function (result) {
 			result.forEach(function (model) {

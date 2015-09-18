@@ -5,7 +5,7 @@
  * Description:
  */
 
-define(['jquery', 'backbone', './templates', './teacherCollection'], function ($, Backbone, templates, TeacherCollection) {
+define(['jquery', 'backbone', './templates', 'paginationView', './teacherCollection'], function ($, Backbone, templates, PaginationView, TeacherCollection) {
 	return Backbone.View.extend({
 		el: '.page',
 		template: templates.teacherViewTemplate,
@@ -20,6 +20,8 @@ define(['jquery', 'backbone', './templates', './teacherCollection'], function ($
 			var self = this;
 
 			this.$el.append(this.template());
+
+			new PaginationView({curPage: 1, totalPage: 10, pageSize: 12, selects: [12, 24, 48]}).render();
 
 			this.collection.fetch({
 				success: function () {

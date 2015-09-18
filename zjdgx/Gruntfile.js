@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 					separator: ';',
 					process: {
 						data: {
-							baseUrl: 'js',
+							baseUrl: '/js',
 							requireJSVersion: +new Date
 						}
 					}
