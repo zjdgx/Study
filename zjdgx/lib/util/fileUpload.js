@@ -26,13 +26,13 @@ exports.uploadFile = function (req, res) {
 		function (fields, files, cb) {
 			if (files.file.length) {
 				files.file.forEach(function (file) {
-					var now = new Date().getTime(),
+					var now = new Date().getTime() + '',
 							source = fs.createReadStream(file.path),
 							dest = fs.createWriteStream(path.join(__dirname + '../../../static/uploadFiles/' + now + '.jpg'));
 
 					source.pipe(dest);
 					source.on('end', function () {
-						cb(null, path.join('uploadFiles\/' + now + '.jpg'));
+						cb(null, 'uploadFiles/' + now + '.jpg');
 					});
 					source.on('error', function (err) {
 						cb(err);
@@ -42,9 +42,9 @@ exports.uploadFile = function (req, res) {
 		}
 	], function (err, fields) {
 		if (err) {
-			res.end('file upload error.');
+			res.end({status: 0, msg: 'file upload error.'});
 		} else {
-			res.json({file: fields});
+			res.json({status: 1, file: fields});
 		}
 	});
 };

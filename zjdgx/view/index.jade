@@ -269,10 +269,11 @@ html
    div.footer
    script(type="text/javascript", src="/js/common/require.min.js")
    script.
-      require(['jquery', 'common'], function ($, zjdgx) {
+      require(['jquery', 'common'], function ($, Common) {
+         window.zjdgx = new Common();
          $('.login a').click(function () {
             require(['user/registerView'], function (RegisterView) {
-               $('body').append(new RegisterView().render().el);
+               $('body').append(new RegisterView(zjdgx).render().el);
             });
             return false;
          });

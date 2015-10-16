@@ -25,9 +25,21 @@
             "method": "get"
         },
         {
-            "url": "/teacherlist",
+            "url": "/teacherList",
             "path": "./lib/teacher/teacherController.js",
             "objName": "teacherList",
+            "method": "get"
+        },
+        {
+            "url": "/student.html",
+            "path": "./lib/student/studentController.js",
+            "objName": "main",
+            "method": "get"
+        },
+        {
+            "url": "/studentList",
+            "path": "./lib/student/studentController.js",
+            "objName": "studentList",
             "method": "get"
         }
     ]

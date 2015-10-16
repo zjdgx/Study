@@ -24,7 +24,9 @@ var mysql = require('../util/mySqlPool'),
 		};
 
 exports.main = function (req, res) {
-	res.render('teacher/select', {});
+	res.render('teacher/teacherList', {
+		cur: 'teacher'
+	});
 };
 
 exports.teacherList = function (req, res) {

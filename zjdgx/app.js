@@ -34,7 +34,8 @@ app.get('/', function (req, res) {
 		title: 'nodejs express session demo',
 		message: 'nodejs express session demo',
 		username: req.session.username,
-		email: req.session.email
+		email: req.session.email,
+		cur: 'index'
 	});
 });
 

@@ -9,7 +9,7 @@ define(['backbone', './teacherModel'], function (Backbone, TeacherModel) {
 	return Backbone.Collection.extend({
 		model: TeacherModel,
 		url: function () {
-			return '/teacherlist';
+			return '/teacherList';
 		}
 	});
 });

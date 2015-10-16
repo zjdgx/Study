@@ -5,16 +5,18 @@
  * Description:
  */
 
-define(['jquery', 'backbone', './templates', '../common/zjdgxUtil', 'swfobject'], function ($, Backbone, template, zjdgxUtil) {
+define(['jquery', 'backbone', './templates', '../common', 'swfobject'], function ($, Backbone, template, zjdgx) {
 	return Backbone.View.extend({
 		className: 'zjdgxPopup upload',
 		template: template.uploadPortraitTemplate,
-		initialize: function () {
-
+		initialize: function (zjdgx) {
+			zjdgx.eventbus.on('uploadSuccess:portrait', this.remove, this);
 		},
 		render: function () {
 			$('body').append(this.$el.html(this.template()));
 			setTimeout(this.flashHtml, 10);
+
+			return this;
 		},
 		flashHtml: function () {
 			var params = {
@@ -23,7 +25,7 @@ define(['jquery', 'backbone', './templates', '../common/zjdgxUtil', 'swfobject']
 				uploadServerUrl : '/uploadPortrait',//上传响应页面(必须设置)
 				loadComplete: '',
 				nologinFunction: 'home.nologinWhenUpload',
-				jsFunction : 'zjdgxUtil.updatePortrait',//上传成功后回调JS
+				jsFunction : 'zjdgx.updatePortrait',//上传成功后回调JS
 				filter : "*.jpeg;*.gif;*.jpg;*.png"//上传文件类型限制
 			};
 			swfobject.embedSWF("js/fileupload/imagecut.swf",
@@ -36,8 +38,9 @@ define(['jquery', 'backbone', './templates', '../common/zjdgxUtil', 'swfobject']
 				{wmode: "transparent"}
 			);
 		},
-		updatePortrait: function () {
-			console.log(1234);
+		remove: function (sourceUrl) {
+			this.$el.remove();
+			zjdgx.eventbus.trigger('updatePortrait:register', sourceUrl);
 		}
 	});
 });

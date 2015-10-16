@@ -23,15 +23,21 @@ div.header
             a.order(href="#", onclick="return false;") 24小时在线请家教
 div.banner
     ul
-        li
-            a(href="/zjdgx/portal/index.html") 成都家教
-        li
-            a(href="teacher.html") 挑选老师
-        li
-            a(href="###") 英语家教
-        li
-            a(href="piano.html") 钢琴家教
-        li
-            a(href="") 数学家教
-        li
-            a(href="") 挑选学员
+        if (cur == 'index')
+            li.cur
+                a(href="/") 成都家教
+        else
+            li
+                a(href="/") 成都家教
+        if (cur == 'teacher')
+            li.cur
+                a(href="teacher.html") 挑选老师
+        else
+            li
+                a(href="teacher.html") 挑选老师
+        if (cur == 'student')
+            li.cur
+                a(href="student.html") 挑选学员
+        else
+            li
+                a(href="student.html") 挑选学员

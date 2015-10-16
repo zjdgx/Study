@@ -5,7 +5,7 @@
  * Description:
  */
 
-define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', './uploadPortraitView', '../common/zjdgxUtil'], function ($, Backbone, ModelBinder, templates, registerModel, PortraitView, zjdgxUtil) {
+define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', './uploadPortraitView', '../common'], function ($, Backbone, ModelBinder, templates, registerModel, PortraitView, Common) {
 	return Backbone.View.extend({
 		className: 'zjdgxPopup register',
 		template: templates.registerTemplate,
@@ -17,7 +17,9 @@ define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerM
 			'click .btn-cancel': 'close',
 			'click a.upload': 'uploadPortrait'
 		},
-		initialize: function () {
+		initialize: function (zjdgx) {
+			this.zjdgx  = zjdgx;
+			zjdgx.eventbus.on('updatePortrait:register', this.updateSource, this);
 		},
 		render: function (type) {
 			var self = this,
@@ -64,12 +66,15 @@ define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerM
 
 				this.$el.find('.inner').animate({top: -$(window).height()/2, opacity: 0}, 200, function () {
 					self.$el.remove();
-					zjdgxUtil.alert(opts);
+					zjdgx.alert(opts);
 				});
 			}
 		},
 		uploadPortrait: function (e) {
-			zjdgxUtil.portraitView = new PortraitView().render();
+			new PortraitView(this.zjdgx).render();
+		},
+		updateSource: function (sourceUrl) {
+			this.$el.find('.portrait img').attr('src', sourceUrl);
 		}
 	});
 });
