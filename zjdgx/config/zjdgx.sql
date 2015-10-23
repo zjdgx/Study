@@ -1,12 +1,3 @@
-create table user (
-	id int(4) not null primary key auto_increment,
-	name varchar(20) not null,
-	email varchar(40),
-	phone varchar(12),
-	password varchar(20) not null,
-	register_date datetime not null
-);
-
 /**
  * subjects: 11,12,13...,21,22,23,....
  *			11: 1小学, 1语文
@@ -36,3 +27,28 @@ INSERT INTO teacher (name, email, phone, password, headIcon, register_date, teac
 INSERT INTO teacher (name, email, phone, password, headIcon, register_date, teach_number, location, subjects, school, type, sex) values("王五", "wangw@163.com", "13964682136", "333333", null, CURRENT_TIMESTAMP(), 5, "锦江区成龙大道4234号", "23,32", "西南科大", 1, 1);
 
 INSERT INTO teacher (name, email, phone, password, headIcon, register_date, teach_number, location, subjects, school, type, sex) values("溜溜", "liuliu@163.com", "13665922136", "777777", null, CURRENT_TIMESTAMP(), 8, "金牛区经济数学大道4234号", "31,32", "西南财大", 1, 1);
+
+
+create table student (
+	id int(4) not null primary key auto_increment,
+	name varchar(20) not null,
+	password varchar(20) not null,
+	phone varchar(12) not null,
+	qq varchar(15),
+	email varchar(40),
+	weixin varchar(15),
+	school varchar(100)
+);
+
+create table record (
+	id int(4) not null primary key auto_increment,
+
+	studentId
+)
+
+
+
+111
+1: 小学 1: 年级 1： 数学
+112
+1: 小学 1: 年级 2： 语文

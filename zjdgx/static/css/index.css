@@ -1,90 +1,3 @@
-.page {
-    width: 1000px;
-    margin: 10px auto 0;
-}
-
-.header {
-    height: 120px;
-    padding: 0 100px;
-    overflow: hidden;
-}
-
-.header .head {
-    float: right;
-    margin-right:40px;
-}
-
-.header .head .login {
-    padding: 0 20px;
-}
-
-.header .logo {
-    float: left;
-    margin-left: 40px;
-    margin-top: 30px;
-}
-
-.header .logo .img {
-    font-family: "Courier New", Courier, monospace;
-    font-weight: bold;
-    font-size: 60px;
-}
-
-.header .contact {
-    float: right;
-    margin-top: 20px;
-    text-align: center;
-    width: 400px;
-}
-
-.header .contact .tel {
-    margin: 5px;
-    font-size: 16px;
-    color: #C30;
-}
-
-.header .contact .time a {
-    padding-left: 40px;
-}
-
-/* banner
--------------------------*/
-.banner {
-    height: 30px;
-    padding: 0 130px;
-    overflow: hidden;
-    line-height: 30px;
-    background-color: #0064C4;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
-}
-
-.banner li {
-    list-style: none;
-    float: left;
-}
-
-.banner li a {
-    color: #fff;
-    padding: 0 20px;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.banner li.first a {
-    border-left: 1px solid #999;
-}
-
-.banner li.cur,
-.banner li:hover{
-    background-color: #004F9A;
-}
-
-.page .main {
-    margin: 10px;
-    overflow: hidden;
-}
-
 /* left side bar
 ---------------------------------*/
 .leftSideBar {
@@ -144,9 +57,11 @@
 }
 
 .leftSideBar a {
-    color: #000;
+    display: block;
+    overflow: hidden;
     white-space: nowrap;
     text-decoration: none;
+    text-overflow: ellipsis;
 }
 
 .leftSideBar a:hover {

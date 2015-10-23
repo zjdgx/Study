@@ -17,6 +17,10 @@ exports.login = function (req, res) {
 	res.redirect('/');
 };
 
+exports.newCourse = function (req, res) {
+	res.render('common/newCourseApply', {});
+};
+
 exports.register = function (req, res) {
 	mysql.mySqlQuery(
 		'INSERT INTO user SET ?',

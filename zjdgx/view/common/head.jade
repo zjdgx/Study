@@ -1,26 +1,24 @@
 div.header
-    div.head
-        span.login
-            a(href="register",title="注册xxxx") 注册
-        span 欢迎光临xxxx
-        span.login
-            a(href="register",title="注册xxxx") 注册
-            |&nbsp;|&nbsp;
-            a(href="login",title="登录xxxx") 登录
-        span
-            a(href="register", title="注册xxxx") 家教价格
-            |&nbsp;
-            a(href="register", title="注册xxxx") 付款方式
-            |&nbsp;
-            a(href="register", title="注册xxxx") 做家教流程
     div.logo
-        span.img ZJDGX
+        a.img(herf="/") ZJDGX
         span.slim 教育的艺术不在传授，而在鼓舞和唤醒
-    div.contact
-        h2 全国统一家教热线
-        p.tel 151-0836-4416
-        p.time 服务时间: 9:00~20:30
-            a.order(href="#", onclick="return false;") 24小时在线请家教
+    div.content
+        div.links
+            span.infos
+                a(href="register", title="注册xxxx") 家教价格
+                |&nbsp;
+                a(href="register", title="注册xxxx") 付款方式
+                |&nbsp;
+                a(href="register", title="注册xxxx") 做家教流程
+            span.login
+                a.register(href="register",title="注册xxxx") 注册
+                |&nbsp;|&nbsp;
+                a.login(href="login",title="登录xxxx", onclick="return false;") 登录
+        div.contact
+            h2 全国统一家教热线
+            p.tel 151-0836-4416
+            p.time 服务时间: 9:00~20:30
+                a.order(href="/newCourse.html") 24小时在线请家教
 div.banner
     ul
         if (cur == 'index')

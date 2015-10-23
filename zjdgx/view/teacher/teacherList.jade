@@ -7,16 +7,30 @@ html
    body
       include ../common/head
       div.page.teacher
+         div#baiduMap
       div.footer
          script(type="text/javascript", src="/js/common/require.min.js")
+         script(type="text/javascript", src="http://api.map.baidu.com/api?v=2.0&ak=1p68MjXrEC9a6GvCKNUqSqcx")
          script.
-            require(['jquery', 'common'], function ($, Common) {
+            require(['jquery', 'zjdgx'], function ($, Common) {
                window.zjdgx = new Common();
-               $('.login a').click(function () {
+               $('a.register').click(function () {
                   require(['user/registerView'], function (RegisterView) {
                      $('body').append(new RegisterView(zjdgx).render().el);
                   });
                   return false;
                });
+               var map = new BMap.Map('baiduMap');
+               map.centerAndZoom('成都', 15);
+               map.addEventListener('click', function (e) {
+                  var markers = map.getOverlays();
+
+                  $.each(markers, function (i, marker) {
+                     map.removeOverlay(marker);
+                  });
+
+                  map.addOverlay(new BMap.Marker(e.point, {enableDragging: true}));
+               });
+
                zjdgx.loadTeacher();
             });

@@ -10,13 +10,7 @@ html
       div.footer
          script(type="text/javascript", src="/js/common/require.min.js")
          script.
-            require(['jquery', 'common'], function ($, Common) {
+            require(['jquery', 'zjdgx'], function ($, Common) {
                window.zjdgx = new Common();
-               $('.login a').click(function () {
-                  require(['user/registerView'], function (RegisterView) {
-                     $('body').append(new RegisterView(zjdgx).render().el);
-                  });
-                  return false;
-               });
                zjdgx.loadTeacher();
             });

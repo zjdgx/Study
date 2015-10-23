@@ -13,6 +13,12 @@
             "method": "post"
         },
         {
+            "url": "/newCourse.html",
+            "path": "./lib/user/userActionController.js",
+            "objName": "newCourse",
+            "method": "get"
+        },
+        {
             "url": "/uploadPortrait",
             "path": "./lib/util/fileUpload.js",
             "objName": "uploadFile",
@@ -40,6 +46,12 @@
             "url": "/studentList",
             "path": "./lib/student/studentController.js",
             "objName": "studentList",
+            "method": "get"
+        },
+        {
+            "url": "/courses",
+            "path": "./lib/student/studentController.js",
+            "objName": "courses",
             "method": "get"
         }
     ]

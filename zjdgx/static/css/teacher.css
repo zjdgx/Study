@@ -19,13 +19,6 @@
     float: right;
 }
 
-.teacher-type {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 4px;
-    border: 1px solid #dfdfe1;
-}
-
 #teacher-list {
     display: flex;
     flex-wrap: wrap;

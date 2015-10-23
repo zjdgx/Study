@@ -5,7 +5,7 @@
  * Description:
  */
 
-define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', './uploadPortraitView', '../common'], function ($, Backbone, ModelBinder, templates, registerModel, PortraitView, Common) {
+define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerModel', './uploadPortraitView'], function ($, Backbone, ModelBinder, templates, registerModel, PortraitView) {
 	return Backbone.View.extend({
 		className: 'zjdgxPopup register',
 		template: templates.registerTemplate,
@@ -17,8 +17,8 @@ define(['jquery', 'backbone', 'backboneModelBinder', './templates', './registerM
 			'click .btn-cancel': 'close',
 			'click a.upload': 'uploadPortrait'
 		},
-		initialize: function (zjdgx) {
-			this.zjdgx  = zjdgx;
+		initialize: function () {
+			//this.zjdgx  = zjdgx;
 			zjdgx.eventbus.on('updatePortrait:register', this.updateSource, this);
 		},
 		render: function (type) {

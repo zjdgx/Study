@@ -5,10 +5,13 @@
  * Description:
  */
 
-define(['jquery', 'backbone', './templates', '../common', 'swfobject'], function ($, Backbone, template, zjdgx) {
+define(['jquery', 'backbone', './templates', '../zjdgx', 'swfobject'], function ($, Backbone, template, zjdgx) {
 	return Backbone.View.extend({
 		className: 'zjdgxPopup upload',
 		template: template.uploadPortraitTemplate,
+		events: {
+			'click .close': 'remove'
+		},
 		initialize: function (zjdgx) {
 			zjdgx.eventbus.on('uploadSuccess:portrait', this.remove, this);
 		},
