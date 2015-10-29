@@ -10,37 +10,6 @@ html
                div.section
                      div.searchLocation
                         h1 按地区搜索
-                        ul
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
-                           li
-                              a(href="***") 青羊家教
                         a.more(href="xxxx") MORE&gt;&gt;
                      div.searchSubject
                         h1 按科目搜索
@@ -269,6 +238,6 @@ html
    div.footer
    script(type="text/javascript", src="/js/common/require.min.js")
    script.
-      require(['jquery', 'zjdgx'], function ($, Common) {
-         window.zjdgx = new Common();
+      require(['jquery', 'zjdgx'], function ($, zjdgx) {
+         zjdgx.loadMain();
       });

@@ -6,10 +6,16 @@
  */
 
 define(['jquery', 'underscore', 'backbone', 'handlebars'], function ($, _, Backbone) {
-	var zjdgx = {}
+	var zjdgx = {};
 
 	zjdgx.init = function () {
 		this.eventbus = _.extend({}, Backbone.Events);
+	};
+
+	zjdgx.loadMain = function () {
+		require(['common/MainView'], function (MainView) {
+			new MainView().render();
+		});
 	};
 
 	zjdgx.loadTeacher = function () {
