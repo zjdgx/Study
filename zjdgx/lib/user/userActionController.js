@@ -18,7 +18,7 @@ exports.login = function (req, res) {
 };
 
 exports.newCourse = function (req, res) {
-	res.render('common/newCourseApply', {});
+	res.render('common/newCourseApply', {title: '新课程 - zjdgx'});
 };
 
 exports.register = function (req, res) {

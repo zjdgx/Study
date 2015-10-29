@@ -14,20 +14,24 @@ define(['jquery', 'backbone', './alertView', './templates'], function ($, Backbo
 			'click li': 'select'
 		},
 		initialize: function (options) {
-			this.$el.addClass(options.className || '');
+			$('body').on('click', {this: this}, this.hideSelectView);
 		},
 		render: function (options) {
 			if (!options) {
 				new AlertView().render('Please parse options for select.');
 			} else {
 				options.onChange && (this.onChange = options.onChange);
-				this.$el.append(this.template(options));
+				options.subSelectView && (this.subSelectView = options.subSelectView);
+				options.allOptions && (this.allOptions = options.allOptions);
+				this.$el.addClass(options.className || '').append(this.template(options));
 			}
 
 			return this;
 		},
 		toggleOpen: function () {
 			this.$el.find('ul').toggleClass('open');
+
+			return false;
 		},
 		select: function (e) {
 			var target = $(e.currentTarget);
@@ -37,17 +41,29 @@ define(['jquery', 'backbone', './alertView', './templates'], function ($, Backbo
 				val: target.attr('val')
 			}).find('span').html(target.attr('val'));
 			this.$el.find('ul').removeClass('open');
+			this.onChange && this.onChange(target.attr('key'));
 		},
-		updateOptions: function (options) {
+		updateOptions: function (selected, options) {
 			var html = [];
 
-			$.each(options, function (option) {
-				html.push('<li key="'+option.key+'" val="'+option.value+'">' + option.value+'</li>');
+			$.each(options, function (i, v) {
+				html.push('<li key="'+v.key+'" val="'+v.value+'">' + v.value+'</li>');
 			});
 
+			this.$el.find('label.selected').attr({
+				key: selected.key,
+				val: selected.value
+			}).find('span').html(selected.value);
 			this.$el.find('ul').html(html.join(''));
 
 			this.delegateEvents();
+		},
+		hideSelectView: function (e) {
+			var target = $(e.target);
+
+			if (target.parents('.zjdgx-select') != e.data.this.$el) {
+				e.data.this.$el.find('ul').removeClass('open');
+			}
 		}
 	});
 });

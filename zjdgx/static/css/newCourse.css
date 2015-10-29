@@ -1,0 +1,146 @@
+/* new course
+-------------------------*/
+.newCourse {
+    color: #666;
+    font-size: 14px;
+}
+.newCourse .item {
+    display: flex;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.newCourse .notes {
+    margin-left: 90px;
+}
+.newCourse label {
+    width: 60px;
+    text-align: right;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.newCourse input,
+.newCourse textarea {
+    padding: 3px 5px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+.newCourse textarea {
+    width: 400px;
+    resize: none;
+}
+
+.newCourse span.hint {
+    color: coral;
+    margin-left: 10px;
+}
+
+.newCourse .save {
+    color: #fff;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    font-size: 14px;
+    padding: 5px 30px;
+    text-align: center;
+    border-radius: 2px;
+    background-color: #38f;
+}
+
+.subject label {
+    height: 26px;
+    line-height: 26px;
+    vertical-align: middle;
+}
+
+.subject .zjdgx-select {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.subject .gradeMainSelect {
+    margin-right: 20px;
+}
+
+.subjects {
+    margin-right: 20px;
+}
+
+#baiduMap {
+    height: 300px;
+    padding: 10px;
+    margin: 0 20px 20px;
+    border: 1px solid #ccc;
+}
+
+.zjdgx-select label {
+    margin: 0;
+    width: auto;
+    height: 24px;
+    display: block;
+    line-height: 24px;
+    position: relative;
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 0 20px 0 10px;
+}
+
+.zjdgx-select label.selected span {
+    min-width: 40px;
+    overflow: hidden;
+    max-width: 120px;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+
+.zjdgx-select label.selected i.arrow-down {
+    top: 10px;
+    right: 5px;
+    float: right;
+    position: absolute;
+    display: inline-block;
+    border: 5px solid #666;
+    border-color: #666 transparent transparent;
+}
+
+.zjdgx-select label:hover {
+    background-color: #f2f2f2;
+}
+
+.zjdgx-select ul {
+    display: none;
+    margin-top: -1px;
+    border: 1px solid #ccc;
+}
+.zjdgx-select ul.open {
+    z-index: 1;
+    display: block;
+    background: #fff;
+    overflow-y: auto;
+    max-height: 150px;
+    position: absolute;
+    overflow-x: hidden;
+    border-radius: 2px;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+.zjdgx-select ul li {
+    cursor: pointer;
+    padding: 0 10px;
+    min-width: 70px;
+}
+.zjdgx-select ul li:hover {
+    color: #fff;
+    background-color: #1e90ff;
+}
+
+.location .zjdgx-select {
+    margin-right: 20px;
+}
+.locationDetail input {
+    width: 400px;
+}
+.notes input {
+    margin-top: 4px;
+    margin-right: 4px;
+}

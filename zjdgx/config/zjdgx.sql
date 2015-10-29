@@ -52,3 +52,33 @@ create table record (
 1: 小学 1: 年级 1： 数学
 112
 1: 小学 1: 年级 2： 语文
+
+id, level, cityId, name, parentId
+1.country 2.province, 3.city 4.county 5.town
+
+create table city (
+	id smallint(6) unsigned not null primary key auto_increment,
+	cityId int(6) unsigned not null,
+	level tinyint(1) unsigned not null,
+	name varchar(20) not null,
+	parentId int(6) unsigned not null default 0
+)Engine=InnoDB;
+
+
+//获取京东城市信息并生成SQL
+//-----------------------------------
+```
+var pid = 49323, level = 5;
+$.ajax({
+	type: 'POST',
+	url: 'http://easybuy.jd.com//address/getTowns.action',
+	data: {countyId:pid},
+	dataType: 'JSON',
+	success: function (data) {
+		for (var item in data) {
+			console.log('insert into city (cityId, level, name, parentId) values(' + item + ', ' + level +', "' + data[item] + '", ' + pid + ');');
+		}
+	}
+});
+```
+//-----------------------------------

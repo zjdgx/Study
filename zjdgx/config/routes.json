@@ -53,6 +53,18 @@
             "path": "./lib/student/studentController.js",
             "objName": "courses",
             "method": "get"
+        },
+        {
+            "url": "/townList",
+            "path": "./lib/util/addressController.js",
+            "objName": "getTown",
+            "method": "get"
+        },
+        {
+            "url": "/countyList",
+            "path": "./lib/util/addressController.js",
+            "objName": "getCounty",
+            "method": "get"
         }
     ]
 }
