@@ -13,7 +13,7 @@ define(['jquery', 'underscore', 'backbone', 'handlebars'], function ($, _, Backb
 	};
 
 	zjdgx.loadMain = function () {
-		require(['common/MainView'], function (MainView) {
+		require(['main/MainView'], function (MainView) {
 			new MainView().render();
 		});
 	};

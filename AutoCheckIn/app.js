@@ -10,7 +10,7 @@ var task = require('./controller/task');
 var autoCheckIn = require('./controller/autoCheckIn');
 
 // 定时执行
-task({h: [18], m: [30]}, function () {
+task({h: [13], m: [32]}, function () {
 	accounts.forEach(function (v) {
 		autoCheckIn(v);
 	});

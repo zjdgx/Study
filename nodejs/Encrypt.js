@@ -31,13 +31,17 @@ if (content.length > 0) {
 			result = "", index = -1;
 
 		for (var i = 0; i < len; i++) {
-			index = lines[i].toLowerCase().indexOf(title.toLowerCase());
-
-			if (index > -1) {
+			if (title == '*') {
 				result += zjdgxEncrypt("des", lines[i].substring(lines[i].indexOf(":") + 1)) + "\n";
-			}
+			} else {
+				index = lines[i].toLowerCase().indexOf(title.toLowerCase());
 
-			index = -1;
+				if (index > -1) {
+					result += zjdgxEncrypt("des", lines[i].substring(lines[i].indexOf(":") + 1)) + "\n";
+				}
+
+				index = -1;
+			}
 		}
 		console.log(result);
 	});

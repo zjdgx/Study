@@ -4,7 +4,7 @@
  * Author: jianggang
  * Description:
  */
-var mysql = require('../util/mySqlPool'),
+var mysql = require('./mySqlPool'),
 		subjectMapping = {
 			'11': '小学数学',
 			'12': '小学语文',
@@ -32,6 +32,22 @@ exports.main = function (req, res) {
 exports.teacherList = function (req, res) {
 	var offset = req.body.offset || 0,
 			limit = req.body.limit;
+
+	mysql.mySqlQuery(
+		'SELECT * FROM teacher' + (limit ? ' limit ' + offset + ', ' + limit : ''),
+		{},
+		function (result) {
+			result.forEach(function (model) {
+				model.subjects = subjectsTranslate(model.subjects);
+			});
+
+			res.send(result);
+		}
+	);
+};
+
+exports.getTeacherListWithLocation = function (req, res) {
+	var cityId = req.params.id;
 
 	mysql.mySqlQuery(
 		'SELECT * FROM teacher' + (limit ? ' limit ' + offset + ', ' + limit : ''),

@@ -13,7 +13,7 @@ define(['jquery', 'backbone', './addressModel', '../components/Select'], functio
 			onChange && (this.onChange = onChange);
 			this.model.set({id: id, level: level});
 		},
-		render: function () {
+		render: function (cb) {
 			var self = this,
 					level = self.model.get('level'),
 					className = self.getAddressSelectClass(level);
@@ -46,6 +46,7 @@ define(['jquery', 'backbone', './addressModel', '../components/Select'], functio
 							}
 						}).el);
 					}
+					cb && cb();
 				}
 			});
 		},

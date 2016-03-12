@@ -1,0 +1,19 @@
+{
+  "name": "webpackReact",
+  "version": "1.0.0",
+  "description": "zjdgx webpack react demo",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+  },
+  "author": "ZJDGX",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.6.0",
+    "babel-loader": "^6.2.4",
+    "html-webpack-plugin": "^2.9.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
+  }
+}

@@ -8,7 +8,8 @@
 var _ = require('underscore'),
 		async = require('async'),
 		moment = require("moment"),
-		mysql = require('../util/mySqlPool');
+		mysql = require('./mySqlPool'),
+		addressController = require('./addressController');
 
 
 exports.login = function (req, res) {
@@ -36,4 +37,17 @@ exports.register = function (req, res) {
 			res.send(result);
 		}
 	);
+};
+
+exports.getFilter = function (req, res) {
+	async.waterfall([
+		function (cb) {
+			addressController.getCounty(req, res);
+		},
+		function (county, cb) {
+
+		}
+	], function (err, result) {
+
+	})
 };

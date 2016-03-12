@@ -20,7 +20,6 @@ module.exports = {
 	'email': {
 		'host': 'smtp.163.com',
 		'user': 'zjdgx20131030@163.com',
-		'password': 'George123Lenovo',
 		'toUser': '373687921@qq.com'
 	}
 };

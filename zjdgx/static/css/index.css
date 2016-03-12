@@ -48,17 +48,17 @@
 
 
 .leftSideBar ul li {
-    list-style: none;
-    display: inline-block;
-    *display: inline;
-    text-align: center;
     *zoom: 1;
     width: 48%;
+    *display: inline;
+    list-style: none;
+    display: inline-block;
 }
 
 .leftSideBar a {
     display: block;
     overflow: hidden;
+    padding-left: 10px;
     white-space: nowrap;
     text-decoration: none;
     text-overflow: ellipsis;

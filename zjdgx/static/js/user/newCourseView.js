@@ -5,11 +5,12 @@
  * Description:
  */
 
-define(['jquery', 'underscore', 'backbone', './courseModel', './templates', '../components/Select', './addressModel', './addressView'],
-	function ($, _, Backbone, CourseModel, Templates, SelectView, AddressModel, AddressView) {
+define(['jquery', 'underscore', 'backbone', 'backboneModelBinder', './courseModel', './templates', '../components/Select', '../components/alertView', './addressModel', './addressView'],
+	function ($, _, Backbone, ModelBinder, CourseModel, Templates, SelectView, AlertView, AddressModel, AddressView) {
 		return Backbone.View.extend({
 			el: '.newCourse',
 			model: new CourseModel(),
+			modelBinder: new ModelBinder(),
 			subjectMap: {
 				primary: '小学',
 				junior: '初中',
@@ -32,7 +33,10 @@ define(['jquery', 'underscore', 'backbone', './courseModel', './templates', '../
 						self.updateGradeInfo();
 					},
 					error: function (err) {
-
+						new AlertView().render({
+							title: '错误提示',
+							msg: '获取地址信息失败, 请重试.'
+						});
 					}
 				});
 
@@ -40,24 +44,28 @@ define(['jquery', 'underscore', 'backbone', './courseModel', './templates', '../
 				this.showBMap();
 			},
 			getAddresses: function () {
-				var target = this.$el.find('.location');
+				var self = this,
+						target = this.$el.find('.location');
 
 				new AddressView(target, 1930, 4, function (level, id) {
 					new AddressView(target, id, level).render();
-				}).render();
+				}).render(function () {
+					self.modelBinding();
+				});
 			},
 			updateGradeInfo: function () {
 				var self = this,
 						courses = this.model.get('courses');
 
 				this.$el.find('div.subjects').append(self.mainGradeSelect.render({
+					name: 'grade',
 					className: 'gradeMainSelect',
 					selected: {key: -1, value: '请选择'},
 					options: function () {
 						var result = [{key: -1, value: '请选择'}];
 
 						$.each(courses, function (index, value) {
-							result.push({key: _.keys(value), value: self.subjectMap[_.keys(value)]});
+							result.push({key: _.keys(value), value: _.keys(value)});
 						});
 
 						return result;
@@ -73,16 +81,23 @@ define(['jquery', 'underscore', 'backbone', './courseModel', './templates', '../
 								}))
 							);
 						}
+
+						self.model.set({grade: key});
 					}
 				}).el);
 
 				this.$el.find('div.subjects').append(self.subjectSelect.render({
+					name: 'subject',
 					className: 'subjectSelect',
 					selected: {key: -1, value: '请选择'},
-					options: [{key: -1, value: '请选择'}]
+					options: [{key: -1, value: '请选择'}],
+					onChange: function (key) {
+						self.model.set({subject: key});
+					}
 				}).el);
 
 				this.$el.find('div.grade').append(self.gradeSelect.render({
+					name: 'class',
 					className: 'gradesSelect',
 					selected: {key: 0, value: '学前'},
 					options: [
@@ -100,8 +115,20 @@ define(['jquery', 'underscore', 'backbone', './courseModel', './templates', '../
 						{key: 11, value: '高二'},
 						{key: 12, value: '高三'},
 						{key: 13, value: '成人'}
-					]
+					],
+					onChange: function (key) {
+						self.model.set({class: key});
+					}
 				}).el);
+			},
+			modelBinding: function () {
+				var modelBindings = {
+					grade: '[name=grade]',
+					class: '[name=class]',
+					subject: '[name=subject]'
+				};
+
+				this.modelBinder.bind(this.model, this.$el, modelBindings);
 			},
 			getOptionValues: function (values) {
 				var result = [{key: -1, value: '请选择'}];
