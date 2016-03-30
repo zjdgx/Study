@@ -1,9 +1,0 @@
-.idea
-*.log
-node_modules
-bower_components
-templates.js
-pages.css
-static/js/common/*.js
-uploadFiles
-static/dist/*.css

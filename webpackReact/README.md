@@ -1,180 +1,37 @@
-##webpack½éÉÜ
+## (2016/03/30)stylusæ–‡ä»¶ä¸­å¼•å…¥ç¬¬ä¸‰æ–¹css
 
-###webpackä¯ÀÀÆ÷×Ô¶¯Ë¢ĞÂ
+`@import '~normalize.css/normalize.css';`
 
-```
-entry: [
-	'webpack/hot/dev-server',
-	'webpack-dev-server/client?http://localhost:8080',
-	path.resolve(__dirname, 'app/main.js')
-],
-```
+## (2016/03/30)ä½¿ç”¨[react-es6-webpack-boilerplate](https://github.com/vasanthk/react-es6-webpack-boilerplate)æ­å»ºreact+webpackæ¡†æ¶
 
-###ÒıÈëÎÄ¼ş
+## (2016/03/30)webpack stylusç‹¬ç«‹cssæ–‡ä»¶åŠ è½½æ³¨æ„äº‹é¡¹
 
-####Ä£¿é
-
-- ES6Ä£¿é: `import module from './module.js';`
-- CommonJS: `var module = require('./module.js';`
-- AMD: `define(['./module.js'], function (module) {});`
-
-####Àí½âÎÄ¼şÂ·¾¶
-
-*Ïà¶ÔÂ·¾¶ÊÇÏà¶Ôµ±Ç°Ä¿Â¼, ¾ø¶ÔÂ·¾¶ÊÇÏà¶ÔÈë¿ÚÎÄ¼ş.*
-
-##React
-
-ReactµÄkeyÊôĞÔ¿ÉÒÔ±£Ö¤DOMÊä³öË³Ğò
+- å®‰è£…loader: css-loader, style-loader, extract-text-webpack-plugin
+- stylusæ–‡ä»¶å¿…é¡»ä½¿ç”¨requireåœ¨jsæ–‡ä»¶ä¸­å¼•å…¥: `require('./base.styl')`
+- åœ¨webpack.config.jsæ–‡ä»¶ä¸­å†™ç‹¬ç«‹cssæ–‡ä»¶åŠ è½½
 
 ```
-<ul>
-{
-	todoItems.map((todoItem, i) =>
-		<li key={'todoitem' + i}><TodoItem owner={todoItem.owner} task={todoItem.task} /></li>
-	)
-}
-</ul>
-```
+var path = require('path'),
+		ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-Èç¹û²»¼ÓkeyÊôĞÔ, React»á¸ø³ö¾¯¸æ
-
-*ReactÌá¹©ÁËReactLinkÀ´Ö§³ÖË«ÏòÊı¾İ°ó¶¨*
-
-Ê¹ÓÃMixinÊµÏÖÊı¾İË«Ïò°ó¶¨
-
-```
-// ReactLink ÊÇÒ»¸ö²å¼ş£¬ËùÒÔÎÒÃÇĞèÒª°ÑËüÒıÈë¡£
-var React = require('react/addons');
-
-...
-
-module.exports = React.createClass({
-    mixins: [React.addons.LinkedStateMixin],
-
-    ...
-
-    render() {
-        var todoItems = this.state.todoItems;
-
-        return <div>
-            <div className='ChangeOwner'>
-                <input type='text' valueLink={this.linkState('owner')} />// *´Ë´¦²»ÔÙĞèÒªonChange°ó¶¨ÁË*
-            </div>
-
-            <div className='TodoItems'>
-                <ul>{todoItems.map((todoItem, i) =>
-                    <li key={'todoitem' + i}>
-                        <TodoItem owner={owner} task={todoItem.task} />
-                    </li>
-                )}</ul>
-            </div>
-        </div>;
-    },
-});
-```
-
-###ÅäÖÃReact
-
-####ÔÚ´úÂëÖĞÊ¹ÓÃReact
-
-```
-import React from 'react';
-
-export default class Hello extends React.Component {
-  render() {
-    return <h1>Hello world</h1>;
-  }
-}
-```
-
-###ÓÅ»¯ÖØºÏ²¢
-
-####ÔÚ¿ª·¢»·¾³ÖĞÊ¹ÓÃÑ¹ËõÎÄ¼ş
-
-ÎªÁË²»ÈÃwebpackÈ¥±éÀúreact¼°ÆäËùÓĞÒÀÀµ, Äã¿ÉÒÔÔÚ¿ª·¢ÖĞÖØĞ´ËüµÄĞĞÎª
-
-```
-var path = require('path');
-var node_modules = path.resolve(__dirname, 'node_modules');
-var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
-
-config = {
-    entry: ['webpack/hot/dev-server', path.resolve(__dirname, 'app/main.js')],
-    resolve: {
-        alias: {
-          'react': pathToReact
-        }
-    },
-    output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js',
-    },
-    module: {
-        loaders: [{
-            test: /\.jsx?$/,
-            loader: 'babel'
-        }],
-        noParse: [pathToReact]
-    }
+module.exports = {
+   entry: {
+	   home: './public/javascript/pages/index.js'
+   },
+   output: {
+      path: path.join(__dirname, 'dist'),
+      filename: 'javascript/[name].js'
+   },
+   module: {
+      loaders: [
+         {
+			 test: /\.(css|styl)$/,
+			 loader: ExtractTextPlugin.extract('style', '!css!stylus')
+		 }
+      ]
+   },
+   plugins: [
+      new ExtractTextPlugin('css/[name].css')
+   ]
 };
-
-module.exports = config;
 ```
-
-#####´ËÅäÖÃ×öÁËÁ½¼şÊÂ
-
-- Ã¿µ±reactÔÚ´úÂëÖĞ±»ÒıÈë, Ëü»áÊ¹ÓÃÑ¹ËõºóµÄreactÎÄ¼ş, ¶ø²»ÊÇµ½node_modulesÖĞÕÒ;
-- Ã¿µ±webpack³¢ÊÔÖ§½âÎöÄÇ¸öÑ¹ËõºóµÄÎÄ¼ş, ÎÒÃÇ×èÖ¹Ëü, ÒòÎªÕâ²»±ØÒª.
-
-####Flow
-
-##CSS Fonts and Images
-
-###¼ÓÔØCSS
-
-####CSS¼ÓÔØ×¼±¸
-- °²×°¼ÓÔØÆ÷: `npm install css-loader style-loader --save-dev`
-- ĞŞ¸ÄÅäÖÃ:
-
-```
-{// Ôö¼Ócss-loader
-	test: /\.css$/, // Only .css files
-	loader: 'style!css' // Run both loaders
-}
-```
-
-####¼ÓÔØCSSÎÄ¼ş
-
-`import './style.css';`
-
-*ÔÚCommonJSºÍAMDÖĞ¶¼¿ÉÒÔÓÃimport¼ÓÔØCSSÎÄ¼ş*
-
-####CSS¼ÓÔØ²ßÂÔ
-
-- ËùÓĞCSS´úÂëºÏ²¢³ÉÒ»¸öÎÄ¼ş
-- ÀÁ¼ÓÔØ: ÔÚÃ¿¸öÈë¿Úµã°üº¬¸÷×ÔµÄCSSÎÄ¼ş, ·¢»Ó¶àÖØÈë¿ÚÎÄ¼şµÄÓÅÊÆ.
-
-####Ê¹ÓÃÄÚÁªÑùÊ½È¡´úCSSÎÄ¼ş
-
-```
-import React from 'react';
-
-var style = {
-  backgroundColor: '#EEE'
-};
-
-export default React.createClass({
-  render: function () {
-    return (
-      <div style={style}>
-        <h1>Hello world</h1>
-      </div>
-    )
-  }
-});
-```
-
-###×Ô¶¯Ë¢ĞÂCSS
-###¼ÓÔØLESSºÍSASS
-###ÄÚÁªimages
-###ÄÚÁªfonts

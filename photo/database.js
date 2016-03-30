@@ -5,7 +5,6 @@
  * Description:
  */
 
-
 module.exports = database_todo = {
 	"type": "mongodb",
 	"mode": "development",

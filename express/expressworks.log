@@ -1,5 +1,0 @@
-1. hello: hello.js
-2. jade: jade.js
-	设置模板路径: app.set("views", path.join("./",""));
-	设置模板引擎: app.set("view engine", "jade");
-3. 
