@@ -1,0 +1,55 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font: 12px/1.5em 'Courier New', 'Microsoft Yahei';
+}
+ul,
+li,
+p {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+.home {
+  left: 0;
+  top: 62px;
+  bottom: 0;
+  height: auto;
+  padding: 0 50px;
+  position: absolute;
+  overflow-x: hidden;
+  width: calc(100% - 100px);
+}
+.home ul {
+  overflow: hidden;
+  padding-bottom: 2em;
+  border-bottom: 1px solid #23c778;
+}
+.home ul:last-of-type {
+  border-bottom: none;
+}
+.home ul li {
+  width: 15%;
+  float: left;
+  height: 60px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px dotted #23c778;
+}
+.home ul a {
+  color: #00e;
+  outline: none;
+  -moz-outline: none;
+  text-decoration: none;
+}
+.home ul h5 {
+  margin: 0;
+}
+.home ul p {
+  text-indent: 1em;
+}
