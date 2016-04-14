@@ -1,7 +1,7 @@
 /**
  * Build Date: 15/4/14 14:18.
  * Copyright (c): NHN China Co.,LTD
- * Author: jianggang
+ * Author: ZJDGX
  * Description:
  */
 var fs = require('fs'),

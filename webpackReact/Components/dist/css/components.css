@@ -214,6 +214,23 @@
     -webkit-transform: scale(1);
   }
 }
+.carousel img {
+  width: 100%;
+}
+.carousel-enter {
+  opacity: 0;
+}
+.carousel-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.carousel-leave {
+  opacity: 1;
+}
+.carousel-leave-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
 body {
   margin: 0;
   background: #f1f1f1;

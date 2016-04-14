@@ -1,12 +1,11 @@
 /**
  * Build Date: 16/1/21 15:24.
  * Copyright (c): NHN China Co.,LTD
- * Author: jianggang
+ * Author: ZJDGX
  * Description:
  */
 
 var fs = require('fs');
-
 
 function FormatInteger(num, length) {
 	return (num / Math.pow(10, length)).toFixed(length).substr(2);

@@ -1,9 +1,10 @@
 var path = require('path'),
 		webpack = require('webpack'),
+		CopyWebpackPlugin = require('copy-webpack-plugin'),
 		ExtractTextPlugin = require('extract-text-webpack-plugin');
 		
 module.exports = {
-	entry: './scripts/index.js',
+	entry: './demo/scripts/index.js',
 	output: {
 		path: './dist',
 		filename: 'index.js',
@@ -27,6 +28,9 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin('css/components.css')
+		new ExtractTextPlugin('css/components.css'),
+		new CopyWebpackPlugin([
+			{from: './demo/image', to: 'image'}
+		])
 	]
 }

@@ -1,7 +1,7 @@
 /**
  * Build Date: 15/2/27 17:08.
  * Copyright (c): NHN China Co.,LTD
- * Author: jianggang
+ * Author: ZJDGX
  * Description:
  */
 var request = require('superagent');
