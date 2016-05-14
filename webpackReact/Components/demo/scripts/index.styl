@@ -1,12 +1,14 @@
 body
    margin 0
-   background #f1f1f1
+   background linear-gradient(top, white, black)
    font 12px/1.5 'Courier New', 'Microsoft Yahei'
+.hide
+   display none !important
 #component-demo
    overflow hidden
 .component-nav
    float left
-   width 200px
+   width 300px
    background #fff
    min-height 120px
    margin-left 20px
@@ -17,18 +19,24 @@ body
     display block
     padding 0 10px
     line-height 24px
-    border-bottom 1px solid #ccc
     text-decoration none
+    border-bottom 1px solid #ccc
 .component-container
    padding 20px 0
 .component-list
    display flex
+   flex-wrap wrap
    margin-left 240px
 .item
    flex 1
    padding 10px 0
    background #fff
+   min-width 200px
    margin-right 20px
+   margin-bottom 20px
    box-shadow 0 1px 5px rgba(0,0,0,0.3)
    h2
       margin 0
+.zjdgx-dropdown
+   margin-left 10px
+   display inline-block
