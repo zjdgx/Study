@@ -58,7 +58,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(266);
+	__webpack_require__(265);
 
 	(0, _reactDom.render)(_react2.default.createElement(_ComponentsList2.default, null), document.getElementById('components-demo'));
 
@@ -227,6 +227,9 @@
 	var queueIndex = -1;
 
 	function cleanUpNextTick() {
+	    if (!draining || !currentQueue) {
+	        return;
+	    }
 	    draining = false;
 	    if (currentQueue.length) {
 	        queue = currentQueue.concat(queue);
@@ -19693,7 +19696,7 @@
 
 	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-	var _inherits2 = __webpack_require__(234);
+	var _inherits2 = __webpack_require__(238);
 
 	var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -19705,25 +19708,21 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Loading = __webpack_require__(242);
+	var _Loading = __webpack_require__(246);
 
 	var _Loading2 = _interopRequireDefault(_Loading);
 
-	var _NavMenu = __webpack_require__(247);
+	var _NavMenu = __webpack_require__(251);
 
 	var _NavMenu2 = _interopRequireDefault(_NavMenu);
 
-	var _dropdown = __webpack_require__(257);
+	var _dropdown = __webpack_require__(261);
 
 	var _dropdown2 = _interopRequireDefault(_dropdown);
 
-	var _CanvasUpload = __webpack_require__(260);
+	var _CanvasUpload = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../../CanvasUpload/CanvasUpload\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 
 	var _CanvasUpload2 = _interopRequireDefault(_CanvasUpload);
-
-	var _fadingPopup = __webpack_require__(263);
-
-	var _fadingPopup2 = _interopRequireDefault(_fadingPopup);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -19736,11 +19735,6 @@
 		}
 
 		(0, _createClass3.default)(ComponentsList, [{
-			key: 'showFadingPopup',
-			value: function showFadingPopup() {
-				_reactDom2.default.render(_react2.default.createElement(_fadingPopup2.default, null), this.refs['fading-popup']);
-			}
-		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -19798,21 +19792,6 @@
 							_react2.default.createElement(_dropdown2.default, { options: [{ key: 'lenovo', value: 'Lenovo' }, { key: 'baidu', value: 'Baidu' }, { key: 'huawei', value: 'Huawei' }],
 								defaultOption: 0
 							})
-						),
-						_react2.default.createElement(
-							'div',
-							{ className: 'item', id: 'fading-popup' },
-							_react2.default.createElement(
-								'h2',
-								null,
-								'(2016/04/28)React Fading Popup'
-							),
-							_react2.default.createElement(
-								'div',
-								{ onClick: this.showFadingPopup.bind(this) },
-								'Toggle View'
-							),
-							_react2.default.createElement('div', { ref: 'fading-popup' })
 						),
 						_react2.default.createElement(
 							'div',
@@ -20027,7 +20006,7 @@
 /* 173 */
 /***/ function(module, exports) {
 
-	var core = module.exports = {version: '2.2.1'};
+	var core = module.exports = {version: '2.4.0'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
@@ -20291,7 +20270,7 @@
 
 	var _iterator2 = _interopRequireDefault(_iterator);
 
-	var _symbol = __webpack_require__(221);
+	var _symbol = __webpack_require__(222);
 
 	var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -20317,7 +20296,7 @@
 
 	__webpack_require__(195);
 	__webpack_require__(217);
-	module.exports = __webpack_require__(216)('iterator');
+	module.exports = __webpack_require__(221).f('iterator');
 
 /***/ },
 /* 195 */
@@ -20634,7 +20613,7 @@
 	      if(value != value)return true;
 	    // Array#toIndex ignores holes, Array#includes - not
 	    } else for(;length > index; index++)if(IS_INCLUDES || index in O){
-	      if(O[index] === el)return IS_INCLUDES || index;
+	      if(O[index] === el)return IS_INCLUDES || index || 0;
 	    } return !IS_INCLUDES && -1;
 	  };
 	};
@@ -20697,10 +20676,13 @@
 	  , uid        = __webpack_require__(170)
 	  , Symbol     = __webpack_require__(169).Symbol
 	  , USE_SYMBOL = typeof Symbol == 'function';
-	module.exports = function(name){
+
+	var $exports = module.exports = function(name){
 	  return store[name] || (store[name] =
 	    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
 	};
+
+	$exports.store = store;
 
 /***/ },
 /* 217 */
@@ -20777,61 +20759,73 @@
 /* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(222), __esModule: true };
+	exports.f = __webpack_require__(216);
 
 /***/ },
 /* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(223);
-	__webpack_require__(233);
-	module.exports = __webpack_require__(173).Symbol;
+	module.exports = { "default": __webpack_require__(223), __esModule: true };
 
 /***/ },
 /* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(224);
+	__webpack_require__(235);
+	__webpack_require__(236);
+	__webpack_require__(237);
+	module.exports = __webpack_require__(173).Symbol;
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 	// ECMAScript 6 symbols shim
 	var global         = __webpack_require__(169)
-	  , core           = __webpack_require__(173)
 	  , has            = __webpack_require__(166)
 	  , DESCRIPTORS    = __webpack_require__(181)
 	  , $export        = __webpack_require__(172)
 	  , redefine       = __webpack_require__(200)
-	  , META           = __webpack_require__(224).KEY
+	  , META           = __webpack_require__(225).KEY
 	  , $fails         = __webpack_require__(182)
 	  , shared         = __webpack_require__(168)
 	  , setToStringTag = __webpack_require__(215)
 	  , uid            = __webpack_require__(170)
 	  , wks            = __webpack_require__(216)
-	  , keyOf          = __webpack_require__(225)
-	  , enumKeys       = __webpack_require__(226)
-	  , isArray        = __webpack_require__(229)
+	  , wksExt         = __webpack_require__(221)
+	  , wksDefine      = __webpack_require__(226)
+	  , keyOf          = __webpack_require__(227)
+	  , enumKeys       = __webpack_require__(228)
+	  , isArray        = __webpack_require__(231)
 	  , anObject       = __webpack_require__(178)
 	  , toIObject      = __webpack_require__(207)
 	  , toPrimitive    = __webpack_require__(184)
 	  , createDesc     = __webpack_require__(185)
 	  , _create        = __webpack_require__(203)
-	  , gOPNExt        = __webpack_require__(230)
-	  , $GOPD          = __webpack_require__(232)
+	  , gOPNExt        = __webpack_require__(232)
+	  , $GOPD          = __webpack_require__(234)
 	  , $DP            = __webpack_require__(177)
+	  , $keys          = __webpack_require__(205)
 	  , gOPD           = $GOPD.f
 	  , dP             = $DP.f
 	  , gOPN           = gOPNExt.f
 	  , $Symbol        = global.Symbol
 	  , $JSON          = global.JSON
 	  , _stringify     = $JSON && $JSON.stringify
-	  , setter         = false
 	  , PROTOTYPE      = 'prototype'
 	  , HIDDEN         = wks('_hidden')
 	  , TO_PRIMITIVE   = wks('toPrimitive')
 	  , isEnum         = {}.propertyIsEnumerable
 	  , SymbolRegistry = shared('symbol-registry')
 	  , AllSymbols     = shared('symbols')
+	  , OPSymbols      = shared('op-symbols')
 	  , ObjectProto    = Object[PROTOTYPE]
 	  , USE_NATIVE     = typeof $Symbol == 'function'
 	  , QObject        = global.QObject;
+	// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
+	var setter = !QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild;
 
 	// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
 	var setSymbolDesc = DESCRIPTORS && $fails(function(){
@@ -20848,13 +20842,6 @@
 	var wrap = function(tag){
 	  var sym = AllSymbols[tag] = _create($Symbol[PROTOTYPE]);
 	  sym._k = tag;
-	  DESCRIPTORS && setter && setSymbolDesc(ObjectProto, tag, {
-	    configurable: true,
-	    set: function(value){
-	      if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
-	      setSymbolDesc(this, tag, createDesc(1, value));
-	    }
-	  });
 	  return sym;
 	};
 
@@ -20865,6 +20852,7 @@
 	};
 
 	var $defineProperty = function defineProperty(it, key, D){
+	  if(it === ObjectProto)$defineProperty(OPSymbols, key, D);
 	  anObject(it);
 	  key = toPrimitive(key, true);
 	  anObject(D);
@@ -20892,10 +20880,14 @@
 	};
 	var $propertyIsEnumerable = function propertyIsEnumerable(key){
 	  var E = isEnum.call(this, key = toPrimitive(key, true));
+	  if(this === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return false;
 	  return E || !has(this, key) || !has(AllSymbols, key) || has(this, HIDDEN) && this[HIDDEN][key] ? E : true;
 	};
 	var $getOwnPropertyDescriptor = function getOwnPropertyDescriptor(it, key){
-	  var D = gOPD(it = toIObject(it), key = toPrimitive(key, true));
+	  it  = toIObject(it);
+	  key = toPrimitive(key, true);
+	  if(it === ObjectProto && has(AllSymbols, key) && !has(OPSymbols, key))return;
+	  var D = gOPD(it, key);
 	  if(D && has(AllSymbols, key) && !(has(it, HIDDEN) && it[HIDDEN][key]))D.enumerable = true;
 	  return D;
 	};
@@ -20904,45 +20896,33 @@
 	    , result = []
 	    , i      = 0
 	    , key;
-	  while(names.length > i)if(!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META)result.push(key);
-	  return result;
+	  while(names.length > i){
+	    if(!has(AllSymbols, key = names[i++]) && key != HIDDEN && key != META)result.push(key);
+	  } return result;
 	};
 	var $getOwnPropertySymbols = function getOwnPropertySymbols(it){
-	  var names  = gOPN(toIObject(it))
+	  var IS_OP  = it === ObjectProto
+	    , names  = gOPN(IS_OP ? OPSymbols : toIObject(it))
 	    , result = []
 	    , i      = 0
 	    , key;
-	  while(names.length > i)if(has(AllSymbols, key = names[i++]))result.push(AllSymbols[key]);
-	  return result;
+	  while(names.length > i){
+	    if(has(AllSymbols, key = names[i++]) && (IS_OP ? has(ObjectProto, key) : true))result.push(AllSymbols[key]);
+	  } return result;
 	};
-	var $stringify = function stringify(it){
-	  if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
-	  var args = [it]
-	    , i    = 1
-	    , replacer, $replacer;
-	  while(arguments.length > i)args.push(arguments[i++]);
-	  replacer = args[1];
-	  if(typeof replacer == 'function')$replacer = replacer;
-	  if($replacer || !isArray(replacer))replacer = function(key, value){
-	    if($replacer)value = $replacer.call(this, key, value);
-	    if(!isSymbol(value))return value;
-	  };
-	  args[1] = replacer;
-	  return _stringify.apply($JSON, args);
-	};
-	var BUGGY_JSON = $fails(function(){
-	  var S = $Symbol();
-	  // MS Edge converts symbol values to JSON as {}
-	  // WebKit converts symbol values to JSON as null
-	  // V8 throws on boxed symbols
-	  return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
-	});
 
 	// 19.4.1.1 Symbol([description])
 	if(!USE_NATIVE){
 	  $Symbol = function Symbol(){
 	    if(this instanceof $Symbol)throw TypeError('Symbol is not a constructor!');
-	    return wrap(uid(arguments.length > 0 ? arguments[0] : undefined));
+	    var tag = uid(arguments.length > 0 ? arguments[0] : undefined);
+	    var $set = function(value){
+	      if(this === ObjectProto)$set.call(OPSymbols, value);
+	      if(has(this, HIDDEN) && has(this[HIDDEN], tag))this[HIDDEN][tag] = false;
+	      setSymbolDesc(this, tag, createDesc(1, value));
+	    };
+	    if(DESCRIPTORS && setter)setSymbolDesc(ObjectProto, tag, {configurable: true, set: $set});
+	    return wrap(tag);
 	  };
 	  redefine($Symbol[PROTOTYPE], 'toString', function toString(){
 	    return this._k;
@@ -20950,39 +20930,27 @@
 
 	  $GOPD.f = $getOwnPropertyDescriptor;
 	  $DP.f   = $defineProperty;
-	  __webpack_require__(231).f = gOPNExt.f = $getOwnPropertyNames;
-	  __webpack_require__(228).f  = $propertyIsEnumerable
-	  __webpack_require__(227).f = $getOwnPropertySymbols;
+	  __webpack_require__(233).f = gOPNExt.f = $getOwnPropertyNames;
+	  __webpack_require__(230).f  = $propertyIsEnumerable;
+	  __webpack_require__(229).f = $getOwnPropertySymbols;
 
 	  if(DESCRIPTORS && !__webpack_require__(199)){
 	    redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
+	  }
+
+	  wksExt.f = function(name){
+	    return wrap(wks(name));
 	  }
 	}
 
 	$export($export.G + $export.W + $export.F * !USE_NATIVE, {Symbol: $Symbol});
 
-	// 19.4.2.2 Symbol.hasInstance
-	// 19.4.2.3 Symbol.isConcatSpreadable
-	// 19.4.2.4 Symbol.iterator
-	// 19.4.2.6 Symbol.match
-	// 19.4.2.8 Symbol.replace
-	// 19.4.2.9 Symbol.search
-	// 19.4.2.10 Symbol.species
-	// 19.4.2.11 Symbol.split
-	// 19.4.2.12 Symbol.toPrimitive
-	// 19.4.2.13 Symbol.toStringTag
-	// 19.4.2.14 Symbol.unscopables
 	for(var symbols = (
+	  // 19.4.2.2, 19.4.2.3, 19.4.2.4, 19.4.2.6, 19.4.2.8, 19.4.2.9, 19.4.2.10, 19.4.2.11, 19.4.2.12, 19.4.2.13, 19.4.2.14
 	  'hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables'
-	).split(','), i = 0; symbols.length > i; ){
-	  var key     = symbols[i++]
-	    , Wrapper = core.Symbol
-	    , sym     = wks(key);
-	  if(!(key in Wrapper))dP(Wrapper, key, {value: USE_NATIVE ? sym : wrap(sym)});
-	};
+	).split(','), i = 0; symbols.length > i; )wks(symbols[i++]);
 
-	// Don't use setters in Qt Script, https://github.com/zloirock/core-js/issues/173
-	if(!QObject || !QObject[PROTOTYPE] || !QObject[PROTOTYPE].findChild)setter = true;
+	for(var symbols = $keys(wks.store), i = 0; symbols.length > i; )wksDefine(symbols[i++]);
 
 	$export($export.S + $export.F * !USE_NATIVE, 'Symbol', {
 	  // 19.4.2.1 Symbol.for(key)
@@ -21016,7 +20984,29 @@
 	});
 
 	// 24.3.2 JSON.stringify(value [, replacer [, space]])
-	$JSON && $export($export.S + $export.F * (!USE_NATIVE || BUGGY_JSON), 'JSON', {stringify: $stringify});
+	$JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
+	  var S = $Symbol();
+	  // MS Edge converts symbol values to JSON as {}
+	  // WebKit converts symbol values to JSON as null
+	  // V8 throws on boxed symbols
+	  return _stringify([S]) != '[null]' || _stringify({a: S}) != '{}' || _stringify(Object(S)) != '{}';
+	})), 'JSON', {
+	  stringify: function stringify(it){
+	    if(it === undefined || isSymbol(it))return; // IE8 returns string on undefined
+	    var args = [it]
+	      , i    = 1
+	      , replacer, $replacer;
+	    while(arguments.length > i)args.push(arguments[i++]);
+	    replacer = args[1];
+	    if(typeof replacer == 'function')$replacer = replacer;
+	    if($replacer || !isArray(replacer))replacer = function(key, value){
+	      if($replacer)value = $replacer.call(this, key, value);
+	      if(!isSymbol(value))return value;
+	    };
+	    args[1] = replacer;
+	    return _stringify.apply($JSON, args);
+	  }
+	});
 
 	// 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
 	$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(176)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
@@ -21028,7 +21018,7 @@
 	setToStringTag(global.JSON, 'JSON', true);
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var META     = __webpack_require__(170)('meta')
@@ -21086,7 +21076,21 @@
 	};
 
 /***/ },
-/* 225 */
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var global         = __webpack_require__(169)
+	  , core           = __webpack_require__(173)
+	  , LIBRARY        = __webpack_require__(199)
+	  , wksExt         = __webpack_require__(221)
+	  , defineProperty = __webpack_require__(177).f;
+	module.exports = function(name){
+	  var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
+	  if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
+	};
+
+/***/ },
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getKeys   = __webpack_require__(205)
@@ -21101,13 +21105,13 @@
 	};
 
 /***/ },
-/* 226 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// all enumerable object keys, includes symbols
 	var getKeys = __webpack_require__(205)
-	  , gOPS    = __webpack_require__(227)
-	  , pIE     = __webpack_require__(228);
+	  , gOPS    = __webpack_require__(229)
+	  , pIE     = __webpack_require__(230);
 	module.exports = function(it){
 	  var result     = getKeys(it)
 	    , getSymbols = gOPS.f;
@@ -21121,19 +21125,19 @@
 	};
 
 /***/ },
-/* 227 */
+/* 229 */
 /***/ function(module, exports) {
 
 	exports.f = Object.getOwnPropertySymbols;
 
 /***/ },
-/* 228 */
+/* 230 */
 /***/ function(module, exports) {
 
 	exports.f = {}.propertyIsEnumerable;
 
 /***/ },
-/* 229 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.2.2 IsArray(argument)
@@ -21143,12 +21147,12 @@
 	};
 
 /***/ },
-/* 230 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 	var toIObject = __webpack_require__(207)
-	  , gOPN      = __webpack_require__(231).f
+	  , gOPN      = __webpack_require__(233).f
 	  , toString  = {}.toString;
 
 	var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -21168,7 +21172,7 @@
 
 
 /***/ },
-/* 231 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
@@ -21180,10 +21184,10 @@
 	};
 
 /***/ },
-/* 232 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var pIE            = __webpack_require__(228)
+	var pIE            = __webpack_require__(230)
 	  , createDesc     = __webpack_require__(185)
 	  , toIObject      = __webpack_require__(207)
 	  , toPrimitive    = __webpack_require__(184)
@@ -21201,24 +21205,36 @@
 	};
 
 /***/ },
-/* 233 */
+/* 235 */
 /***/ function(module, exports) {
 
 	
 
 /***/ },
-/* 234 */
+/* 236 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(226)('asyncIterator');
+
+/***/ },
+/* 237 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(226)('observable');
+
+/***/ },
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _setPrototypeOf = __webpack_require__(235);
+	var _setPrototypeOf = __webpack_require__(239);
 
 	var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-	var _create = __webpack_require__(239);
+	var _create = __webpack_require__(243);
 
 	var _create2 = _interopRequireDefault(_create);
 
@@ -21245,28 +21261,28 @@
 	};
 
 /***/ },
-/* 235 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(236), __esModule: true };
+	module.exports = { "default": __webpack_require__(240), __esModule: true };
 
 /***/ },
-/* 236 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(237);
+	__webpack_require__(241);
 	module.exports = __webpack_require__(173).Object.setPrototypeOf;
 
 /***/ },
-/* 237 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.3.19 Object.setPrototypeOf(O, proto)
 	var $export = __webpack_require__(172);
-	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(238).set});
+	$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(242).set});
 
 /***/ },
-/* 238 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -21281,7 +21297,7 @@
 	  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
 	    function(test, buggy, set){
 	      try {
-	        set = __webpack_require__(174)(Function.call, __webpack_require__(232).f(Object.prototype, '__proto__').set, 2);
+	        set = __webpack_require__(174)(Function.call, __webpack_require__(234).f(Object.prototype, '__proto__').set, 2);
 	        set(test, []);
 	        buggy = !(test instanceof Array);
 	      } catch(e){ buggy = true; }
@@ -21296,23 +21312,23 @@
 	};
 
 /***/ },
-/* 239 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(240), __esModule: true };
+	module.exports = { "default": __webpack_require__(244), __esModule: true };
 
 /***/ },
-/* 240 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(241);
+	__webpack_require__(245);
 	var $Object = __webpack_require__(173).Object;
 	module.exports = function create(P, D){
 	  return $Object.create(P, D);
 	};
 
 /***/ },
-/* 241 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $export = __webpack_require__(172)
@@ -21320,7 +21336,7 @@
 	$export($export.S, 'Object', {create: __webpack_require__(203)});
 
 /***/ },
-/* 242 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21345,7 +21361,7 @@
 
 	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-	var _inherits2 = __webpack_require__(234);
+	var _inherits2 = __webpack_require__(238);
 
 	var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -21355,7 +21371,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(243); /**
+	__webpack_require__(247); /**
 	                            * Author: ZJDGX
 	                            * Date: 2016/03/30
 	                            * Description: react loading effect
@@ -21410,16 +21426,16 @@
 	exports.default = Loading;
 
 /***/ },
-/* 243 */
+/* 247 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 244 */,
-/* 245 */,
-/* 246 */,
-/* 247 */
+/* 248 */,
+/* 249 */,
+/* 250 */,
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21444,7 +21460,7 @@
 
 	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-	var _inherits2 = __webpack_require__(234);
+	var _inherits2 = __webpack_require__(238);
 
 	var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -21456,13 +21472,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _reactAddonsCssTransitionGroup = __webpack_require__(248);
+	var _reactAddonsCssTransitionGroup = __webpack_require__(252);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	__webpack_require__(255); /**
+	__webpack_require__(259); /**
 	                            * Author: ZJDGX
 	                            * Date: 2016/04/07 16:15
 	                            * Description: react nav menu
@@ -21506,13 +21522,13 @@
 	exports.default = NavMenu;
 
 /***/ },
-/* 248 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(249);
+	module.exports = __webpack_require__(253);
 
 /***/ },
-/* 249 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21533,8 +21549,8 @@
 
 	var assign = __webpack_require__(39);
 
-	var ReactTransitionGroup = __webpack_require__(250);
-	var ReactCSSTransitionGroupChild = __webpack_require__(252);
+	var ReactTransitionGroup = __webpack_require__(254);
+	var ReactCSSTransitionGroupChild = __webpack_require__(256);
 
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -21600,7 +21616,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 250 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21617,7 +21633,7 @@
 	'use strict';
 
 	var React = __webpack_require__(2);
-	var ReactTransitionChildMapping = __webpack_require__(251);
+	var ReactTransitionChildMapping = __webpack_require__(255);
 
 	var assign = __webpack_require__(39);
 	var emptyFunction = __webpack_require__(15);
@@ -21810,7 +21826,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ },
-/* 251 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21913,7 +21929,7 @@
 	module.exports = ReactTransitionChildMapping;
 
 /***/ },
-/* 252 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21933,8 +21949,8 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(3);
 
-	var CSSCore = __webpack_require__(253);
-	var ReactTransitionEvents = __webpack_require__(254);
+	var CSSCore = __webpack_require__(257);
+	var ReactTransitionEvents = __webpack_require__(258);
 
 	var onlyChild = __webpack_require__(156);
 
@@ -22083,7 +22099,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 253 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22186,7 +22202,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 254 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22300,14 +22316,14 @@
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 255 */
+/* 259 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 256 */,
-/* 257 */
+/* 260 */,
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22332,7 +22348,7 @@
 
 	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
 
-	var _inherits2 = __webpack_require__(234);
+	var _inherits2 = __webpack_require__(238);
 
 	var _inherits3 = _interopRequireDefault(_inherits2);
 
@@ -22344,7 +22360,7 @@
 
 	//import listensToClickOutside from 'react-onclickoutside/decorator';
 
-	__webpack_require__(258);
+	__webpack_require__(262);
 
 	//@listensToClickOutside()
 	/**
@@ -22420,286 +22436,15 @@
 	exports.default = Dropdown;
 
 /***/ },
-/* 258 */
+/* 262 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 259 */,
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _getPrototypeOf = __webpack_require__(160);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(186);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(187);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(191);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(234);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	__webpack_require__(261);
-
-	var zjdgxCanvasUpload = function (_React$Component) {
-		(0, _inherits3.default)(zjdgxCanvasUpload, _React$Component);
-
-		function zjdgxCanvasUpload(props) {
-			(0, _classCallCheck3.default)(this, zjdgxCanvasUpload);
-
-			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(zjdgxCanvasUpload).call(this, props));
-
-			_this.state = {
-				size: 100,
-				shape: 'circle',
-				position: [0, 0]
-			};
-			return _this;
-		}
-
-		(0, _createClass3.default)(zjdgxCanvasUpload, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.canvas = this.refs['upload-canvas'];
-				this.context = this.canvas.getContext('2d');
-			}
-		}, {
-			key: 'onFileSelected',
-			value: function onFileSelected() {
-				var file = this.refs['imageFile'],
-				    image = document.createElement('img');
-
-				image.onload = this.loadImage.bind(this, image);
-
-				if (file.files && file.files[0]) {
-					image.src = window.URL.createObjectURL(file.files[0]);
-				} else {
-					// TODO: canvas draText.....
-					// canvas.drawText('浏览器不支持...');
-				}
-			}
-		}, {
-			key: 'loadImage',
-			value: function loadImage(image) {
-				var w = 0,
-				    h = 0,
-				    scale = 1,
-				    iw = image.width,
-				    ih = image.height,
-				    cw = this.canvas.width,
-				    ch = this.canvas.height;
-
-				if (iw > cw) {
-					w = cw;
-					h = ch * ih / iw;
-				} else if (ih > ch) {
-					w = ch * iw / ih;
-					h = ch;
-				} else if (iw / ih >= cw / ch) {
-					w = cw;
-					h = cw * ih / iw;
-				} else if (iw / ih < cw / ch) {
-					w = ch * iw / ih;
-					h = ch;
-				}
-
-				scale = w / iw;
-				this.context.clearRect(0, 0, cw, ch);
-				this.context.drawImage(image, 0, 0, w, h);
-				this.drawSelectArea(image, scale);
-			}
-		}, {
-			key: 'drawSelectArea',
-			value: function drawSelectArea(image, scale) {
-				var context = this.context,
-				    canvas = this.canvas;
-
-				context.save();
-				context.beginPath(); //开始新的路径
-				context.lineWidth = 1;
-				context.strokeStyle = '#333';
-
-				if (this.state.shape == 'circle') {
-					//context.drawImage(image, 50/scale, 50/scale, 100, 100);
-					context.arc(100, 100, 50, 0, Math.PI * 2, true);
-					context.closePath();
-				} else {
-					this.rect(50, 50, 100, 100);
-				}
-
-				context.fillStyle = 'rgba(255, 255, 255, .8)';
-				this.rect(0, 0, canvas.width, canvas.height, true);
-				context.fill(); //填充路径
-				context.stroke(); //填充路径
-				context.restore();
-			}
-		}, {
-			key: 'rect',
-			value: function rect(x, y, w, h, direction) {
-				var context = this.context;
-
-				if (direction) {
-					//逆时针
-					context.moveTo(x, y);
-					context.lineTo(x, y + h);
-					context.lineTo(x + w, y + h);
-					context.lineTo(x + w, y);
-				} else {
-					//顺时针
-					context.moveTo(x, y);
-					context.lineTo(x + w, y);
-					context.lineTo(x + w, y + h);
-					context.lineTo(x, y + h);
-				}
-
-				context.closePath();
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'zjdgx-canvas-upload' },
-					_react2.default.createElement(
-						'h2',
-						null,
-						'头像预览上传'
-					),
-					_react2.default.createElement('canvas', { ref: 'upload-canvas', width: '200', height: '200' }),
-					_react2.default.createElement('input', { ref: 'imageFile', type: 'file', onChange: this.onFileSelected.bind(this) })
-				);
-			}
-		}]);
-		return zjdgxCanvasUpload;
-	}(_react2.default.Component);
-
-	exports.default = zjdgxCanvasUpload;
-
-/***/ },
-/* 261 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 262 */,
-/* 263 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _getPrototypeOf = __webpack_require__(160);
-
-	var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
-
-	var _classCallCheck2 = __webpack_require__(186);
-
-	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
-
-	var _createClass2 = __webpack_require__(187);
-
-	var _createClass3 = _interopRequireDefault(_createClass2);
-
-	var _possibleConstructorReturn2 = __webpack_require__(191);
-
-	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
-
-	var _inherits2 = __webpack_require__(234);
-
-	var _inherits3 = _interopRequireDefault(_inherits2);
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	__webpack_require__(264); /**
-	                                * Author: ZJDGX
-	                                * Date: 2016/04/28
-	                                * Description: react fading popup
-	                                * Usage: <Dropdown options={} onSelected={}/>
-	                                */
-
-	var ZjdgxFadingPopup = function (_React$Component) {
-		(0, _inherits3.default)(ZjdgxFadingPopup, _React$Component);
-
-		function ZjdgxFadingPopup(props) {
-			(0, _classCallCheck3.default)(this, ZjdgxFadingPopup);
-
-			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ZjdgxFadingPopup).call(this, props));
-
-			_this.state = {
-				isShow: true
-			};
-			return _this;
-		}
-
-		(0, _createClass3.default)(ZjdgxFadingPopup, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.toggleView(this.state.isShow);
-			}
-		}, {
-			key: 'toggleView',
-			value: function toggleView(isShow) {
-				this.refs['popup'].className = 'zjdgx-fading-popup' + (isShow ? '' : ' hide');
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'zjdgx-fading-popup', ref: 'popup' },
-					_react2.default.createElement(
-						'div',
-						null,
-						'zjdgx fading demo'
-					)
-				);
-			}
-		}]);
-		return ZjdgxFadingPopup;
-	}(_react2.default.Component);
-
-	exports.default = ZjdgxFadingPopup;
-
-/***/ },
-/* 264 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 265 */,
-/* 266 */
+/* 263 */,
+/* 264 */,
+/* 265 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

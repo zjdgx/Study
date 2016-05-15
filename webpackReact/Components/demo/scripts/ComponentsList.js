@@ -5,16 +5,8 @@ import Loading from '../../loading/Loading';
 import NavMenu from '../../navMenu/NavMenu';
 import Dropdown from '../../dropdown/dropdown';
 import CanvasUpload from '../../CanvasUpload/CanvasUpload';
-import FadingPopup from '../../fadingPopup/fadingPopup';
 
 export default class ComponentsList extends React.Component {
-	showFadingPopup () {
-		ReactDOM.render(
-			<FadingPopup />,
-			this.refs['fading-popup']
-		);
-	};
-	
 	render () {
 		return (
 			<div className='component-container'>
@@ -52,11 +44,6 @@ export default class ComponentsList extends React.Component {
 							]}
 							defaultOption={0}
 						/>
-					</div>
-					<div className='item' id='fading-popup'>
-						<h2>(2016/04/28)React Fading Popup</h2>
-						<div onClick={this.showFadingPopup.bind(this)}>Toggle View</div>
-						<div ref='fading-popup'></div>
 					</div>
 					<div className='item' id='canvas-update'>
 						<CanvasUpload />

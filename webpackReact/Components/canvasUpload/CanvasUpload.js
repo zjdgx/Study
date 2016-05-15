@@ -1,113 +1,127 @@
 import React from 'react';
+import FileInput from '../fileInputComponent/fileInput'
 
 require('./canvasupload.styl');
 
 export default class zjdgxCanvasUpload extends React.Component {
+	static defaultProps = {
+		canvasWidth: 100,
+		canvasHeight: 100
+	};
+
 	constructor (props) {
 		super(props);
 		this.state = {
-			size: 100,
+			scale: 1,
 			shape: 'circle',
-			position: [0, 0]
+			isMoving: false,
+			isMouseDown: false,
+			position: {x: 0, y: 0},
+			movePosition: {x: 0, y: 0}
 		}
 	};
-	
+
 	componentDidMount () {
 		this.canvas = this.refs['upload-canvas'];
 		this.context = this.canvas.getContext('2d');
 	};
-	
-	onFileSelected () {
-		let file = this.refs['imageFile'],
-				image = document.createElement('img');
-		
+
+	onFileSelected (file) {
+		let image = document.createElement('img');
+
 		image.onload = this.loadImage.bind(this, image);
-		
+
 		if (file.files && file.files[0]) {
 			image.src = window.URL.createObjectURL(file.files[0]);
 		} else {
 			// TODO: canvas draText.....
 			// canvas.drawText('浏览器不支持...');
 		}
+
+		this.image = image;
 	};
-	
+
 	loadImage (image) {
 		let w = 0,
 				h = 0,
 				scale = 1,
+				position = {},
 				iw = image.width,
 				ih = image.height,
 				cw = this.canvas.width,
 				ch = this.canvas.height;
-		
-		if (iw > cw) {
-			w = cw;
-			h = ch * ih / iw;
-		} else if (ih > ch) {
-			w = ch * iw / ih;
-			h = ch;
-		} else if (iw / ih >= cw / ch) {
-			w = cw;
-			h = cw * ih / iw;
-		} else if(iw / ih < cw / ch) {
-			w = ch * iw / ih;
-			h = ch;
-		}
-		
-		scale = w / iw;
-		this.context.clearRect(0, 0, cw, ch);
-		this.context.drawImage(image, 0, 0, w, h); 
-		this.drawSelectArea(image, scale);
-	};
-	
-	drawSelectArea (image, scale) {
-		let context = this.context,
-				canvas = this.canvas;
-		
-		context.save();
-		context.beginPath();//开始新的路径
-		context.lineWidth = 1;
-		context.strokeStyle = '#333';
-		
-		if (this.state.shape == 'circle') {
-			//context.drawImage(image, 50/scale, 50/scale, 100, 100);
-			context.arc(100, 100, 50, 0, Math.PI *2, true);
-			context.closePath();
-		} else {
-			this.rect(50, 50, 100, 100);
-		}
 
-		context.fillStyle='rgba(255, 255, 255, .8)';
-		this.rect(0, 0, canvas.width, canvas.height, true);
-		context.fill();//填充路径
-		context.stroke();//填充路径
-		context.restore();
+		position.x = iw > cw ? (iw - cw) / 2 : 0;
+		position.y = ih > ch ? (ih - ch) / 2 : 0;
+		this.setState({position: position});
+		this.context.drawImage(image, position.x, position.y, cw, ch, 0, 0, cw, ch);
 	};
-	
-	rect (x, y, w, h, direction) {
-		const context = this.context;
-		
-		if (direction) {//逆时针
-			context.moveTo(x, y);
-			context.lineTo(x, y + h);
-			context.lineTo(x + w, y + h);
-			context.lineTo(x + w, y);
-	   } else {//顺时针
-			context.moveTo(x, y);
-			context.lineTo(x + w, y);
-			context.lineTo(x + w, y + h);
-			context.lineTo(x, y + h);
-	   }
-	   
-	   context.closePath();
+
+	windowToCanvas(x, y) {
+	   const canvasRectangle = this.canvas.getBoundingClientRect();
+
+	   return {
+	        x: x - canvasRectangle.left,
+	        y: y - canvasRectangle.top
+	      };
+	 };
+
+	mouseDown (e) {
+		this.setState({
+			isMouseDown: true,
+			movePosition: this.windowToCanvas(e.clientX, e.clientY)
+		});
 	};
-	
+
+	mouseMove (e) {
+		this.state.isMouseDown && this.setState({isMoving: true});
+	};
+
+	mouseUp (e) {
+		let cw = this.canvas.width,
+				ch = this.canvas.height,
+				position = this.windowToCanvas(e.clientX, e.clientY),
+				x = this.state.position.x + this.state.movePosition.x - position.x,
+				y = this.state.position.y + this.state.movePosition.y - position.y;
+
+		this.context.clearRect(0, 0, cw, ch);
+		this.context.drawImage(this.image, x, y, cw * this.state.scale, ch * this.state.scale, 0, 0, cw, ch);
+
+		this.setState({
+			isMoving: false,
+			isMouseDown: false,
+			position: {
+				x: x,
+				y: y
+			}
+		});
+	};
+
+	toggleScale (isAdd) {
+		let cw = this.canvas.width,
+				ch = this.canvas.height,
+				scale = this.state.scale * (1 + (isAdd ? 0.1 : -0.1));
+
+		this.setState({
+			scale: scale
+		});
+		this.context.clearRect(0, 0, cw, ch);
+		this.context.drawImage(this.image, this.state.position.x, this.state.position.y, cw * scale, ch * scale, 0, 0, cw, ch);
+	}
+
 	render () {
 		return (
-			<div className='zjdgx-canvas-upload'>
+			<div className='zjdgx-canvas-upload' onSelect={return false}>
 				<h2>头像预览上传</h2>
-				<canvas ref='upload-canvas' width='200' height='200'></canvas>
-				<input ref='imageFile' type='file' onChange={this.onFileSelected.bind(this)} />
+				<canvas ref='upload-canvas'
+				 	width={this.props.canvasWidth}
+					height={this.props.canvasHeight}
+					onMouseDown={this.mouseDown.bind(this)}
+					onMouseMove={this.mouseMove.bind(this)}
+					onMouseUp={this.mouseUp.bind(this)}>您的浏览器不支持...</canvas>
+				<span className='icon add' onClick={this.toggleScale.bind(this, 1)}>+</span>
+				<span className='icon substact' onClick={this.toggleScale.bind(this, 0)}>-</span>
+				<FileInput ref='imageFile' onFileSelected={this.onFileSelected.bind(this)} />
 			</div>
 		);
 	}
