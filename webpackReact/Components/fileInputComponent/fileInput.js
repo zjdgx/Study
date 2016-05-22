@@ -9,7 +9,7 @@ export default class Input extends React.Component {
 
    render () {
       return (
-         <div className='zjdgx-file-input'>
+         <div className={'zjdgx-file-input ' + this.props.cn}>
             <input ref='file' type='file' onChange={this.onFileSelected.bind(this)} />
             <span>选择文件</span>
          </div>

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Loading from '../../loading/Loading';
 import NavMenu from '../../navMenu/NavMenu';
 import Dropdown from '../../dropdown/dropdown';
-import CanvasUpload from '../../CanvasUpload/CanvasUpload';
+import CanvasUpload from '../../canvasUpload/CanvasUpload';
 
 export default class ComponentsList extends React.Component {
 	render () {

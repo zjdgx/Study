@@ -1,10 +1,11 @@
 import React from 'react';
 import {render} from 'react-dom';
-import ComponentsList from './ComponentsList';
+//import ComponentsList from './ComponentsList';
+import CanvasUpload from '../../canvasUpload/CanvasUpload';
 
 require('./index.styl');
 
 render(
-	<ComponentsList />,
-	document.getElementById('components-demo')
+	<CanvasUpload />,
+	document.getElementById('canvas-avatar')
 );
