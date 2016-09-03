@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery page scroll - ZJDGX</title>
+	<link rel='stylesheet' href='pageScroll.css' />
+</head>
+<body>
+	<div class='content'>
+		<div class='page page1'>Page 1</div>
+		<div class='page page2'>Page 2</div>
+		<div class='page page3'>Page 3</div>
+		<div class='page page4'>Page 4</div>
+		<div class='page page5'>Page 5</div>
+	</div>
+	<script src='jquery-1.8.1.min.js'></script>
+	<script src='jquery.mousewheel.min.js'></script>
+	<script src='PageScroll.js'></script>
+	<script>
+		$(function () {
+			$('.content').pageScroll();
+		})
+	</script>
+</body>
+</html>

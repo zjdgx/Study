@@ -9,9 +9,22 @@ import React from 'react';
 require('./Loading.styl');
 
 export default class Loading extends React.Component {
+	constructor (props) {
+		super(props);
+		this.state = {
+			showLoading: !!props.showLoading
+		};
+	};
+	
+	componentWillReceiveProps (newProps) {
+		newProps.showLoading && this.setState({
+			showLoading: newProps.showLoading
+		});
+	};
+	
 	render () {
 		return (
-			<div className="zjdgx-loading circle-spinner">
+			<div className={"zjdgx-loading circle-spinner" + (this.state.showLoading ? '' : ' hide')}>
 				<div className="spinner-container container1">
 					<div className="circle circle1"></div>
 					<div className="circle circle2"></div>

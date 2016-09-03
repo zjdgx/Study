@@ -1,5 +1,7 @@
 var path = require('path'),
 		webpack = require('webpack'),
+		poststylus = require('poststylus'),
+		autoprefixer = require('autoprefixer'),
 		CopyWebpackPlugin = require('copy-webpack-plugin'),
 		ExtractTextPlugin = require('extract-text-webpack-plugin');
 		
@@ -25,6 +27,15 @@ module.exports = {
 				test: /\.(css|styl)$/,
 				loader: ExtractTextPlugin.extract('style', '!css!stylus')
 			}
+		]
+	},
+	devtool: 'source-map',
+	stylus: {
+		use: [
+			poststylus([
+				autoprefixer({browsers: ['ie 8']}),
+				'rucksack-css'
+			])
 		]
 	},
 	plugins: [

@@ -54,13 +54,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _ReactAnimation = __webpack_require__(159);
+	var _animationDemo = __webpack_require__(159);
 
-	var _ReactAnimation2 = _interopRequireDefault(_ReactAnimation);
+	var _animationDemo2 = _interopRequireDefault(_animationDemo);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_ReactAnimation2.default, null), document.getElementById('page'));
+	_reactDom2.default.render(_react2.default.createElement(_animationDemo2.default, null), document.getElementById('page'));
 
 /***/ },
 /* 1 */
@@ -19671,7 +19671,7 @@
 /* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -19701,67 +19701,67 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(158);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
 	var _reactAddonsCssTransitionGroup = __webpack_require__(246);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	__webpack_require__(253);
 
-	var ZjdgxReactAnimation = function (_React$Component) {
-		(0, _inherits3.default)(ZjdgxReactAnimation, _React$Component);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-		function ZjdgxReactAnimation() {
-			(0, _classCallCheck3.default)(this, ZjdgxReactAnimation);
+	var style = {
+		position: "absolute",
+		right: "100px",
+		top: "20px"
+	};
 
-			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(ZjdgxReactAnimation).call(this));
+	var App = function (_React$Component) {
+		(0, _inherits3.default)(App, _React$Component);
+
+		function App() {
+			(0, _classCallCheck3.default)(this, App);
+
+			var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(App).call(this));
 
 			_this.state = {
-				hover: 0,
-				items: ['hello', 'world', 'click', 'me']
+				isFocus: 0,
+				entered: 0
 			};
 			return _this;
 		}
 
-		(0, _createClass3.default)(ZjdgxReactAnimation, [{
-			key: 'toggleHover',
-			value: function toggleHover(hover) {
+		(0, _createClass3.default)(App, [{
+			key: "toggleWidth",
+			value: function toggleWidth(e) {
 				this.setState({
-					hover: hover
+					isFocus: e.type === 'mouseover' ? 1 : 0,
+					entered: 1
 				});
 			}
 		}, {
-			key: 'render',
+			key: "toggleChange",
+			value: function toggleChange() {}
+		}, {
+			key: "render",
 			value: function render() {
 				return _react2.default.createElement(
-					'div',
+					"div",
 					null,
-					_react2.default.createElement(
-						'h2',
-						{
-							onMouseOut: this.toggleHover.bind(this, 0),
-							onMouseEnter: this.toggleHover.bind(this, 1) },
-						'Drop down menu'
-					),
-					_react2.default.createElement(
-						'ul',
-						{ className: 'dropdown-items' + (this.state.hover ? ' open' : '') },
-						this.state.items.map(function (item) {
-							return _react2.default.createElement(
-								'li',
-								{ key: item, className: 'item' },
-								item
-							);
-						})
-					)
+					_react2.default.createElement("input", { className: this.state.isFocus ? 'focus' : this.state.entered ? 'leave' : '', type: "text",
+						onMouseOver: this.toggleWidth.bind(this),
+						onMouseLeave: this.toggleWidth.bind(this),
+						onChange: this.toggleChange.bind(this) })
 				);
 			}
 		}]);
-		return ZjdgxReactAnimation;
+		return App;
 	}(_react2.default.Component);
 
-	exports.default = ZjdgxReactAnimation;
+	exports.default = App;
 
 /***/ },
 /* 160 */

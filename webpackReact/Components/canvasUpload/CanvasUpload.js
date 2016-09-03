@@ -111,7 +111,7 @@ export default class zjdgxCanvasUpload extends React.Component {
 
 	render () {
 		return (
-			<div className='zjdgx-canvas-upload' onSelect={return false}>
+			<div className='zjdgx-canvas-upload'>
 				<h2>头像预览上传</h2>
 				<canvas ref='upload-canvas'
 				 	width={this.props.canvasWidth}

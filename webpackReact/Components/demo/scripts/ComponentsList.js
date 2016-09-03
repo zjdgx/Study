@@ -4,7 +4,9 @@ import ReactDOM from 'react-dom';
 import Loading from '../../loading/Loading';
 import NavMenu from '../../navMenu/NavMenu';
 import Dropdown from '../../dropdown/dropdown';
+import SaveLoading from '../../saveLoadingButton';
 import CanvasUpload from '../../CanvasUpload/CanvasUpload';
+
 
 export default class ComponentsList extends React.Component {
 	render () {
@@ -14,6 +16,10 @@ export default class ComponentsList extends React.Component {
 					<a href='#loading'>React Loading</a>
 				</nav>
 				<div className='component-list'>
+					<div className='item' id='saveLoading'>
+						<h2>(2016/08/26)React Save Loading Button</h2>
+						<SaveLoading />
+					</div>
 					<div className='item' id='loading'>
 						<h2>(2016/03/31)React Loading</h2>
 						<Loading/>

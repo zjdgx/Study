@@ -1,3 +1,5 @@
+OutsideClick.js
+
 ## (2016/04/12)使用[Clean](https://github.com/johnagan/clean-webpack-plugin)
 
 - 安装clean模块
@@ -15,7 +17,6 @@ new CleanWebpackPlugin(['dist'], {
 	root: __dirname // webpack.config file path.
 })
 ```
-
 
 
 ## (2016/04/01)使用webpack + react + stylus + es6需要安装的模块

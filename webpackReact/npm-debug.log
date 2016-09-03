@@ -1,0 +1,33 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\nhn\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   '--save-dev',
+1 verbose cli   'rucksack-css' ]
+2 info using npm@2.6.1
+3 info using node@v5.1.0
+4 silly cache add args [ 'rucksack-css', null ]
+5 verbose cache add spec rucksack-css
+6 silly cache add parsed spec Result {
+6 silly cache add   raw: 'rucksack-css',
+6 silly cache add   scope: null,
+6 silly cache add   name: null,
+6 silly cache add   rawSpec: 'rucksack-css',
+6 silly cache add   spec: 'E:\\projects\\zjdgx\\Study\\webpackReact\\rucksack-css',
+6 silly cache add   type: 'local' }
+7 error addLocal Could not install E:\projects\zjdgx\Study\webpackReact\rucksack-css
+8 verbose stack Error: ENOENT: no such file or directory, open 'E:\projects\zjdgx\Study\webpackReact\rucksack-css'
+8 verbose stack     at Error (native)
+9 verbose cwd E:\projects\zjdgx\Study\webpackReact
+10 error Windows_NT 6.1.7601
+11 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\nhn\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "i" "--save-dev" "rucksack-css"
+12 error node v5.1.0
+13 error npm  v2.6.1
+14 error path E:\projects\zjdgx\Study\webpackReact\rucksack-css
+15 error code ENOENT
+16 error errno -4058
+17 error syscall open
+18 error enoent ENOENT: no such file or directory, open 'E:\projects\zjdgx\Study\webpackReact\rucksack-css'
+18 error enoent This is most likely not a problem with npm itself
+18 error enoent and is related to npm not being able to find a file.
+19 verbose exit [ -4058, true ]

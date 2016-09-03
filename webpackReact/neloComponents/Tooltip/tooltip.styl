@@ -1,0 +1,25 @@
+transition-time = 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98)
+
+offset = -130%
+
+.nelo-tooltip
+  box-sizing border-box
+  left 0
+  opacity 0
+  position absolute
+  text-align center
+  transition all transition-time
+
+.nelo-tooltip_to_bottom
+  transform translateY(offset)
+
+.nelo-tooltip_enter
+  opacity 1
+  transform translateY(offset)
+  transition all transition-time
+
+  &.nelo-tooltip_to_bottom
+    transform translateY(0%)
+
+.nelo-tooltip_error
+  color red

@@ -1,0 +1,68 @@
+@import "../variables.styl"
+
+transition-time = all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98)
+loading-button-height = 34px
+
+@keyframes spin
+  from {transform:rotate(0deg)}
+  to {transform:rotate(360deg)}
+
+button.nelo-button, a.nelo-button
+  border 1px solid border-color
+  border-radius border-radius-size
+  color font-color
+  cursor pointer
+  display inline-block
+  font-size 1em
+  line-height 2.5em
+  outline none
+  padding 0 2em
+  text-decoration none
+  transition transition-time
+  user-select none
+
+  &:hover
+    box-shadow 0px 1px 10px border-color
+    transition transition-time
+
+  &:active
+    transform scale(0.8)
+
+  &.nelo-button_primary
+    background-color primary-color
+    border-color primary-color
+    color #fff
+
+    &:hover
+      box-shadow 0px 1px 10px primary-color
+
+  &.nelo-button_loading
+    animation spin 0.8s infinite linear
+    background none !important
+    border-bottom 1px solid #fff
+    border-left 1px solid border-color
+    border-right 1px solid border-color
+    border-top 1px solid border-color
+    border-radius 5em
+    cursor not-allowed
+    height loading-button-height
+    padding 0
+    text-indent -9999px
+    white-space nowrap
+    width loading-button-height
+
+    &:hover
+      box-shadow none
+
+    &.nelo-button_primary
+      border-left 1px solid primary-color
+      border-right 1px solid primary-color
+      border-top 1px solid primary-color
+
+  &[disabled]
+    background-color disabled-bg-color
+    border-color disabled-bg-color
+    cursor not-allowed
+
+    &:hover
+      box-shadow none

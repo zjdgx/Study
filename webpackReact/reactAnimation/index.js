@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ZjdgxReactAnimation from './ReactAnimation';
+import ZjdgxReactAnimation from './animationDemo';
 
 ReactDOM.render(
 	<ZjdgxReactAnimation />,

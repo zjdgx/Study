@@ -1,0 +1,16 @@
+{
+  "name": "vue-framework-20160620",
+  "version": "1.0.0",
+  "description": "zjdgx: use vue to build medium()\u001b[D or large) scale web projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zjdgx",
+    "vue",
+    "router"
+  ],
+  "author": "ZJDGX",
+  "license": "ISC"
+}

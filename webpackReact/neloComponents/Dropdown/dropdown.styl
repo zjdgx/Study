@@ -1,0 +1,67 @@
+@import "../variables.styl"
+
+.nelo-dropdown
+  display inline-block
+  font-size 14px
+  margin 0
+  position relative
+  vertical-align top
+
+  > .nelo-label
+    border 1px solid border-color
+    border-radius border-radius-size
+    cursor pointer
+    display inline-block
+    font-weight normal
+    margin 0
+    padding 6px
+    text-align center
+
+    > .fa-caret-down
+      margin-left 5px
+
+.nelo-dropdown_active
+  .nelo-label
+    border 1px solid primary-color
+  .fa-caret-down
+    color #30c67b
+  .nelo-dropdown__options
+    display block
+    border 1px solid primary-color
+
+.nelo-dropdown__options
+  background-color #fff
+  border-radius border-radius-size
+  display none
+  overflow-y auto
+  max-height 200px
+  overflow-x hidden
+  padding 5px 0
+  position absolute
+  top 36px
+  white-space nowrap
+  z-index 1
+
+.nelo-dropdown__options_right
+  right 0
+
+.nelo-dropdown__option_active
+  background-color primary-color
+
+.nelo-dropdown__option
+  cursor pointer
+  line-height 25px
+  padding 0 10px
+
+  &:nth-child(even)
+    background-color lighten(primary-color, 90%)
+
+    &:hover
+      @extend .nelo-dropdown__option_active
+
+  &:hover, &.selected
+    @extend .nelo-dropdown__option_active
+
+.nelo-dropdown__inline
+  .nelo-label
+    border none

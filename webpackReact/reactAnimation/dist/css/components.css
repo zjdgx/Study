@@ -1,17 +1,11 @@
-.dropdown-items {
-  height: 0;
-  border: 1px solid #bdc6c4;
-  border-bottom: none;
-  transition: all 0.5s ease;
+input {
+  width: 60px;
 }
-.dropdown-items.open {
-  height: auto;
-}
-.item {
+.focus {
   width: 100px;
-  height: 24px;
-  margin: 10px 0;
-  padding: 0 10px;
-  line-height: 24px;
-  border-bottom: 1px solid #bdc6c4;
+  transition: width 500ms ease-in;
+}
+.leave {
+  width: 60px;
+  transition: width 500ms ease-in;
 }

@@ -1,0 +1,67 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+html, body, .content {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.zjdgx-page-scroll-wrap, .page {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	text-align: center;
+}
+
+.page {
+	top: 0;
+	font-size: 40px;
+	position: absolute;
+}
+
+.page1 {
+	left: 0;
+}
+
+.page2 {
+	left: 100%;
+}
+
+.page3 {
+	left: 200%;
+}
+
+.page4 {
+	left: 300%;
+}
+
+.page5 {
+	left: 400%;
+}
+
+.zjdgx-page-scroll-navigate {
+	position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+}
+
+.zjdgx-page-scroll-navigate a {
+	flex: 1;
+    height: 10px;
+    background-color: #3051ef;
+    width: 20%;
+    border-right: 1px solid #fff;
+}
+
+.zjdgx-page-scroll-navigate a:last-of-type {
+	border-right: none;
+}
+
+.zjdgx-page-scroll-navigate a.cur {
+	background-color: #87838e;
+}

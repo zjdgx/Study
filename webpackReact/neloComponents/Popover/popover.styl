@@ -1,0 +1,70 @@
+@import "../variables.styl"
+
+popover-arrow-width = 7px
+popover-arrow-inner-width = popover-arrow-width - 1px
+
+.nelo-popover
+  background-color #fff
+  border 1px solid border-color
+  border-radius border-radius-size
+  box-shadow 0 5px 10px border-color
+  background-clip padding-box
+  display none
+  float left
+  margin 2px 0 0
+  min-width 160px
+  padding 5px 0
+  position fixed
+  z-index 1000
+
+.nelo-popover__arrow
+  position absolute
+  top -(popover-arrow-width)
+  width popover-arrow-width
+
+  > .nelo-popover__arrow-border
+    display inline-block
+    border-left popover-arrow-width solid transparent
+    border-right popover-arrow-width solid transparent
+    border-bottom popover-arrow-width solid #ccc
+    border-bottom-color rgba(0,0,0,.2)
+    position absolute
+    left 0
+
+  > .nelo-popover__arrow-bg
+    display inline-block
+    border-left popover-arrow-inner-width solid transparent
+    border-right popover-arrow-inner-width solid transparent
+    border-bottom popover-arrow-inner-width solid #fff
+    left 1px
+    position absolute
+    top 1px
+
+.nelo-popover_primary
+  border-color primary-color
+
+  .nelo-popover__arrow-border
+    border-bottom-color primary-color
+
+.nelo-popover_dark
+  background-color dark-bg-color
+  border 1px solid dark-bg-color
+  color #fff
+
+  .nelo-popover__arrow-border, .nelo-popover__arrow-bg
+    border-bottom-color dark-bg-color
+
+.nelo-popover_show
+  display block
+
+.error
+  .nelo-popover
+    border-color error-color
+
+    .nelo-popover__arrow-bg
+      border-bottom-color error-color
+
+.nelo-popover_tooltip
+  min-width auto
+  padding .5em
+  visibility hidden
