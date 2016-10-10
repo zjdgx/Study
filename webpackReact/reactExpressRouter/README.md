@@ -1,4 +1,4 @@
 # react router demo(2016/08/18)
 
-- Ê¹ÓÃreact routerÂ·ÓÉÊµÏÖµ¥Ò³Ãæ
-- ¿ª·¢Ê±ĞèÒª½«±àÒëºóµÄÎÄ¼şdist/index.jsºÍindex.html¸´ÖÆµ½tomcatÖĞ£¬È»ºóÆô¶¯tomcat·şÎñ£¬·ÃÎÊ`localhost:8080/reactRouterDemo/
+- ä½¿ç”¨react routerè·¯ç”±å®ç°å•é¡µé¢
+- å¼€å‘æ—¶éœ€è¦å°†ç¼–è¯‘åçš„æ–‡ä»¶dist/index.jså’Œindex.htmlå¤åˆ¶åˆ°tomcatä¸­ï¼Œç„¶åå¯åŠ¨tomcatæœåŠ¡ï¼Œè®¿é—®`localhost:8080/reactRouterDemo/

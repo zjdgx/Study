@@ -26,5 +26,3 @@ module.exports = (
     <NotFoundRoute name="not-found" handler={require('./components/NotFound.jsx')}/>
   </Route>
 );
-
- 

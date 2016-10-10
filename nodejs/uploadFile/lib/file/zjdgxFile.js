@@ -1,16 +1,17 @@
 var fs = require('fs'),
-	path = require('path'),
-	async = require('async'),
-	_ = require('underscore'),
-	config = require('../../config'),
-	rootPath = config.server.rootPath;
-	formidable = require('formidable'),
-	mongo = require('../util/db_mongodb'),
-	fileUtil = require('../util/fileUtil'),
-	targetPath = config.server.fileUploadPath;
+		path = require('path'),
+		async = require('async'),
+		_ = require('underscore'),
+		config = require('../../config'),
+		rootPath = config.server.rootPath,
+		formidable = require('formidable'),
+		fileUtil = require('../util/fileUtil'),
+		targetPath = config.server.fileUploadPath,
+		mysql = require('../mysql/mysql-client').init();
 
 exports.uploadFile = function (req, res) {
-	var form = new formidable.IncomingForm();
+	var now = new Date(),
+			form = new formidable.IncomingForm();
 	
 	async.waterfall([
 		function(cb) {
@@ -18,50 +19,42 @@ exports.uploadFile = function (req, res) {
 				if (err) {
 					cb(err);
 				} else {
-					console.log('path: ' + file.file.path + ', name: ' + file.file.name + ', targetPath: ' + targetPath);
 					cb(null, fields, file);
 				}
 			});
 		},
 		function(fileds, file, cb) {
-			console.log(JSON.stringify(file));
-			var is = fs.createReadStream(file.file.path),
-					os = fs.createWriteStream(path.join(rootPath, targetPath, file.file.name));
+			var is = fs.createReadStream(file.fileList.path),
+					os = fs.createWriteStream(path.join(rootPath, targetPath, file.fileList.name));
 
-			console.log('file upload pipe startd=ed. rootPath: ' + path.join(rootPath, targetPath, file.file.name));
 			is.pipe(os);
-			console.log('file upload pipe started.');
-			os.on('end', function (err) {
-				console.log('file upload pipe end.');
+			is.on('end', function (err) {
 				if (err) {
 					cb(err);
 				} else {
-					console.log('file upload unlinkSync started.');
-					fs.unlinkSync(file.file.path);
-					cb();
+					fs.unlinkSync(file.fileList.path);
+					cb(null, file.fileList.name);
 				}
 			});
 		},
-		function(cb) {
-			console.log('mongodb insert started.');
-			mongo.insert('uploadFiles', {
-				uploadTime: new Date(),
-				fileName: name,
-				path: targetPath
-			}, null, cb);
+		function(name, cb) {
+			mysql.query(
+				'insert into uploadfiles(timeUploaded, fileName, path) values (?, ?, ?)', 
+				[now, name, targetPath.replace('/static', '')],
+				cb
+			)
 		}
-	], function(err) {
+	], function(err, result) {
 		if (err) {
 			res.json({result: -1, msg: '文件上传失败...'});
 		} else {
 			res.json({result: 1, msg: '文件上传成功...'});
 		}
 	});
-
 };
 
 exports.filelist = function (req, res) {
-	mongo.find('uploadFiles', {}, {}, function (err, data) {
+	mysql.query('select * from uploadfiles', null, function (err, data) {
 		if (err) {
 			res.json({result: -1, msg: "获取文件列表失败."});
 		} else {

@@ -1,8 +1,3 @@
-/**
- * React Canvas Avatar
- * Date: 2016-05-20
- * Author: ZJDGX
- */
 import React from 'react';
 import FileInput from '../fileInputComponent/fileInput'
 
@@ -112,18 +107,7 @@ export default class zjdgxCanvasUpload extends React.Component {
 		});
 		this.context.clearRect(0, 0, cw, ch);
 		this.context.drawImage(this.image, this.state.position.x, this.state.position.y, cw * scale, ch * scale, 0, 0, cw, ch);
-	};
-	
-	cancel () {
-		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	};
-	
-	save () {
-		// the method to save canvas image: canvas.toDataUrl('image/png')
-		var w = window.open('about:blank','image from canvas');  
-		
-		w.document.write("<img src='" + this.canvas.toDataURL('image/png').replace("image/png", "image/octet-stream") + "' alt='from canvas'/>");  
-	};
+	}
 
 	render () {
 		return (
@@ -135,13 +119,9 @@ export default class zjdgxCanvasUpload extends React.Component {
 					onMouseDown={this.mouseDown.bind(this)}
 					onMouseMove={this.mouseMove.bind(this)}
 					onMouseUp={this.mouseUp.bind(this)}>您的浏览器不支持...</canvas>
-				<div className='options'>
-					<FileInput ref='imageFile' cn='icon' onFileSelected={this.onFileSelected.bind(this)} />
-					<span className='icon add' onClick={this.toggleScale.bind(this, 0)}>放大</span>
-					<span className='icon substact' onClick={this.toggleScale.bind(this, 1)}>缩小</span>
-					<span className='icon save' onClick={this.save.bind(this)}>保存</span>
-					<span className='icon cancel' onClick={this.cancel.bind(this)}>取消</span>
-				</div>
+				<span className='icon add' onClick={this.toggleScale.bind(this, 1)}>+</span>
+				<span className='icon substact' onClick={this.toggleScale.bind(this, 0)}>-</span>
+				<FileInput ref='imageFile' onFileSelected={this.onFileSelected.bind(this)} />
 			</div>
 		);
 	}

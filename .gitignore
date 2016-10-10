@@ -4,3 +4,4 @@ code
 secret.txt
 bower_components
 nodeExpress
+nodejs/uploadFile/static/uploadFiles/
