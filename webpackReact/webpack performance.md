@@ -1,3 +1,27 @@
+# (2016/10/20) 
+
+	webpack配置别名
+
+	```
+	resolve: {
+    // 配置别名
+    alias: {
+      // 库文件
+      jquery: "/jquery/jquery-1.12.4.min.js",
+      JSON3: "/jquery/json3.js",
+      // 弹窗
+      layer: "/layer/app.js",
+      // 组件
+      expUse: "/use/app.js",
+      XHR: "/xhr/app.js",
+      //module
+      module: "/",
+      //plugin
+      plugin: "/"
+    }
+  }
+  ```
+
 # (2016/04/11) [webpack性能优化](http://www.cnblogs.com/giveiris/p/5237080.html)
 
 ## 文件过大
